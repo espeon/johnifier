@@ -6,7 +6,7 @@ interface ExamplePageProps {
 }
 
 export function ExamplePage({ onClose }: ExamplePageProps) {
-  const themesList: ThemeName[] = ['terracotta', 'brutalist', 'cyberpunk', 'zen', 'vaporwave', 'claude'];
+  const themesList: ThemeName[] = ['terracotta', 'brutalist', 'cyberpunk', 'zen', 'vaporwave', 'claude', 'synthwave', 'matrix', 'nord', 'sunset'];
 
   const exampleGreetings = {
     terracotta: 'Good evening, creative soul',
@@ -15,6 +15,10 @@ export function ExamplePage({ onClose }: ExamplePageProps) {
     zen: 'Peace be with you',
     vaporwave: 'Aesthetic vibes only',
     claude: 'Good evening, Natalie',
+    synthwave: 'Neon dreams ahead',
+    matrix: 'Wake up, Neo',
+    nord: 'Frost and focus',
+    sunset: 'Golden hour vibes',
   };
 
   const themeDescriptions = {
@@ -24,6 +28,10 @@ export function ExamplePage({ onClose }: ExamplePageProps) {
     zen: 'Light, minimal design for calm and focused experiences',
     vaporwave: 'Retro 80s dreamscape with bold colors and nostalgia',
     claude: 'Ultra professional dark theme with clean typography',
+    synthwave: 'Retro-futuristic purple and pink gradients with intense glow',
+    matrix: 'Classic green-on-black terminal hacker aesthetic',
+    nord: 'Cool Scandinavian blues with minimal Arctic elegance',
+    sunset: 'Warm tropical colors with playful beach sunset vibes',
   };
 
   return (
@@ -39,7 +47,7 @@ export function ExamplePage({ onClose }: ExamplePageProps) {
             Johnifier Showcase
           </h1>
           <p className="text-xl text-gray-400 mb-6">
-            6 Unique Themes • 200+ Greetings • Context-Aware • Multi-Language
+            10 Unique Themes • 600+ Greetings • Context-Aware • Multi-Language
           </p>
           <motion.button
             onClick={onClose}
@@ -90,6 +98,10 @@ export function ExamplePage({ onClose }: ExamplePageProps) {
                       {themeName === 'zen' && '🌸'}
                       {themeName === 'vaporwave' && '🌈'}
                       {themeName === 'claude' && '✨'}
+                      {themeName === 'synthwave' && '🌃'}
+                      {themeName === 'matrix' && '💚'}
+                      {themeName === 'nord' && '❄️'}
+                      {themeName === 'sunset' && '🌅'}
                     </span>
                   </div>
 

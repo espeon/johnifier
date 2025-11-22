@@ -1,4 +1,4 @@
-export type ThemeName = 'terracotta' | 'brutalist' | 'cyberpunk' | 'zen' | 'vaporwave' | 'claude';
+export type ThemeName = 'terracotta' | 'brutalist' | 'cyberpunk' | 'zen' | 'vaporwave' | 'claude' | 'synthwave' | 'matrix' | 'nord' | 'sunset';
 
 export interface Theme {
   name: ThemeName;
@@ -188,6 +188,114 @@ export const themes: Record<ThemeName, Theme> = {
     },
     effects: {
       glowIntensity: 0,
+      borderStyle: 'smooth',
+    },
+  },
+  synthwave: {
+    name: 'synthwave',
+    displayName: 'Synthwave Nights',
+    colors: {
+      background: '#1a0b2e',
+      surface: '#2b1055',
+      surfaceElevated: '#3d1578',
+      primary: '#ff006e',
+      primaryLight: '#ff4d9c',
+      primaryDark: '#cc0058',
+      secondary: '#8b5cf6',
+      accent: '#00f5ff',
+      accentAlt: '#fb5607',
+      textPrimary: '#f8f8ff',
+      textSecondary: '#c4b5fd',
+      textMuted: '#8b7fb8',
+    },
+    fonts: {
+      display: "'Audiowide', cursive",
+      body: "'Exo 2', sans-serif",
+      mono: "'Share Tech Mono', monospace",
+    },
+    effects: {
+      glowIntensity: 0.9,
+      borderStyle: 'sharp',
+    },
+  },
+  matrix: {
+    name: 'matrix',
+    displayName: 'Matrix Terminal',
+    colors: {
+      background: '#000000',
+      surface: '#0d0d0d',
+      surfaceElevated: '#1a1a1a',
+      primary: '#00ff41',
+      primaryLight: '#39ff6e',
+      primaryDark: '#00cc34',
+      secondary: '#008f11',
+      accent: '#00ff41',
+      accentAlt: '#003b00',
+      textPrimary: '#00ff41',
+      textSecondary: '#00cc34',
+      textMuted: '#008f11',
+    },
+    fonts: {
+      display: "'Courier New', monospace",
+      body: "'Courier New', monospace",
+      mono: "'Courier New', monospace",
+    },
+    effects: {
+      glowIntensity: 0.7,
+      borderStyle: 'sharp',
+    },
+  },
+  nord: {
+    name: 'nord',
+    displayName: 'Nordic Frost',
+    colors: {
+      background: '#2e3440',
+      surface: '#3b4252',
+      surfaceElevated: '#434c5e',
+      primary: '#88c0d0',
+      primaryLight: '#a3d4e3',
+      primaryDark: '#5e81ac',
+      secondary: '#81a1c1',
+      accent: '#8fbcbb',
+      accentAlt: '#5e81ac',
+      textPrimary: '#eceff4',
+      textSecondary: '#d8dee9',
+      textMuted: '#4c566a',
+    },
+    fonts: {
+      display: "'Montserrat', sans-serif",
+      body: "'Inter', sans-serif",
+      mono: "'JetBrains Mono', monospace",
+    },
+    effects: {
+      glowIntensity: 0.2,
+      borderStyle: 'smooth',
+    },
+  },
+  sunset: {
+    name: 'sunset',
+    displayName: 'Tropical Sunset',
+    colors: {
+      background: '#1a1423',
+      surface: '#2d1b3d',
+      surfaceElevated: '#3d2651',
+      primary: '#ff6b6b',
+      primaryLight: '#ff9999',
+      primaryDark: '#ee5a6f',
+      secondary: '#f9ca24',
+      accent: '#ff9ff3',
+      accentAlt: '#feca57',
+      textPrimary: '#ffeaa7',
+      textSecondary: '#fab1a0',
+      textMuted: '#a29bfe',
+    },
+    fonts: {
+      display: "'Pacifico', cursive",
+      body: "'Quicksand', sans-serif",
+      mono: "'Roboto Mono', monospace",
+    },
+    effects: {
+      glowIntensity: 0.5,
       borderStyle: 'smooth',
     },
   },
