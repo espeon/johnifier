@@ -1,305 +1,350 @@
-# Johnifier 🎉
+# Johnifier
 
-**200x better contextual greetings** - A delightfully over-the-top greeting system built with React, TypeScript, Tailwind CSS, and Framer Motion.
+> A delightfully contextual greeting system with 1100+ greetings in 5 languages
 
-## ✨ Features
+Johnifier is a lightweight, framework-agnostic TypeScript library that provides contextual, personalized greetings based on time of day, language, weather, battery level, holidays, and more.
 
-### 🎨 5 Unique Themes
-- **Warm Terracotta** - Classic warm tones with serif elegance
-- **Brutalist** - Raw, minimal, high-contrast black & white
-- **Neon Cyberpunk** - Electric pinks and blues with glow effects
-- **Minimal Zen** - Light, airy, peaceful minimalism
-- **Vaporwave Dreams** - Retro 80s aesthetics with purple and pink
+[![npm version](https://img.shields.io/npm/v/johnifier.svg)](https://www.npmjs.com/package/johnifier)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Each theme has custom fonts, colors, and visual effects!
+## Features
 
-### 🌍 Multi-Language Support
-Greetings in 5 languages:
-- English
-- Spanish (Español)
-- French (Français)
-- German (Deutsch)
-- Japanese (日本語)
+- 🌍 **1100+ Greetings** across 5 languages (English, Spanish, French, German, Japanese)
+- 🎭 **Context-Aware** - Adapts to time, weather, battery, holidays, and user preferences
+- 🔒 **Privacy Mode** - Special incognito greetings for anonymous browsing
+- ⚡ **Performance** - O(1) greeting lookups via indexed data structure
+- 🎨 **Customizable** - Filter by mood, work mode, tech preferences
+- 📦 **Framework Agnostic** - Pure TypeScript core with React bindings
+- 🌳 **Tree-Shakeable** - ESM and CJS builds for optimal bundle size
+- 📖 **TypeScript** - Full type safety with declaration files
 
-### 🧠 Context-Aware Greetings
-Greetings adapt to:
-- **Time of day** - Morning, afternoon, evening, late night
-- **Day of week** - Special messages for each day
-- **Battery level** - "Running low, just like your battery (15%)"
-- **Weather** - Real-time weather integration with location
-- **User modes** - Incognito, work mode, casual
-
-### 🎭 Interactive Features
-- **Greeting Roulette** 🎰 - Spin to get a random greeting with confetti
-- **Share Cards** 📤 - Share your greeting as a beautiful card
-- **Stats Panel** 📊 - Track your visit streak, total visits, battery, weather
-- **Typing Animation** ⌨️ - Character-by-character typing effect (toggleable)
-- **Sound Effects** 🔊 - Subtle audio feedback (toggleable)
-
-### 🎮 Easter Eggs
-- **Konami Code** - Type ⬆⬆⬇⬇⬅➡⬅➡BA for a surprise!
-- **Secret greetings** - Discover hidden messages
-
-### 🌟 Visual Effects
-- **Cursor-following glow** - Mood-based gradient blob follows your cursor
-- **Particle constellations** - Canvas-based particle background
-- **Confetti bursts** - Celebratory animations on interactions
-- **Smooth transitions** - Framer Motion powered animations
-- **Shimmer effects** - Subtle light animations
-
-### 📊 Tracking & Stats
-- **Visit streaks** - Track consecutive days
-- **Greeting history** - Last 50 greetings saved
-- **Context display** - See battery level and weather at a glance
-
-## 🚀 Quick Start
+## Installation
 
 ```bash
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
+npm install johnifier
 ```
 
-## 💻 Usage
+## Quick Start
 
-### Basic Hook
+### React
+
 ```tsx
-import { useEnhancedGreeting } from './hooks/useEnhancedGreeting';
+import { useEnhancedGreeting, useEnhancedContext } from 'johnifier/react';
 
-function MyComponent() {
-  const greeting = useEnhancedGreeting();
+function App() {
+  const context = useEnhancedContext();
+  const greeting = useEnhancedGreeting({
+    name: 'Alice',
+    language: 'en',
+    techOk: true,
+    battery: context.battery,
+    weather: context.weather,
+    tempUnit: 'C'
+  });
 
   return <h1>{greeting.text}</h1>;
 }
 ```
 
-### With All Options
-```tsx
-const greeting = useEnhancedGreeting({
-  name: 'Alice',        // Personalized greetings
-  incognito: false,     // Anonymous mode
-  workMode: false,      // Professional greetings
-  language: 'en',       // Language (en, es, fr, de, ja)
-  battery: 85,          // Battery level for context
-  weather: {            // Weather for context
-    condition: 'sunny',
-    temp: 22
-  }
+### Vanilla JavaScript/TypeScript
+
+```typescript
+import { selectGreeting } from 'johnifier';
+
+const greeting = selectGreeting({
+  name: 'Alice',
+  language: 'en',
+  techOk: true,
+  battery: 85,
+  weather: { condition: 'sunny', temp: 22 },
+  tempUnit: 'C'
 });
 
-// Returns:
-// {
-//   text: "Good morning, Alice",
-//   timeOfDay: "morning",
-//   mood: "casual",
-//   allGreetings: ["Good morning, Alice", "Morning, Alice", ...]
-// }
+console.log(greeting.text); // "Good morning, Alice!"
+console.log(greeting.mood); // "casual"
+console.log(greeting.timeOfDay); // "morning"
 ```
 
-### Theme System
-```tsx
-import { useTheme } from './hooks/useTheme';
+## API Reference
 
-function App() {
-  const { theme, currentTheme, switchTheme, randomTheme } = useTheme();
+### Core Library (`johnifier`)
 
-  return (
-    <div style={{ backgroundColor: theme.colors.background }}>
-      <button onClick={() => switchTheme('cyberpunk')}>
-        Cyberpunk Mode
-      </button>
-      <button onClick={randomTheme}>
-        Random Theme
-      </button>
-    </div>
-  );
+#### `selectGreeting(options)`
+
+Selects an appropriate greeting based on filters and context.
+
+**Parameters:**
+- `name?: string` - User's name for personalized greetings
+- `incognito?: boolean` - Privacy mode (default: `false`)
+- `workMode?: boolean` - Professional mode (default: `false`)
+- `techOk?: boolean` - Allow tech-themed greetings (default: `false`)
+- `language?: Language` - Language code: `'en' | 'es' | 'fr' | 'de' | 'ja'` (default: `'en'`)
+- `battery?: number | null` - Device battery percentage (0-100)
+- `weather?: { condition: string; temp: number } | null` - Weather data
+- `tempUnit?: TempUnit` - Temperature unit: `'C' | 'F'` (default: `'C'`)
+- `randomSeed?: number` - Seed for deterministic selection
+
+**Returns:**
+```typescript
+{
+  text: string;           // The greeting message
+  timeOfDay: 'morning' | 'afternoon' | 'evening' | 'lateNight';
+  mood: 'casual' | 'professional' | 'playful' | 'mysterious';
+  allGreetings: string[]; // All currently valid greetings
 }
 ```
 
-## 🎨 Customization
+### React Hooks (`johnifier/react`)
 
-### Adding New Greetings
-Edit `src/hooks/useEnhancedGreeting.ts`:
+#### `useEnhancedGreeting(props)`
 
-```tsx
-const greetings: Greeting[] = [
-  // Add your custom greeting
-  {
-    filter: () => hasName && isMorning && isFriday,
-    text: `TGIF, ${name}! Ready to crush it?`,
-    mood: 'playful'
+React hook for selecting and displaying greetings. Automatically re-randomizes when dependencies change.
+
+**Props:**
+Same as `selectGreeting()` options, plus:
+- `refreshKey?: number` - Change to force new greeting selection
+
+**Returns:** Same as `selectGreeting()`
+
+#### `useEnhancedContext()`
+
+Fetches enhanced context information (battery, weather, location).
+
+**Returns:**
+```typescript
+{
+  battery: number | null;
+  weather: { condition: string; temp: number } | null;
+  isLoading: boolean;
+}
+```
+
+### Utility Functions
+
+```typescript
+import {
+  getBatteryLevel,
+  getWeather,
+  getLocation,
+  getTimeZone,
+  isSlowConnection
+} from 'johnifier/react';
+
+const battery = await getBatteryLevel();     // Returns 0-100 or null
+const location = await getLocation();        // Returns { lat, lon } or null
+const weather = await getWeather(lat, lon);  // Returns weather data or null
+const timezone = getTimeZone();              // Returns IANA timezone string
+const isSlow = isSlowConnection();           // Returns boolean
+```
+
+## Greeting Categories
+
+### Time-Based
+- **Morning** (5am-12pm): "Good morning!", "Rise and shine"
+- **Afternoon** (12pm-6pm): "Good afternoon!", "Midday vibes"
+- **Evening** (6pm-12am): "Good evening!", "Night mode activated"
+- **Late Night** (12am-5am): "Burning the midnight oil", "3AM energy"
+
+### Contextual
+- **Weather**: "Bundle up! (12°C)", "Perfect sunny day"
+- **Battery**: "Fully charged (95%)", "Low power mode (15%) but high vibes"
+- **Holidays**: "Happy Halloween! 🎃", "Merry Christmas! 🎄", "May the 4th be with you"
+- **Time-Specific**: "Coffee time ☕", "Lunch break vibes", "Golden hour energy"
+
+### Modes
+- **Incognito**: "Hello, mysterious visitor", "Your secret is safe with us"
+- **Work Mode**: "Let's get to work", "Professional mode: activated"
+- **Tech Mode**: "Hello, World!", "console.log('Hey there')", "Git ready for today"
+
+### Languages
+- **English**: 800+ greetings
+- **Spanish**: 100+ greetings
+- **French**: 100+ greetings
+- **German**: 100+ greetings
+- **Japanese**: 100+ greetings
+
+## Examples
+
+### Incognito Mode
+```typescript
+const greeting = selectGreeting({ incognito: true });
+// "Good morning, mysterious stranger"
+// "Privacy mode engaged"
+// "The shadows greet you"
+```
+
+### Tech Greetings
+```typescript
+const greeting = selectGreeting({
+  name: 'Bob',
+  techOk: true
+});
+// "Bob.init()"
+// "console.log('Hey there')"
+// "Hello, World!"
+```
+
+### Holiday Greetings
+```typescript
+// On Halloween (October 31st)
+const greeting = selectGreeting({});
+// "Happy Halloween! 🎃"
+// "Spooky season vibes"
+
+// On Star Wars Day (May 4th)
+const greeting = selectGreeting({ name: 'Luke' });
+// "May the 4th be with you, Luke"
+```
+
+### Battery-Aware
+```typescript
+const greeting = selectGreeting({ battery: 15 });
+// "Running on fumes at 15%"
+// "Charge soon, legend"
+
+const greeting = selectGreeting({ battery: 69 });
+// "Nice battery level 😏"
+```
+
+### Work Mode
+```typescript
+const greeting = selectGreeting({ workMode: true });
+// "Let's get to work"
+// "Time to crush it"
+// "Professional mode: activated"
+```
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Run demo app
+npm run dev
+
+# Build library
+npm run build:lib
+
+# Build demo
+npm run build:demo
+
+# Build both
+npm run build
+```
+
+## Project Structure
+
+```
+johnifier/
+├── lib/                 # Framework-agnostic core
+│   ├── greetings/      # Greeting definitions
+│   │   ├── en/         # English greetings
+│   │   ├── es/         # Spanish greetings
+│   │   ├── fr/         # French greetings
+│   │   ├── de/         # German greetings
+│   │   ├── ja/         # Japanese greetings
+│   │   ├── index.ts    # Greeting index & lookup
+│   │   └── types.ts    # Type definitions
+│   ├── index.ts        # Main exports
+│   └── utils.ts        # Selection logic
+├── lib-react/          # React bindings
+│   ├── hooks/          # React hooks
+│   ├── utils/          # Context utilities
+│   └── index.ts        # React exports
+├── demo/               # Demo application
+└── dist/               # Build output
+```
+
+## Contributing
+
+We welcome contributions! Here's how to add greetings:
+
+### Adding a New Greeting
+
+1. Choose the appropriate category file in `lib/greetings/en/`
+2. Add your greeting following this pattern:
+
+```typescript
+{
+  text: 'Your greeting here',
+  mood: 'casual', // 'casual' | 'professional' | 'playful' | 'mysterious'
+  static: {
+    language: 'en',
+    incognito: false,  // true = incognito only, false = normal only, undefined = both
+    workMode: false,   // true = work mode only
+    techOk: false,     // true = requires tech permission
+    hasName: false,    // true = personalized greeting with name
   },
-  // ... existing greetings
-];
+  dynamic: ({ hour, day, month, battery, weather }) => {
+    // Optional: Return true if greeting should show based on context
+    return hour !== undefined && hour >= 9 && hour < 12;
+  }
+}
 ```
 
-### Creating a Custom Theme
-Edit `src/themes.ts`:
+### With Name Parameter
 
-```tsx
-export const themes = {
-  // ... existing themes
-  myTheme: {
-    name: 'myTheme',
-    displayName: 'My Custom Theme',
-    colors: {
-      background: '#your-color',
-      primary: '#your-color',
-      // ... more colors
-    },
-    fonts: {
-      display: "'Your Display Font', serif",
-      body: "'Your Body Font', sans-serif",
-      mono: "'Your Mono Font', monospace",
-    },
-    effects: {
-      glowIntensity: 0.5,  // 0-1
-      borderStyle: 'smooth', // 'smooth' | 'sharp' | 'brutalist'
-    },
+```typescript
+{
+  text: ({ name }) => `Good morning, ${name}!`,
+  mood: 'casual',
+  static: {
+    language: 'en',
+    incognito: false,
+    hasName: true, // Required for name greetings
   },
-};
+  dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+}
 ```
 
-### Adding New Languages
-Edit `src/hooks/useEnhancedGreeting.ts`:
+### With Battery/Weather Context
 
-```tsx
-const translations: Record<Language, Record<string, string>> = {
-  // ... existing languages
-  pt: {
-    morning: 'Bom dia',
-    afternoon: 'Boa tarde',
-    evening: 'Boa noite',
-    lateNight: 'Madrugada',
+```typescript
+{
+  text: ({ battery }) => `Battery at ${battery}%, vibes at 100%`,
+  mood: 'playful',
+  static: { language: 'en', incognito: false },
+  dynamic: ({ battery }) => battery !== null && battery !== undefined && battery <= 20,
+}
+
+{
+  text: ({ weather, tempUnit }) => {
+    if (!weather) return 'Weather unknown';
+    const temp = tempUnit === 'F' ? Math.round(weather.temp * 9/5 + 32) : weather.temp;
+    return `Bundle up! (${temp}°${tempUnit})`;
   },
-};
+  mood: 'casual',
+  static: { language: 'en', incognito: false },
+  dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp < 10,
+}
 ```
 
-## 🏗️ Architecture
+### Adding a New Language
 
-### Key Components
-- `App.tsx` - Main application with all features integrated
-- `useEnhancedGreeting` - Core greeting logic with context awareness
-- `useTheme` - Theme management and switching
-- `useTypingAnimation` - Character-by-character typing effect
-- `useKonamiCode` - Easter egg detection
-- `useEnhancedContext` - Battery and weather context
-- `CursorGlow` - Cursor-following gradient effect
-- `ParticleBackground` - Canvas-based particle system
-- `GreetingRoulette` - Randomizer with confetti
-- `ShareCard` - Share greeting functionality
-- `StatsPanel` - Visit tracking and stats display
-- `ThemeSwitcher` - Theme selection UI
+1. Create directory: `lib/greetings/[lang-code]/`
+2. Add `general.ts` and `seasonal.ts` files
+3. Import in `lib/greetings/index.ts`
+4. Add to `allGreetings` array
+5. Add language code to `Language` type in `types.ts`
 
-### Data Flow
-```
-User Input → Hooks → Context Providers → Components → Visual Effects
-```
+### Guidelines
 
-### Storage
-- Theme preference stored in `localStorage`
-- User stats and streaks in `localStorage`
-- Weather/battery fetched on load
+- Keep greetings friendly and inclusive
+- Test with different contexts (time, battery, weather)
+- Include both simple and personalized variants
+- Maintain appropriate mood for context
+- Avoid offensive or controversial content
 
-## 🎯 All Features Implemented
+## License
 
-✅ Cursor-following gradient blob
-✅ Canvas particle constellations
-✅ 5 unique theme system
-✅ Confetti effects
-✅ Typing animation
-✅ Weather awareness
-✅ Battery level detection
-✅ Visit streak tracking
-✅ Greeting roulette
-✅ Share cards
-✅ Sound effects
-✅ Konami code easter egg
-✅ Multi-language support (5 languages)
-✅ Context-aware greetings
-✅ Smooth animations with Framer Motion
+MIT © Your Name
 
-## 🛠️ Tech Stack
+## Credits
 
-- **React 18** - UI framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Utility-first styling
-- **Framer Motion** - Advanced animations
-- **Canvas Confetti** - Celebration effects
-- **Vite** - Build tool & dev server
-- **Canvas API** - Custom particle effects
-- **Web Audio API** - Sound effects
-- **Geolocation API** - Weather context
-- **Battery API** - Battery context
-- **LocalStorage** - Persistence
-
-## 🌐 Browser APIs Used
-
-- Geolocation API (for weather)
-- Battery Status API (for battery greetings)
-- Web Audio API (for sound effects)
-- LocalStorage (for persistence)
-- Canvas API (for particles)
-- Navigator Share API (for sharing)
-
-## 📱 Features by Category
-
-### Visual Polish
-- Staggered animations with delays
-- Smooth theme transitions
-- Particle constellations
-- Cursor glow effects
-- Shimmer animations
-- Confetti celebrations
-- Typing effects
-
-### Interactivity
-- Roulette spinner
-- Theme switcher
-- Language selector
-- Mode toggles
-- Sound toggle
-- Stats panel
-- Share functionality
-
-### Intelligence
-- Time-aware greetings
-- Weather integration
-- Battery awareness
-- Streak tracking
-- Context sensitivity
-- Multi-language
-- Mood detection
-
-## 🎮 Try These!
-
-1. **Type the Konami Code**: ⬆⬆⬇⬇⬅➡⬅➡BA
-2. **Switch to Cyberpunk theme** and see the glow effects
-3. **Enable sound** and click buttons for audio feedback
-4. **Spin the roulette** for confetti explosions
-5. **Check your stats** to see visit streaks
-6. **Try different languages** for localized greetings
-7. **Check at different times** for time-aware messages
-8. **Let your battery drain** for battery-aware greetings
-
-## 📄 License
-
-MIT
-
-## 🙏 Credits
-
-Built with care using:
-- Google Fonts (10+ font families)
-- Open-Meteo (weather data)
-- Canvas Confetti by Kiril Vatev
-- Framer Motion
-- And lots of coffee ☕
+- Weather API: [Open-Meteo](https://open-meteo.com/)
+- Inspired by the need for delightful user experiences
 
 ---
 
-**Made 200x better** ✨
+**[View Demo](https://your-demo-url.com)** • **[Report Bug](https://github.com/yourusername/johnifier/issues)** • **[Request Feature](https://github.com/yourusername/johnifier/issues)**
