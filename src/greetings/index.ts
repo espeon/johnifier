@@ -1,15 +1,52 @@
-import { GreetingDefinition, StaticFilters, Language } from './types';
-import { techGreetings } from './en/tech';
+import { GreetingDefinition, StaticFilters, Language, Mood, DynamicFilters, GreetingResult } from './types';
 
-// Import other greeting files here as they're created
-// import { generalGreetings } from './en/general';
-// import { seasonalGreetings } from './en/seasonal';
-// etc.
+// English greetings
+import { techGreetings } from './en/tech';
+import { generalGreetings as enGeneralGreetings } from './en/general';
+import { seasonalGreetings as enSeasonalGreetings } from './en/seasonal';
+import { contextualGreetings as enContextualGreetings } from './en/contextual';
+import { personalityGreetings as enPersonalityGreetings } from './en/personality';
+
+// Spanish greetings
+import { generalGreetings as esGeneralGreetings } from './es/general';
+import { seasonalGreetings as esSeasonalGreetings } from './es/seasonal';
+
+// French greetings
+import { generalGreetings as frGeneralGreetings } from './fr/general';
+import { seasonalGreetings as frSeasonalGreetings } from './fr/seasonal';
+
+// German greetings
+import { generalGreetings as deGeneralGreetings } from './de/general';
+import { seasonalGreetings as deSeasonalGreetings } from './de/seasonal';
+
+// Japanese greetings
+import { generalGreetings as jaGeneralGreetings } from './ja/general';
+import { seasonalGreetings as jaSeasonalGreetings } from './ja/seasonal';
 
 // Combine all greetings
 const allGreetings: GreetingDefinition[] = [
+  // English
   ...techGreetings,
-  // ...other greeting arrays
+  ...enGeneralGreetings,
+  ...enSeasonalGreetings,
+  ...enContextualGreetings,
+  ...enPersonalityGreetings,
+
+  // Spanish
+  ...esGeneralGreetings,
+  ...esSeasonalGreetings,
+
+  // French
+  ...frGeneralGreetings,
+  ...frSeasonalGreetings,
+
+  // German
+  ...deGeneralGreetings,
+  ...deSeasonalGreetings,
+
+  // Japanese
+  ...jaGeneralGreetings,
+  ...jaSeasonalGreetings,
 ];
 
 // Build indexed structure for O(1) lookup instead of O(n) filtering
@@ -82,4 +119,4 @@ export function getMatchingGreetings(filters: StaticFilters): GreetingDefinition
 }
 
 export { allGreetings };
-export * from './types';
+export type { Language, Mood, GreetingDefinition, StaticFilters, DynamicFilters, GreetingResult };
