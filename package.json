@@ -26,11 +26,11 @@
     "LICENSE"
   ],
   "scripts": {
-    "dev": "vite demo",
+    "dev": "vite",
     "build": "npm run build:lib && npm run build:demo",
     "build:lib": "tsup",
-    "build:demo": "vite build demo",
-    "preview": "vite preview demo"
+    "build:demo": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [
     "greetings",
