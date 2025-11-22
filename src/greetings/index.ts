@@ -6,6 +6,7 @@ import { generalGreetings as enGeneralGreetings } from './en/general';
 import { seasonalGreetings as enSeasonalGreetings } from './en/seasonal';
 import { contextualGreetings as enContextualGreetings } from './en/contextual';
 import { personalityGreetings as enPersonalityGreetings } from './en/personality';
+import { incognitoGreetings as enIncognitoGreetings } from './en/incognito';
 
 // Spanish greetings
 import { generalGreetings as esGeneralGreetings } from './es/general';
@@ -31,6 +32,7 @@ const allGreetings: GreetingDefinition[] = [
   ...enSeasonalGreetings,
   ...enContextualGreetings,
   ...enPersonalityGreetings,
+  ...enIncognitoGreetings,
 
   // Spanish
   ...esGeneralGreetings,
