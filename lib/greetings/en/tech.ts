@@ -6,62 +6,62 @@ export const techGreetings: GreetingDefinition[] = [
   {
     text: 'Hello, World!',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'console.log("Hey there")',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'No bugs detected... yet',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'Git ready for today',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'Compiling greatness...',
     mood: 'professional',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'Stack overflow? More like stack overflow with vibes',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: '404: Sleep not found',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'Debugging life, one day at a time',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'Merge conflicts resolved',
     mood: 'professional',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'Push to production energy',
     mood: 'professional',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'All tests passing',
     mood: 'professional',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'Zero errors, pure vibes',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
 
   // Tech greetings with name
@@ -107,12 +107,12 @@ export const techGreetings: GreetingDefinition[] = [
   {
     text: 'Living the dream (or debugging it)',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: 'Touch grass? Nah, touch code',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, techOk: true },
+    static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: false },
   },
   {
     text: ({ name }) => `${name} entered the server`,

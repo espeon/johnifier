@@ -6,7 +6,7 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Happy New Year! Fresh start incoming',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 0 && day !== undefined && day === 1,
   },
   {
@@ -18,7 +18,7 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'New Year\'s resolution energy',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month }) => month === 0,
   },
 
@@ -26,7 +26,7 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Love is in the air ❤️',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 1 && day !== undefined && day === 14,
   },
   {
@@ -38,7 +38,7 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Happy Valentine\'s Day!',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 1 && day !== undefined && day === 14,
   },
 
@@ -54,13 +54,13 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Trust nobody today 🤡',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 3 && day !== undefined && day === 1,
   },
   {
     text: 'This greeting is definitely not a joke',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 3 && day !== undefined && day === 1,
   },
 
@@ -68,7 +68,7 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'May the 4th be with you',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 4 && day !== undefined && day === 4,
   },
   {
@@ -82,13 +82,13 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Happy Halloween! 🎃',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 9 && day !== undefined && day === 31,
   },
   {
     text: 'Spooky season vibes',
     mood: 'mysterious',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month }) => month === 9,
   },
   {
@@ -100,7 +100,7 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Trick or treat yourself',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 9 && day !== undefined && day === 31,
   },
 
@@ -108,13 +108,13 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Happy Thanksgiving!',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 10 && day !== undefined && day >= 22 && day <= 28,
   },
   {
     text: 'Grateful for you today',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 10 && day !== undefined && day >= 22 && day <= 28,
   },
   {
@@ -128,13 +128,13 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Merry Christmas! 🎄',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 11 && day !== undefined && day === 25,
   },
   {
     text: 'Holiday season magic ✨',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month }) => month === 11,
   },
   {
@@ -146,13 +146,13 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Jingle all the way',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month }) => month === 11,
   },
   {
     text: 'Cozy holiday vibes',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month }) => month === 11,
   },
 
@@ -160,13 +160,13 @@ export const holidayGreetings: GreetingDefinition[] = [
   {
     text: 'Out with the old, in with the bold',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 11 && day !== undefined && day === 31,
   },
   {
     text: 'NYE vibes incoming',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ month, day }) => month === 11 && day !== undefined && day === 31,
   },
 ];
