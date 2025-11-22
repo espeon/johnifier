@@ -2,110 +2,63 @@ import { GreetingDefinition } from '../types';
 
 // Motivational, personality, creative/fun, and productivity/work greetings
 export const personalityGreetings: GreetingDefinition[] = [
-  // === MOTIVATIONAL GREETINGS ===
+  // === CASUAL GREETINGS ===
   {
-    text: 'Today is your day',
+    text: 'Another day, another tab',
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: 'You got this!',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
-  },
-  {
-    text: 'Make it legendary',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
-  },
-  {
-    text: 'Greatness awaits',
+    text: 'Here we go',
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: 'Unstoppable energy',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
-    text: 'Main character energy',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
-    text: 'Level up time',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
-    text: 'You are the moment',
+    text: 'Just vibing',
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: 'Nothing can stop you',
+    text: 'Doing the thing',
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: 'Built different',
+    text: 'Tab number who knows',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: ({ name }) => `${name}, you're unstoppable`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+    text: 'Yep, still here',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: ({ name }) => `${name}, absolute legend`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-  },
-  {
-    text: ({ name }) => `The world needs ${name} today`,
+    text: ({ name }) => `Oh hey ${name}`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
   {
-    text: ({ name }) => `${name}, go make magic happen`,
+    text: ({ name }) => `Back again, ${name}?`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
 
   // === PERSONALITY GREETINGS ===
   {
-    text: 'Vibing at maximum capacity',
-    mood: 'playful',
+    text: 'Just another browser tab',
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: 'Elite status confirmed',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
-    text: 'Simply built different',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
-    text: 'Too cool for school',
-    mood: 'playful',
+    text: 'Taking it easy',
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
     text: 'Certified mood',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
-    text: 'Absolutely unhinged (in a good way)',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
@@ -115,18 +68,23 @@ export const personalityGreetings: GreetingDefinition[] = [
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: 'Professional over-achiever',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
     text: 'Perfectly imperfect',
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: ({ name }) => `${name}, the one and only`,
-    mood: 'playful',
+    text: 'Just existing',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Hanging in there',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `${name}, back at it`,
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
   {
@@ -135,34 +93,14 @@ export const personalityGreetings: GreetingDefinition[] = [
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
   {
-    text: ({ name }) => `${name} supremacy`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-  },
-  {
-    text: ({ name }) => `Peak ${name} performance`,
-    mood: 'playful',
+    text: ({ name }) => `${name} in the house`,
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
 
   // === CREATIVE/FUN GREETINGS ===
   {
-    text: 'Living rent-free in excellence',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
     text: 'No thoughts, just vibes',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
-    text: 'Immaculate vibes detected',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
-    text: 'Energy unmatched',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
@@ -172,33 +110,33 @@ export const personalityGreetings: GreetingDefinition[] = [
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: 'Sending good vibes your way',
-    mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-  },
-  {
     text: 'Maximum chill achieved',
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: 'Absolutely iconic',
-    mood: 'playful',
+    text: 'It is what it is',
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: 'Chef kiss energy',
-    mood: 'playful',
+    text: 'Trying to vibe here',
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: 'Sleep is temporary, glory is forever',
+    text: 'Just browsing',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Probably should be sleeping',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: ({ name }) => `${name} has the vibe check`,
+    text: ({ name }) => `${name}, procrastinating again?`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
@@ -519,27 +457,7 @@ export const personalityGreetings: GreetingDefinition[] = [
 
   // === MORE FUN NAME GREETINGS ===
   {
-    text: ({ name }) => `${name}, the legend`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-  },
-  {
-    text: ({ name }) => `${name}, main character energy`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-  },
-  {
     text: ({ name }) => `It's ${name} o'clock`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-  },
-  {
-    text: ({ name }) => `${name}, absolute unit`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-  },
-  {
-    text: ({ name }) => `Certified ${name} moment`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
@@ -549,22 +467,7 @@ export const personalityGreetings: GreetingDefinition[] = [
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
   {
-    text: ({ name }) => `Peak ${name} performance`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-  },
-  {
-    text: ({ name }) => `${name}, vibing immaculately`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-  },
-  {
     text: ({ name }) => `The ${name} experience`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-  },
-  {
-    text: ({ name }) => `${name}, absolutely goated`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
@@ -574,23 +477,106 @@ export const personalityGreetings: GreetingDefinition[] = [
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
   {
-    text: ({ name }) => `Behold: ${name}`,
-    mood: 'playful',
+    text: ({ name }) => `${name} is here`,
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
   {
-    text: ({ name }) => `${name}, simply built different`,
-    mood: 'playful',
+    text: ({ name }) => `Welcome back, ${name}`,
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
   {
-    text: ({ name }) => `${name}, elite status`,
-    mood: 'playful',
+    text: ({ name }) => `${name}, what's up?`,
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
   {
-    text: ({ name }) => `${name}, unstoppable force`,
+    text: ({ name }) => `${name}, once more`,
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `Good to see you, ${name}`,
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, just browsing?`,
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `Another tab for ${name}`,
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+
+  // === REALISTIC/RELATABLE GREETINGS ===
+  {
+    text: 'Still awake?',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 6,
+  },
+  {
+    text: 'Another Monday',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+    dynamic: ({ day }) => day === 1,
+  },
+  {
+    text: 'Almost there',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+    dynamic: ({ day }) => day === 4,
+  },
+  {
+    text: 'TGIF',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+    dynamic: ({ day }) => day === 5,
+  },
+  {
+    text: 'Weekend mode',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+    dynamic: ({ day }) => day === 0 || day === 6,
+  },
+  {
+    text: 'Midweek already',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+    dynamic: ({ day }) => day === 3,
+  },
+  {
+    text: 'Just going through it',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'One tab of many',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Tab #infinity',
     mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Scroll, scroll, scroll',
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `${name}, another day`,
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name} checking in`,
+    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
   },
 ];
