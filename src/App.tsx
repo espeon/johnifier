@@ -98,7 +98,7 @@ function App() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 key={greetingKey} className="font-garamond font-bold text-greeting leading-[0.9] mb-8 tracking-tight">
+              <h1 key={greetingKey} className="font-garamond font-semibold text-greeting leading-[0.9] mb-8 tracking-tight">
                 {mounted && words.map((word, i) => (
                   <motion.span
                     key={i}
@@ -133,7 +133,7 @@ function App() {
                 )}
                 <button
                   onClick={() => setGreetingKey(k => k + 1)}
-                  className="px-3 py-1.5 bg-[#e8e8e8]/5 border border-[#e8e8e8]/10
+                  className="px-3 py-1.5 bg-[#e8e8e8]/5 border border-[#e8e8e8]/10 rounded-md
                            font-orbiter text-xs tracking-wider text-[#e8e8e8]/60
                            hover:bg-[#e8e8e8]/10 hover:border-[#e8e8e8]/20 transition-all duration-300"
                   title="Refresh greeting"
@@ -145,13 +145,13 @@ function App() {
 
             {/* Controls grid */}
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
             >
               {/* Name input */}
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <label className="font-orbiter text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
                   Your Name
                 </label>
@@ -160,15 +160,15 @@ function App() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter name..."
-                  className="w-full bg-[#e8e8e8]/5 border border-[#e8e8e8]/10
-                           px-4 py-3 font-orbiter text-base tracking-wide
+                  className="w-full bg-[#e8e8e8]/5 border border-[#e8e8e8]/10 rounded-md
+                           px-3 py-2 font-orbiter text-sm tracking-wide
                            focus:outline-none focus:border-[#e8e8e8]/30 focus:bg-[#e8e8e8]/8
                            placeholder:text-[#e8e8e8]/20 transition-all duration-300"
                 />
               </div>
 
               {/* Language selector */}
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <label className="font-orbiter text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
                   Language
                 </label>
@@ -177,7 +177,7 @@ function App() {
                     <button
                       key={lang}
                       onClick={() => setLanguage(lang)}
-                      className={`flex-1 px-3 py-3 font-orbiter text-sm uppercase tracking-widest
+                      className={`flex-1 px-2 py-2 font-orbiter text-xs uppercase tracking-widest rounded-md
                                 transition-all duration-300 border
                                 ${language === lang
                                   ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
@@ -191,11 +191,11 @@ function App() {
               </div>
 
               {/* Toggles */}
-              <div className="md:col-span-2 space-y-3">
+              <div className="md:col-span-2 space-y-2">
                 <label className="font-orbiter text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
                   Settings
                 </label>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-3 gap-2">
                   <ToggleCard
                     label="Incognito"
                     active={incognito}
@@ -225,7 +225,7 @@ function App() {
           transition={{ delay: 1.4, duration: 0.6 }}
         >
           <div className="font-orbiter text-xs text-[#e8e8e8]/30 tracking-wider">
-            {greeting.allGreetings.length} greetings available
+            {greeting.allGreetings.length} available right now
           </div>
           <code className="font-orbiter text-xs text-[#e8e8e8]/30 tracking-wider">
             useEnhancedGreeting()
@@ -289,7 +289,7 @@ function App() {
 // Pill component for metadata
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="px-3 py-1.5 bg-[#e8e8e8]/8 border border-[#e8e8e8]/10
+    <span className="px-3 py-1.5 bg-[#e8e8e8]/8 border border-[#e8e8e8]/10 rounded-md
                    font-orbiter text-xs tracking-wider text-[#e8e8e8]/60">
       {children}
     </span>
@@ -301,7 +301,7 @@ function ToggleCard({ label, active, onClick }: { label: string; active: boolean
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-4 border transition-all duration-300 font-orbiter text-sm
+      className={`px-3 py-3 border rounded-md transition-all duration-300 font-orbiter text-sm
                 ${active
                   ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
                   : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10 hover:border-[#e8e8e8]/20'
