@@ -47,7 +47,7 @@ export function ExamplePage({ onClose }: ExamplePageProps) {
             Johnifier Showcase
           </h1>
           <p className="text-xl text-gray-400 mb-6">
-            10 Unique Themes • 600+ Greetings • Context-Aware • Multi-Language
+            10 Unique Themes • 850+ Greetings • Context-Aware • Multi-Language
           </p>
           <motion.button
             onClick={onClose}
