@@ -13,6 +13,7 @@ const themeIcons: Record<ThemeName, string> = {
   cyberpunk: '💎',
   zen: '🌸',
   vaporwave: '🌈',
+  claude: '✨',
 };
 
 const themeNames: Record<ThemeName, string> = {
@@ -21,10 +22,11 @@ const themeNames: Record<ThemeName, string> = {
   cyberpunk: 'Cyberpunk',
   zen: 'Zen',
   vaporwave: 'Vaporwave',
+  claude: 'Ultra Pro',
 };
 
 export function ThemeSwitcher({ currentTheme, onThemeChange, onRandomTheme }: ThemeSwitcherProps) {
-  const themes: ThemeName[] = ['terracotta', 'brutalist', 'cyberpunk', 'zen', 'vaporwave'];
+  const themes: ThemeName[] = ['terracotta', 'brutalist', 'cyberpunk', 'zen', 'vaporwave', 'claude'];
 
   return (
     <div className="flex flex-wrap gap-2 items-center">

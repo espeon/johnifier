@@ -99,14 +99,19 @@ function App() {
     oscillator.stop(audioContextRef.currentTime + 0.1);
   }, [soundEnabled, audioContextRef]);
 
+  const isUltraProfessional = currentTheme === 'claude';
+
   const handleToggle = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
     playSound('toggle');
-    confetti({
-      particleCount: 20,
-      spread: 40,
-      origin: { y: 0.6 },
-      colors: [theme.colors.primary],
-    });
+    // Skip confetti in Ultra Professional mode for a cleaner experience
+    if (!isUltraProfessional) {
+      confetti({
+        particleCount: 20,
+        spread: 40,
+        origin: { y: 0.6 },
+        colors: [theme.colors.primary],
+      });
+    }
     setter(prev => !prev);
   };
 
@@ -119,14 +124,18 @@ function App() {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden" style={{ fontFamily: theme.fonts.body }}>
-      {/* Cursor Glow */}
-      <CursorGlow
-        color={moodColors[greeting.mood]}
-        intensity={theme.effects.glowIntensity}
-      />
+      {/* Cursor Glow - disabled in Ultra Professional mode */}
+      {!isUltraProfessional && (
+        <CursorGlow
+          color={moodColors[greeting.mood]}
+          intensity={theme.effects.glowIntensity}
+        />
+      )}
 
-      {/* Particle Background */}
-      <ParticleBackground color={theme.colors.primary} particleCount={40} />
+      {/* Particle Background - disabled in Ultra Professional mode */}
+      {!isUltraProfessional && (
+        <ParticleBackground color={theme.colors.primary} particleCount={40} />
+      )}
 
       {/* Background Pattern */}
       <div className="fixed inset-0 -z-10 bg-pattern opacity-0 animate-fade-in" />

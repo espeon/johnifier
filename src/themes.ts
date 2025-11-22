@@ -1,4 +1,4 @@
-export type ThemeName = 'terracotta' | 'brutalist' | 'cyberpunk' | 'zen' | 'vaporwave';
+export type ThemeName = 'terracotta' | 'brutalist' | 'cyberpunk' | 'zen' | 'vaporwave' | 'claude';
 
 export interface Theme {
   name: ThemeName;
@@ -162,6 +162,33 @@ export const themes: Record<ThemeName, Theme> = {
     effects: {
       glowIntensity: 0.6,
       borderStyle: 'sharp',
+    },
+  },
+  claude: {
+    name: 'claude',
+    displayName: 'Ultra Professional',
+    colors: {
+      background: '#2D2D2D',
+      surface: '#343434',
+      surfaceElevated: '#3D3D3D',
+      primary: '#D97757',
+      primaryLight: '#E89A7A',
+      primaryDark: '#C85A38',
+      secondary: '#8B8B8B',
+      accent: '#D97757',
+      accentAlt: '#9F9F9F',
+      textPrimary: '#ECECEC',
+      textSecondary: '#A8A8A8',
+      textMuted: '#6B6B6B',
+    },
+    fonts: {
+      display: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      mono: "'SF Mono', 'Monaco', 'Inconsolata', monospace",
+    },
+    effects: {
+      glowIntensity: 0,
+      borderStyle: 'smooth',
     },
   },
 };
