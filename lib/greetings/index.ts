@@ -18,10 +18,24 @@ import { seasonalGreetings as esSeasonalGreetings } from './es/seasonal';
 // French greetings
 import { generalGreetings as frGeneralGreetings } from './fr/general';
 import { seasonalGreetings as frSeasonalGreetings } from './fr/seasonal';
+import { personalityGreetings as frPersonalityGreetings } from './fr/personality';
+import { techGreetings as frTechGreetings } from './fr/tech';
+import { incognitoGreetings as frIncognitoGreetings } from './fr/incognito';
+import { holidayGreetings as frHolidayGreetings } from './fr/holidays';
+import { batteryGreetings as frBatteryGreetings } from './fr/battery';
+import { timeSpecificGreetings as frTimeSpecificGreetings } from './fr/timespecific';
+import { contextualGreetings as frContextualGreetings } from './fr/contextual';
 
 // German greetings
 import { generalGreetings as deGeneralGreetings } from './de/general';
 import { seasonalGreetings as deSeasonalGreetings } from './de/seasonal';
+import { personalityGreetings as dePersonalityGreetings } from './de/personality';
+import { techGreetings as deTechGreetings } from './de/tech';
+import { incognitoGreetings as deIncognitoGreetings } from './de/incognito';
+import { holidayGreetings as deHolidayGreetings } from './de/holidays';
+import { batteryGreetings as deBatteryGreetings } from './de/battery';
+import { timeSpecificGreetings as deTimeSpecificGreetings } from './de/timespecific';
+import { contextualGreetings as deContextualGreetings } from './de/contextual';
 
 // Japanese greetings
 import { generalGreetings as jaGeneralGreetings } from './ja/general';
@@ -30,10 +44,24 @@ import { seasonalGreetings as jaSeasonalGreetings } from './ja/seasonal';
 // Chinese Simplified greetings
 import { generalGreetings as zhHansGeneralGreetings } from './zh-Hans/general';
 import { seasonalGreetings as zhHansSeasonalGreetings } from './zh-Hans/seasonal';
+import { personalityGreetings as zhHansPersonalityGreetings } from './zh-Hans/personality';
+import { techGreetings as zhHansTechGreetings } from './zh-Hans/tech';
+import { incognitoGreetings as zhHansIncognitoGreetings } from './zh-Hans/incognito';
+import { holidayGreetings as zhHansHolidayGreetings } from './zh-Hans/holidays';
+import { batteryGreetings as zhHansBatteryGreetings } from './zh-Hans/battery';
+import { timeSpecificGreetings as zhHansTimeSpecificGreetings } from './zh-Hans/timespecific';
+import { contextualGreetings as zhHansContextualGreetings } from './zh-Hans/contextual';
 
 // Chinese Traditional greetings
 import { generalGreetings as zhHantGeneralGreetings } from './zh-Hant/general';
 import { seasonalGreetings as zhHantSeasonalGreetings } from './zh-Hant/seasonal';
+import { personalityGreetings as zhHantPersonalityGreetings } from './zh-Hant/personality';
+import { techGreetings as zhHantTechGreetings } from './zh-Hant/tech';
+import { incognitoGreetings as zhHantIncognitoGreetings } from './zh-Hant/incognito';
+import { holidayGreetings as zhHantHolidayGreetings } from './zh-Hant/holidays';
+import { batteryGreetings as zhHantBatteryGreetings } from './zh-Hant/battery';
+import { timeSpecificGreetings as zhHantTimeSpecificGreetings } from './zh-Hant/timespecific';
+import { contextualGreetings as zhHantContextualGreetings } from './zh-Hant/contextual';
 
 // Korean greetings
 import { generalGreetings as koGeneralGreetings } from './ko/general';
@@ -71,10 +99,24 @@ const allGreetings: GreetingDefinition[] = [
   // French
   ...frGeneralGreetings,
   ...frSeasonalGreetings,
+  ...frPersonalityGreetings,
+  ...frTechGreetings,
+  ...frIncognitoGreetings,
+  ...frHolidayGreetings,
+  ...frBatteryGreetings,
+  ...frTimeSpecificGreetings,
+  ...frContextualGreetings,
 
   // German
   ...deGeneralGreetings,
   ...deSeasonalGreetings,
+  ...dePersonalityGreetings,
+  ...deTechGreetings,
+  ...deIncognitoGreetings,
+  ...deHolidayGreetings,
+  ...deBatteryGreetings,
+  ...deTimeSpecificGreetings,
+  ...deContextualGreetings,
 
   // Japanese
   ...jaGeneralGreetings,
@@ -83,10 +125,24 @@ const allGreetings: GreetingDefinition[] = [
   // Chinese Simplified
   ...zhHansGeneralGreetings,
   ...zhHansSeasonalGreetings,
+  ...zhHansPersonalityGreetings,
+  ...zhHansTechGreetings,
+  ...zhHansIncognitoGreetings,
+  ...zhHansHolidayGreetings,
+  ...zhHansBatteryGreetings,
+  ...zhHansTimeSpecificGreetings,
+  ...zhHansContextualGreetings,
 
   // Chinese Traditional
   ...zhHantGeneralGreetings,
   ...zhHantSeasonalGreetings,
+  ...zhHantPersonalityGreetings,
+  ...zhHantTechGreetings,
+  ...zhHantIncognitoGreetings,
+  ...zhHantHolidayGreetings,
+  ...zhHantBatteryGreetings,
+  ...zhHantTimeSpecificGreetings,
+  ...zhHantContextualGreetings,
 
   // Korean
   ...koGeneralGreetings,
