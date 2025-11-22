@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEnhancedGreeting, Language } from './hooks/useEnhancedGreeting';
+import { useEnhancedGreeting, Language, TempUnit } from './hooks/useEnhancedGreeting';
 import { useEnhancedContext } from './hooks/useEnhancedContext';
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
   const [workMode, setWorkMode] = useState(() => localStorage.getItem('johnifier_workMode') === 'true');
   const [techOk, setTechOk] = useState(() => localStorage.getItem('johnifier_techOk') === 'true');
   const [language, setLanguage] = useState<Language>(() => (localStorage.getItem('johnifier_language') as Language) || 'en');
+  const [tempUnit, setTempUnit] = useState<TempUnit>(() => (localStorage.getItem('johnifier_tempUnit') as TempUnit) || 'C');
   const [mounted, setMounted] = useState(false);
   const [greetingKey, setGreetingKey] = useState(0);
   const [showAllGreetings, setShowAllGreetings] = useState(false);
@@ -36,6 +37,10 @@ function App() {
     localStorage.setItem('johnifier_language', language);
   }, [language]);
 
+  useEffect(() => {
+    localStorage.setItem('johnifier_tempUnit', tempUnit);
+  }, [tempUnit]);
+
 
   const greeting = useEnhancedGreeting({
     name: name || undefined,
@@ -45,6 +50,7 @@ function App() {
     language,
     battery: context.battery,
     weather: context.weather,
+    tempUnit,
     refreshKey: greetingKey,
   });
 
@@ -130,7 +136,9 @@ function App() {
                   <Pill>battery {context.battery}%</Pill>
                 )}
                 {context.weather && (
-                  <Pill>{context.weather.condition} · {context.weather.temp}°</Pill>
+                  <Pill>
+                    {context.weather.condition} · {tempUnit === 'F' ? Math.round(context.weather.temp * 9/5 + 32) : context.weather.temp}°{tempUnit}
+                  </Pill>
                 )}
                 <button
                   onClick={() => setGreetingKey(k => k + 1)}
@@ -179,6 +187,25 @@ function App() {
                             }`}
                 >
                   {lang}
+                </button>
+              ))}
+
+              {/* Divider */}
+              <div className="w-px h-4 bg-[#e8e8e8]/10" />
+
+              {/* Temperature unit selector */}
+              {(['C', 'F'] as TempUnit[]).map((unit) => (
+                <button
+                  key={unit}
+                  onClick={() => setTempUnit(unit)}
+                  className={`px-2 py-1.5 font-orbiter text-xs uppercase tracking-wider rounded-md
+                            transition-all duration-300 border
+                            ${tempUnit === unit
+                              ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                              : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
+                            }`}
+                >
+                  °{unit}
                 </button>
               ))}
 

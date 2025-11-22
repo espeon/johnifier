@@ -26,13 +26,13 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month !== undefined && (month === 11 || month === 0 || month === 1),
   },
   {
-    text: (name) => `Stay warm, ${name}`,
+    text: ({ name }) => `Stay warm, ${name}`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month !== undefined && (month === 11 || month === 0 || month === 1),
   },
   {
-    text: (name) => `${name} in winter mode`,
+    text: ({ name }) => `${name} in winter mode`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month !== undefined && (month === 11 || month === 0 || month === 1),
@@ -61,13 +61,13 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month !== undefined && (month === 2 || month === 3 || month === 4),
   },
   {
-    text: (name) => `Spring vibes with ${name}`,
+    text: ({ name }) => `Spring vibes with ${name}`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month !== undefined && (month === 2 || month === 3 || month === 4),
   },
   {
-    text: (name) => `${name}, feeling renewed?`,
+    text: ({ name }) => `${name}, feeling renewed?`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month !== undefined && (month === 2 || month === 3 || month === 4),
@@ -96,13 +96,13 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month !== undefined && (month === 5 || month === 6 || month === 7),
   },
   {
-    text: (name) => `Summer mode ${name}`,
+    text: ({ name }) => `Summer mode ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month !== undefined && (month === 5 || month === 6 || month === 7),
   },
   {
-    text: (name) => `${name}, enjoying the heat?`,
+    text: ({ name }) => `${name}, enjoying the heat?`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month !== undefined && (month === 5 || month === 6 || month === 7),
@@ -131,13 +131,13 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month !== undefined && (month === 8 || month === 9 || month === 10),
   },
   {
-    text: (name) => `Fall colors and ${name}`,
+    text: ({ name }) => `Fall colors and ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month !== undefined && (month === 8 || month === 9 || month === 10),
   },
   {
-    text: (name) => `${name}, pumpkin spice season`,
+    text: ({ name }) => `${name}, pumpkin spice season`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month !== undefined && (month === 8 || month === 9 || month === 10),
@@ -160,7 +160,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 0,
   },
   {
-    text: (name) => `${name}, fresh start energy`,
+    text: ({ name }) => `${name}, fresh start energy`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 0,
@@ -188,7 +188,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 1,
   },
   {
-    text: (name) => `${name}, love is in the air`,
+    text: ({ name }) => `${name}, love is in the air`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 1,
@@ -208,7 +208,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 2,
   },
   {
-    text: (name) => `${name}, spring is coming`,
+    text: ({ name }) => `${name}, spring is coming`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 2,
@@ -222,7 +222,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 3,
   },
   {
-    text: (name) => `${name}, spring bloom time`,
+    text: ({ name }) => `${name}, spring bloom time`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 3,
@@ -236,7 +236,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 4,
   },
   {
-    text: (name) => `${name}, almost summer!`,
+    text: ({ name }) => `${name}, almost summer!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 4,
@@ -250,7 +250,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 5,
   },
   {
-    text: (name) => `${name}, summer starts now`,
+    text: ({ name }) => `${name}, summer starts now`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 5,
@@ -264,7 +264,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 6,
   },
   {
-    text: (name) => `${name}, hottest month energy`,
+    text: ({ name }) => `${name}, hottest month energy`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 6,
@@ -278,7 +278,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 7,
   },
   {
-    text: (name) => `${name}, savoring summer`,
+    text: ({ name }) => `${name}, savoring summer`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 7,
@@ -292,7 +292,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 8,
   },
   {
-    text: (name) => `${name}, fall is calling`,
+    text: ({ name }) => `${name}, fall is calling`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 8,
@@ -306,7 +306,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 9,
   },
   {
-    text: (name) => `${name}, autumn magic`,
+    text: ({ name }) => `${name}, autumn magic`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 9,
@@ -332,7 +332,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 10,
   },
   {
-    text: (name) => `${name}, thankful vibes`,
+    text: ({ name }) => `${name}, thankful vibes`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 10,
@@ -352,7 +352,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 11,
   },
   {
-    text: (name) => `${name}, holiday season!`,
+    text: ({ name }) => `${name}, holiday season!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 11,
@@ -370,7 +370,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ month }) => month === 11,
   },
   {
-    text: (name) => `Happy holidays, ${name}!`,
+    text: ({ name }) => `Happy holidays, ${name}!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ month }) => month === 11,
@@ -387,7 +387,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour >= 5 && hour < 12 && day >= 1 && day <= 5,
   },
   {
-    text: (name) => `${name}, weekday warrior`,
+    text: ({ name }) => `${name}, weekday warrior`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ day }) => day !== undefined && day >= 1 && day <= 5,
@@ -409,21 +409,21 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour !== undefined && day === 1 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Happy Monday, ${name}`,
+    text: ({ name }) => `Happy Monday, ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 1 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `New week, new wins, ${name}`,
+    text: ({ name }) => `New week, new wins, ${name}`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 1 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Let's conquer this Monday, ${name}`,
+    text: ({ name }) => `Let's conquer this Monday, ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -446,14 +446,14 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour !== undefined && day === 2 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Happy Tuesday, ${name}`,
+    text: ({ name }) => `Happy Tuesday, ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 2 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Tuesday energy, ${name}!`,
+    text: ({ name }) => `Tuesday energy, ${name}!`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -476,21 +476,21 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour !== undefined && day === 3 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Hump day, ${name}!`,
+    text: ({ name }) => `Hump day, ${name}!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 3 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Halfway there, ${name}`,
+    text: ({ name }) => `Halfway there, ${name}`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 3 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Wednesday vibes with ${name}`,
+    text: ({ name }) => `Wednesday vibes with ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -513,14 +513,14 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour !== undefined && day === 4 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Happy Thursday, ${name}`,
+    text: ({ name }) => `Happy Thursday, ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 4 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Almost Friday, ${name}!`,
+    text: ({ name }) => `Almost Friday, ${name}!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -550,28 +550,28 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour !== undefined && day === 5 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Happy Friday, ${name}!`,
+    text: ({ name }) => `Happy Friday, ${name}!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 5 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `TGIF, ${name}`,
+    text: ({ name }) => `TGIF, ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 5 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Friday feeling, ${name}`,
+    text: ({ name }) => `Friday feeling, ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 5 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Weekend's calling, ${name}`,
+    text: ({ name }) => `Weekend's calling, ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -585,7 +585,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour !== undefined && day === 5 && hour >= 12 && hour < 18,
   },
   {
-    text: (name) => `Friday afternoon, ${name}!`,
+    text: ({ name }) => `Friday afternoon, ${name}!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -599,7 +599,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour !== undefined && day === 5 && hour >= 18 && hour < 24,
   },
   {
-    text: (name) => `Friday night, ${name}!`,
+    text: ({ name }) => `Friday night, ${name}!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -622,21 +622,21 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour !== undefined && day === 6 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Weekend mode, ${name}`,
+    text: ({ name }) => `Weekend mode, ${name}`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 6 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Saturday vibes, ${name}!`,
+    text: ({ name }) => `Saturday vibes, ${name}!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 6 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `No alarms, ${name}?`,
+    text: ({ name }) => `No alarms, ${name}?`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -659,21 +659,21 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour !== undefined && day === 0 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Lazy Sunday, ${name}?`,
+    text: ({ name }) => `Lazy Sunday, ${name}?`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 0 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Sunday funday, ${name}`,
+    text: ({ name }) => `Sunday funday, ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
       hour !== undefined && day === 0 && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Recharge mode, ${name}`,
+    text: ({ name }) => `Recharge mode, ${name}`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -690,7 +690,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour >= 12 && hour < 18 && (day === 0 || day === 6),
   },
   {
-    text: (name) => `Weekend afternoon with ${name}`,
+    text: ({ name }) => `Weekend afternoon with ${name}`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>
@@ -706,7 +706,7 @@ export const seasonalGreetings: GreetingDefinition[] = [
       hour >= 18 && hour < 24 && (day === 0 || day === 6),
   },
   {
-    text: (name) => `Weekend nights with ${name}`,
+    text: ({ name }) => `Weekend nights with ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour, day }) =>

@@ -66,17 +66,17 @@ export const techGreetings: GreetingDefinition[] = [
 
   // Tech greetings with name
   {
-    text: (name) => `${name}.init()`,
+    text: ({ name }) => `${name}.init()`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: true },
   },
   {
-    text: (name) => `Welcome ${name} // TODO: be awesome`,
+    text: ({ name }) => `Welcome ${name} // TODO: be awesome`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: true },
   },
   {
-    text: (name) => `${name}: Logged in successfully`,
+    text: ({ name }) => `${name}: Logged in successfully`,
     mood: 'professional',
     static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: true },
   },
@@ -115,12 +115,12 @@ export const techGreetings: GreetingDefinition[] = [
     static: { language: 'en', incognito: false, workMode: false, techOk: true },
   },
   {
-    text: (name) => `${name} entered the server`,
+    text: ({ name }) => `${name} entered the server`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: true },
   },
   {
-    text: (name) => `Achievement unlocked: ${name} appeared`,
+    text: ({ name }) => `Achievement unlocked: ${name} appeared`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, techOk: true, hasName: true },
   },

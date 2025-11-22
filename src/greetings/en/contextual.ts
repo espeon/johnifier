@@ -103,13 +103,21 @@ export const contextualGreetings: GreetingDefinition[] = [
       hour !== undefined && weather?.condition === 'clear' && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Stay cool out there (${name}°C)`,
+    text: ({ weather, tempUnit }) => {
+      if (!weather?.temp) return 'Stay cool out there';
+      const temp = tempUnit === 'F' ? Math.round(weather.temp * 9/5 + 32) : weather.temp;
+      return `Stay cool out there (${temp}°${tempUnit || 'C'})`;
+    },
     mood: 'casual',
     static: { language: 'en' },
     dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp > 30,
   },
   {
-    text: (name) => `Bundle up! (${name}°C)`,
+    text: ({ weather, tempUnit }) => {
+      if (!weather?.temp) return 'Bundle up!';
+      const temp = tempUnit === 'F' ? Math.round(weather.temp * 9/5 + 32) : weather.temp;
+      return `Bundle up! (${temp}°${tempUnit || 'C'})`;
+    },
     mood: 'casual',
     static: { language: 'en' },
     dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp < 0,

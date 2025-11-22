@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { GreetingResult } from './useGreeting';
-import { getMatchingGreetings, Language, Mood } from '../greetings';
+import { getMatchingGreetings, Language, Mood, TempUnit } from '../greetings';
 
 interface EnhancedGreetingProps {
   name?: string;
@@ -10,6 +10,7 @@ interface EnhancedGreetingProps {
   language?: Language;
   battery?: number | null;
   weather?: { condition: string; temp: number } | null;
+  tempUnit?: TempUnit;
   refreshKey?: number;
 }
 
@@ -21,6 +22,7 @@ export function useEnhancedGreeting({
   language = 'en',
   battery = null,
   weather = null,
+  tempUnit = 'C',
   refreshKey = 0,
 }: EnhancedGreetingProps = {}): GreetingResult & { allGreetings: string[] } {
   const [mounted, setMounted] = useState(false);
@@ -35,7 +37,7 @@ export function useEnhancedGreeting({
     if (mounted) {
       setRandomSeed(Math.random());
     }
-  }, [name, incognito, workMode, techOk, language, refreshKey, mounted]);
+  }, [name, incognito, workMode, techOk, language, tempUnit, refreshKey, mounted]);
 
   const result = useMemo(() => {
     if (!mounted) {
@@ -90,15 +92,18 @@ export function useEnhancedGreeting({
     const index = Math.floor(randomSeed * validGreetings.length);
     const selectedGreeting = validGreetings[index];
 
+    // Build context for greeting text resolution
+    const context = { name, battery, weather, tempUnit };
+
     // Resolve greeting text (handle both strings and functions)
     const greetingText =
       typeof selectedGreeting.text === 'function'
-        ? selectedGreeting.text(name)
+        ? selectedGreeting.text(context)
         : selectedGreeting.text;
 
-    // Get all possible greeting texts (from all candidates, not just time-filtered ones)
-    const allGreetings = candidates.map((g) =>
-      typeof g.text === 'function' ? g.text(name) : g.text
+    // Get all currently valid greeting texts (time-filtered)
+    const allGreetings = validGreetings.map((g) =>
+      typeof g.text === 'function' ? g.text(context) : g.text
     );
 
     return {
@@ -107,10 +112,10 @@ export function useEnhancedGreeting({
       mood: selectedGreeting.mood,
       allGreetings,
     };
-  }, [mounted, randomSeed, name, incognito, workMode, techOk, language, battery, weather]);
+  }, [mounted, randomSeed, name, incognito, workMode, techOk, language, battery, weather, tempUnit]);
 
   return result;
 }
 
 // Re-export types for convenience
-export type { Language };
+export type { Language, TempUnit };

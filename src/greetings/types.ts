@@ -19,8 +19,17 @@ export interface DynamicFilters {
   weather?: { condition: string; temp: number } | null;
 }
 
+export type TempUnit = 'C' | 'F';
+
+export interface GreetingContext {
+  name?: string;
+  battery?: number | null;
+  weather?: { condition: string; temp: number } | null;
+  tempUnit?: TempUnit;
+}
+
 export interface GreetingDefinition {
-  text: string | ((name?: string) => string);
+  text: string | ((context: GreetingContext) => string);
   mood: Mood;
 
   // Static criteria for indexing

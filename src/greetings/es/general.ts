@@ -5,73 +5,73 @@ export const generalGreetings: GreetingDefinition[] = [
   // === MORNING GREETINGS ===
   // With name
   {
-    text: (name) => `¡Qué tal, ${name}!`,
+    text: ({ name }) => `¡Qué tal, ${name}!`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `¡Hola ${name}!`,
+    text: ({ name }) => `¡Hola ${name}!`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `¡Buenos días, ${name}!`,
+    text: ({ name }) => `¡Buenos días, ${name}!`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `¿Cómo amaneciste, ${name}?`,
+    text: ({ name }) => `¿Cómo amaneciste, ${name}?`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `¡Arriba ${name}!`,
+    text: ({ name }) => `¡Arriba ${name}!`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `${name}, ¡a darle!`,
+    text: ({ name }) => `${name}, ¡a darle!`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `¡Órale ${name}!`,
+    text: ({ name }) => `¡Órale ${name}!`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `${name}, ¡qué buena onda verte!`,
+    text: ({ name }) => `${name}, ¡qué buena onda verte!`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `${name}, listo para hoy?`,
+    text: ({ name }) => `${name}, listo para hoy?`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `¡Ey ${name}!`,
+    text: ({ name }) => `¡Ey ${name}!`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `${name}, ¡buenos días!`,
+    text: ({ name }) => `${name}, ¡buenos días!`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Buenos días, ${name}`,
+    text: ({ name }) => `Buenos días, ${name}`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -142,37 +142,37 @@ export const generalGreetings: GreetingDefinition[] = [
   // === AFTERNOON GREETINGS ===
   // With name
   {
-    text: (name) => `Buenas tardes, ${name}`,
+    text: ({ name }) => `Buenas tardes, ${name}`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: (name) => `¿Qué pasa, ${name}?`,
+    text: ({ name }) => `¿Qué pasa, ${name}?`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: (name) => `${name}, ¿cómo vas?`,
+    text: ({ name }) => `${name}, ¿cómo vas?`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: (name) => `¡Hola de nuevo, ${name}!`,
+    text: ({ name }) => `¡Hola de nuevo, ${name}!`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: (name) => `${name}, ¿todo bien?`,
+    text: ({ name }) => `${name}, ¿todo bien?`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: (name) => `${name} de vuelta`,
+    text: ({ name }) => `${name} de vuelta`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -213,25 +213,25 @@ export const generalGreetings: GreetingDefinition[] = [
   // === EVENING GREETINGS ===
   // With name
   {
-    text: (name) => `Buenas noches, ${name}`,
+    text: ({ name }) => `Buenas noches, ${name}`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: (name) => `${name}, ¿qué tal la noche?`,
+    text: ({ name }) => `${name}, ¿qué tal la noche?`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: (name) => `Noche perfecta con ${name}`,
+    text: ({ name }) => `Noche perfecta con ${name}`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: (name) => `${name}, buena noche`,
+    text: ({ name }) => `${name}, buena noche`,
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
@@ -266,19 +266,19 @@ export const generalGreetings: GreetingDefinition[] = [
   // === LATE NIGHT GREETINGS ===
   // With name
   {
-    text: (name) => `${name}, ¿trasnochando?`,
+    text: ({ name }) => `${name}, ¿trasnochando?`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: (name) => `Búho nocturno ${name}`,
+    text: ({ name }) => `Búho nocturno ${name}`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: (name) => `${name}, ¿no duermes?`,
+    text: ({ name }) => `${name}, ¿no duermes?`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -307,17 +307,17 @@ export const generalGreetings: GreetingDefinition[] = [
   // === WORK MODE GREETINGS ===
   // With name
   {
-    text: (name) => `${name}, ¡a trabajar!`,
+    text: ({ name }) => `${name}, ¡a trabajar!`,
     mood: 'professional',
     static: { language: 'es', incognito: false, workMode: true, hasName: true },
   },
   {
-    text: (name) => `Vamos ${name}, ¡a producir!`,
+    text: ({ name }) => `Vamos ${name}, ¡a producir!`,
     mood: 'professional',
     static: { language: 'es', incognito: false, workMode: true, hasName: true },
   },
   {
-    text: (name) => `${name}, ¡a darle duro!`,
+    text: ({ name }) => `${name}, ¡a darle duro!`,
     mood: 'professional',
     static: { language: 'es', incognito: false, workMode: true, hasName: true },
   },

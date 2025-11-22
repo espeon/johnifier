@@ -5,49 +5,49 @@ export const generalGreetings: GreetingDefinition[] = [
   // === MORNING GREETINGS ===
   // With name
   {
-    text: (name) => `Guten Morgen, ${name}!`,
+    text: ({ name }) => `Guten Morgen, ${name}!`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Moin ${name}!`,
+    text: ({ name }) => `Moin ${name}!`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Hallo ${name}!`,
+    text: ({ name }) => `Hallo ${name}!`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Servus ${name}!`,
+    text: ({ name }) => `Servus ${name}!`,
     mood: 'playful',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `${name}, gut geschlafen?`,
+    text: ({ name }) => `${name}, gut geschlafen?`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Schön dich zu sehen, ${name}`,
+    text: ({ name }) => `Schön dich zu sehen, ${name}`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `${name}, bereit für heute?`,
+    text: ({ name }) => `${name}, bereit für heute?`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: (name) => `Hey ${name}!`,
+    text: ({ name }) => `Hey ${name}!`,
     mood: 'playful',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -106,25 +106,25 @@ export const generalGreetings: GreetingDefinition[] = [
   // === AFTERNOON GREETINGS ===
   // With name
   {
-    text: (name) => `Guten Tag, ${name}`,
+    text: ({ name }) => `Guten Tag, ${name}`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: (name) => `${name}, wie geht's?`,
+    text: ({ name }) => `${name}, wie geht's?`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: (name) => `Tag ${name}!`,
+    text: ({ name }) => `Tag ${name}!`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: (name) => `${name} wieder da`,
+    text: ({ name }) => `${name} wieder da`,
     mood: 'playful',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -159,25 +159,25 @@ export const generalGreetings: GreetingDefinition[] = [
   // === EVENING GREETINGS ===
   // With name
   {
-    text: (name) => `Guten Abend, ${name}`,
+    text: ({ name }) => `Guten Abend, ${name}`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: (name) => `${name}, schöner Abend!`,
+    text: ({ name }) => `${name}, schöner Abend!`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: (name) => `N'Abend ${name}!`,
+    text: ({ name }) => `N'Abend ${name}!`,
     mood: 'playful',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: (name) => `${name}, wie war dein Tag?`,
+    text: ({ name }) => `${name}, wie war dein Tag?`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
@@ -212,19 +212,19 @@ export const generalGreetings: GreetingDefinition[] = [
   // === LATE NIGHT GREETINGS ===
   // With name
   {
-    text: (name) => `${name}, noch wach?`,
+    text: ({ name }) => `${name}, noch wach?`,
     mood: 'playful',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: (name) => `Nachteule ${name}`,
+    text: ({ name }) => `Nachteule ${name}`,
     mood: 'playful',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: (name) => `${name}, Schlaflos?`,
+    text: ({ name }) => `${name}, Schlaflos?`,
     mood: 'casual',
     static: { language: 'de', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -259,17 +259,17 @@ export const generalGreetings: GreetingDefinition[] = [
   // === WORK MODE GREETINGS ===
   // With name
   {
-    text: (name) => `${name}, an die Arbeit!`,
+    text: ({ name }) => `${name}, an die Arbeit!`,
     mood: 'professional',
     static: { language: 'de', incognito: false, workMode: true, hasName: true },
   },
   {
-    text: (name) => `Los geht's, ${name}!`,
+    text: ({ name }) => `Los geht's, ${name}!`,
     mood: 'professional',
     static: { language: 'de', incognito: false, workMode: true, hasName: true },
   },
   {
-    text: (name) => `${name}, Zeit zu arbeiten!`,
+    text: ({ name }) => `${name}, Zeit zu arbeiten!`,
     mood: 'professional',
     static: { language: 'de', incognito: false, workMode: true, hasName: true },
   },

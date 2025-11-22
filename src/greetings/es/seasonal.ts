@@ -4,7 +4,7 @@ import { GreetingDefinition } from '../types';
 export const seasonalGreetings: GreetingDefinition[] = [
   // === WEEKDAY/WEEKEND GREETINGS ===
   {
-    text: (name) => `${name}, ¡viernes!`,
+    text: ({ name }) => `${name}, ¡viernes!`,
     mood: 'playful',
     static: { language: 'es', incognito: false, workMode: false, hasName: true },
     dynamic: ({ day }) => day === 5,
