@@ -10,6 +10,7 @@ interface EnhancedGreetingProps {
   language?: Language;
   battery?: number | null;
   weather?: { condition: string; temp: number } | null;
+  refreshKey?: number;
 }
 
 export function useEnhancedGreeting({
@@ -20,6 +21,7 @@ export function useEnhancedGreeting({
   language = 'en',
   battery = null,
   weather = null,
+  refreshKey = 0,
 }: EnhancedGreetingProps = {}): GreetingResult & { allGreetings: string[] } {
   const [mounted, setMounted] = useState(false);
   const [randomSeed, setRandomSeed] = useState(() => Math.random());
@@ -33,7 +35,7 @@ export function useEnhancedGreeting({
     if (mounted) {
       setRandomSeed(Math.random());
     }
-  }, [name, incognito, workMode, techOk, language, mounted]);
+  }, [name, incognito, workMode, techOk, language, refreshKey, mounted]);
 
   const result = useMemo(() => {
     if (!mounted) {

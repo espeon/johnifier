@@ -4,14 +4,37 @@ import { useEnhancedGreeting, Language } from './hooks/useEnhancedGreeting';
 import { useEnhancedContext } from './hooks/useEnhancedContext';
 
 function App() {
-  const [name, setName] = useState('');
-  const [incognito, setIncognito] = useState(false);
-  const [workMode, setWorkMode] = useState(false);
-  const [techOk, setTechOk] = useState(false);
-  const [language, setLanguage] = useState<Language>('en');
+  const [name, setName] = useState(() => localStorage.getItem('johnifier_name') || '');
+  const [incognito, setIncognito] = useState(() => localStorage.getItem('johnifier_incognito') === 'true');
+  const [workMode, setWorkMode] = useState(() => localStorage.getItem('johnifier_workMode') === 'true');
+  const [techOk, setTechOk] = useState(() => localStorage.getItem('johnifier_techOk') === 'true');
+  const [language, setLanguage] = useState<Language>(() => (localStorage.getItem('johnifier_language') as Language) || 'en');
   const [mounted, setMounted] = useState(false);
+  const [greetingKey, setGreetingKey] = useState(0);
 
   const context = useEnhancedContext();
+
+  // Persist settings to localStorage
+  useEffect(() => {
+    localStorage.setItem('johnifier_name', name);
+  }, [name]);
+
+  useEffect(() => {
+    localStorage.setItem('johnifier_incognito', String(incognito));
+  }, [incognito]);
+
+  useEffect(() => {
+    localStorage.setItem('johnifier_workMode', String(workMode));
+  }, [workMode]);
+
+  useEffect(() => {
+    localStorage.setItem('johnifier_techOk', String(techOk));
+  }, [techOk]);
+
+  useEffect(() => {
+    localStorage.setItem('johnifier_language', language);
+  }, [language]);
+
 
   const greeting = useEnhancedGreeting({
     name: name || undefined,
@@ -21,6 +44,7 @@ function App() {
     language,
     battery: context.battery,
     weather: context.weather,
+    refreshKey: greetingKey,
   });
 
   useEffect(() => {
@@ -59,7 +83,7 @@ function App() {
           <div className="font-signature text-2xl text-[#e8e8e8]/60">
             johnifier
           </div>
-          <div className="font-garamond text-sm text-[#e8e8e8]/40 tracking-wider">
+          <div className="font-orbiter text-sm text-[#e8e8e8]/40 tracking-wider">
             {dateString} · {timeString}
           </div>
         </motion.header>
@@ -74,7 +98,7 @@ function App() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="font-orbiter font-bold text-greeting leading-[0.9] mb-8 tracking-tight">
+              <h1 key={greetingKey} className="font-garamond font-bold text-greeting leading-[0.9] mb-8 tracking-tight">
                 {mounted && words.map((word, i) => (
                   <motion.span
                     key={i}
@@ -107,6 +131,15 @@ function App() {
                 {context.weather && (
                   <Pill>{context.weather.condition} · {context.weather.temp}°</Pill>
                 )}
+                <button
+                  onClick={() => setGreetingKey(k => k + 1)}
+                  className="px-3 py-1.5 bg-[#e8e8e8]/5 border border-[#e8e8e8]/10
+                           font-orbiter text-xs tracking-wider text-[#e8e8e8]/60
+                           hover:bg-[#e8e8e8]/10 hover:border-[#e8e8e8]/20 transition-all duration-300"
+                  title="Refresh greeting"
+                >
+                  ↻
+                </button>
               </motion.div>
             </motion.div>
 
@@ -119,7 +152,7 @@ function App() {
             >
               {/* Name input */}
               <div className="space-y-3">
-                <label className="font-garamond text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
+                <label className="font-orbiter text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
                   Your Name
                 </label>
                 <input
@@ -128,7 +161,7 @@ function App() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter name..."
                   className="w-full bg-[#e8e8e8]/5 border border-[#e8e8e8]/10
-                           px-4 py-3 font-garamond text-base tracking-wide
+                           px-4 py-3 font-orbiter text-base tracking-wide
                            focus:outline-none focus:border-[#e8e8e8]/30 focus:bg-[#e8e8e8]/8
                            placeholder:text-[#e8e8e8]/20 transition-all duration-300"
                 />
@@ -136,7 +169,7 @@ function App() {
 
               {/* Language selector */}
               <div className="space-y-3">
-                <label className="font-garamond text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
+                <label className="font-orbiter text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
                   Language
                 </label>
                 <div className="flex gap-2">
@@ -144,7 +177,7 @@ function App() {
                     <button
                       key={lang}
                       onClick={() => setLanguage(lang)}
-                      className={`flex-1 px-3 py-3 font-garamond text-sm uppercase tracking-widest
+                      className={`flex-1 px-3 py-3 font-orbiter text-sm uppercase tracking-widest
                                 transition-all duration-300 border
                                 ${language === lang
                                   ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
@@ -159,7 +192,7 @@ function App() {
 
               {/* Toggles */}
               <div className="md:col-span-2 space-y-3">
-                <label className="font-garamond text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
+                <label className="font-orbiter text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
                   Settings
                 </label>
                 <div className="grid grid-cols-3 gap-3">
@@ -191,10 +224,10 @@ function App() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.6 }}
         >
-          <div className="font-garamond text-xs text-[#e8e8e8]/30 tracking-wider">
+          <div className="font-orbiter text-xs text-[#e8e8e8]/30 tracking-wider">
             {greeting.allGreetings.length} greetings available
           </div>
-          <code className="font-garamond text-xs text-[#e8e8e8]/30 tracking-wider">
+          <code className="font-orbiter text-xs text-[#e8e8e8]/30 tracking-wider">
             useEnhancedGreeting()
           </code>
         </motion.footer>
@@ -217,7 +250,7 @@ function App() {
         }
 
         .text-greeting {
-          font-size: clamp(2.5rem, 11vw, 8rem);
+          font-size: clamp(2rem, 9vw, 6rem);
           color: #e8e8e8;
         }
 
@@ -257,7 +290,7 @@ function App() {
 function Pill({ children }: { children: React.ReactNode }) {
   return (
     <span className="px-3 py-1.5 bg-[#e8e8e8]/8 border border-[#e8e8e8]/10
-                   font-garamond text-xs tracking-wider text-[#e8e8e8]/60">
+                   font-orbiter text-xs tracking-wider text-[#e8e8e8]/60">
       {children}
     </span>
   );
@@ -268,7 +301,7 @@ function ToggleCard({ label, active, onClick }: { label: string; active: boolean
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-4 border transition-all duration-300 font-garamond text-sm
+      className={`px-4 py-4 border transition-all duration-300 font-orbiter text-sm
                 ${active
                   ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
                   : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10 hover:border-[#e8e8e8]/20'
