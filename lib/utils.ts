@@ -1,4 +1,4 @@
-import { getMatchingGreetings, Language, Mood, GreetingResult, GreetingContext, TempUnit, Variant } from './greetings';
+import { getMatchingGreetings, allGreetings as greetingsData, Language, Mood, GreetingResult, GreetingContext, TempUnit, Variant } from './greetings';
 
 export interface SelectGreetingOptions {
   name?: string;
@@ -78,7 +78,7 @@ export function selectGreeting({
   else timeOfDay = 'lateNight';
 
   // Get candidate greetings using O(1) indexed lookup
-  const candidates = getMatchingGreetings({
+  const candidates = getMatchingGreetings(greetingsData, {
     language,
     incognito,
     workMode,
