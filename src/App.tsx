@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEnhancedGreeting, Language } from './hooks/useEnhancedGreeting';
 import { useEnhancedContext } from './hooks/useEnhancedContext';
 
@@ -11,6 +11,7 @@ function App() {
   const [language, setLanguage] = useState<Language>(() => (localStorage.getItem('johnifier_language') as Language) || 'en');
   const [mounted, setMounted] = useState(false);
   const [greetingKey, setGreetingKey] = useState(0);
+  const [showAllGreetings, setShowAllGreetings] = useState(false);
 
   const context = useEnhancedContext();
 
@@ -145,7 +146,7 @@ function App() {
 
             {/* Controls */}
             <motion.div
-              className="flex flex-wrap gap-2 items-center max-w-4xl justify-center"
+              className="flex flex-wrap gap-2 items-center max-w-4xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
@@ -206,17 +207,52 @@ function App() {
 
         {/* Footer */}
         <motion.footer
-          className="px-8 py-6 border-t border-[#e8e8e8]/5 flex items-center justify-between"
+          className="border-t border-[#e8e8e8]/5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.6 }}
         >
-          <div className="font-orbiter text-xs text-[#e8e8e8]/30 tracking-wider">
-            {greeting.allGreetings.length} available right now
+          {/* Footer bar */}
+          <div className="px-8 py-6 flex items-center justify-between">
+            <button
+              onClick={() => setShowAllGreetings(!showAllGreetings)}
+              className="font-orbiter text-xs text-[#e8e8e8]/30 tracking-wider hover:text-[#e8e8e8]/60 transition-colors duration-300 flex items-center gap-2"
+            >
+              <span>{greeting.allGreetings.length} available right now</span>
+              <span className="text-[10px]">{showAllGreetings ? '▼' : '▶'}</span>
+            </button>
+            <code className="font-orbiter text-xs text-[#e8e8e8]/30 tracking-wider">
+              useEnhancedGreeting()
+            </code>
           </div>
-          <code className="font-orbiter text-xs text-[#e8e8e8]/30 tracking-wider">
-            useEnhancedGreeting()
-          </code>
+
+          {/* Collapsible greeting list */}
+          <AnimatePresence>
+            {showAllGreetings && (
+              <motion.div
+                className="border-t border-[#e8e8e8]/5 px-8 py-6 bg-[#e8e8e8]/[0.02]"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="max-h-96 overflow-y-auto pr-4 custom-scrollbar">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {greeting.allGreetings.map((g, i) => (
+                      <div
+                        key={i}
+                        className="px-3 py-2 bg-[#e8e8e8]/5 border border-[#e8e8e8]/10 rounded-md
+                                 font-garamond text-sm text-[#e8e8e8]/70 tracking-tight
+                                 hover:bg-[#e8e8e8]/8 transition-colors duration-200"
+                      >
+                        {g}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.footer>
       </div>
 
@@ -267,6 +303,24 @@ function App() {
         ::-webkit-scrollbar-thumb:hover {
           background: #e8e8e8;
           opacity: 0.4;
+        }
+
+        /* Custom scrollbar for greeting list */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(232, 232, 232, 0.2);
+          border-radius: 3px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(232, 232, 232, 0.4);
         }
       `}</style>
     </div>
