@@ -12,6 +12,7 @@ import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { GreetingRoulette } from './components/GreetingRoulette';
 import { ShareCard } from './components/ShareCard';
 import { StatsPanel } from './components/StatsPanel';
+import { ExamplePage } from './components/ExamplePage';
 import { getUserStats, updateUserStats } from './utils/storage';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   const [useTyping, setUseTyping] = useState(true);
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [easterEggActivated, setEasterEggActivated] = useState(false);
+  const [showExample, setShowExample] = useState(false);
 
   const { theme, currentTheme, switchTheme, randomTheme } = useTheme();
   const context = useEnhancedContext();
@@ -122,6 +124,11 @@ function App() {
     mysterious: theme.colors.primaryLight,
   };
 
+  // Show example page if toggled
+  if (showExample) {
+    return <ExamplePage onClose={() => setShowExample(false)} />;
+  }
+
   return (
     <div className="min-h-screen relative overflow-x-hidden" style={{ fontFamily: theme.fonts.body }}>
       {/* Cursor Glow - disabled in Ultra Professional mode */}
@@ -174,9 +181,23 @@ function App() {
           >
             Johnifier
           </h1>
-          <p className="text-xl text-[var(--color-text-secondary)] font-normal">
+          <p className="text-xl text-[var(--color-text-secondary)] font-normal mb-4">
             200x better contextual greetings ✨
           </p>
+          <motion.button
+            onClick={() => setShowExample(true)}
+            className="px-6 py-2 rounded-lg text-sm"
+            style={{
+              fontFamily: theme.fonts.mono,
+              backgroundColor: `${theme.colors.accent}22`,
+              color: theme.colors.accent,
+              border: `1px solid ${theme.colors.accent}40`,
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            🎨 View Showcase
+          </motion.button>
         </motion.header>
 
         {/* Main Content */}
