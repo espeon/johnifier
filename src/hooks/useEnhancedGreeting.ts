@@ -7,6 +7,7 @@ interface EnhancedGreetingProps {
   name?: string;
   incognito?: boolean;
   workMode?: boolean;
+  techOk?: boolean;
   language?: Language;
   battery?: number | null;
   weather?: { condition: string; temp: number } | null;
@@ -55,6 +56,7 @@ export function useEnhancedGreeting({
   name,
   incognito = false,
   workMode = false,
+  techOk = false,
   language = 'en',
   battery = null,
   weather = null,
@@ -71,7 +73,7 @@ export function useEnhancedGreeting({
     if (mounted) {
       setRandomSeed(Math.random());
     }
-  }, [name, incognito, workMode, language, mounted]);
+  }, [name, incognito, workMode, techOk, language, mounted]);
 
   const result = useMemo(() => {
     if (!mounted) {
@@ -261,6 +263,102 @@ export function useEnhancedGreeting({
       { filter: () => battery !== null && battery >= 80 && battery < 100 && language === 'en', text: () => `Nearly full power (${battery}%)`, mood: 'casual' },
       { filter: () => battery !== null && battery === 69 && language === 'en', text: 'Nice battery level', mood: 'playful' },
       { filter: () => battery !== null && battery === 42 && language === 'en', text: 'The answer to life, the universe, and your battery', mood: 'playful' },
+      { filter: () => battery !== null && battery === 1 && language === 'en', text: 'Living on the edge!', mood: 'playful' },
+      { filter: () => battery !== null && battery === 99 && language === 'en', text: 'So close to perfection', mood: 'playful' },
+      { filter: () => battery !== null && battery === 50 && language === 'en', text: 'Perfectly balanced', mood: 'casual' },
+
+      // === TECH/DEVELOPER GREETINGS (ENGLISH) ===
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Hello, World!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'console.log("Hey there")', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'No bugs detected... yet', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Git ready for today', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Compiling greatness...', mood: 'professional' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Stack overflow? More like stack overflow with vibes', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: '404: Sleep not found', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Debugging life, one day at a time', mood: 'casual' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Merge conflicts resolved', mood: 'professional' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Push to production energy', mood: 'professional' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'All tests passing', mood: 'professional' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Zero errors, pure vibes', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && hasName && language === 'en', text: `${name}.init()`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && hasName && language === 'en', text: `Welcome ${name} // TODO: be awesome`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && hasName && language === 'en', text: `${name}: Logged in successfully`, mood: 'professional' },
+      { filter: () => !incognito && workMode && techOk && language === 'en', text: 'sudo make it happen', mood: 'professional' },
+      { filter: () => !incognito && workMode && techOk && language === 'en', text: 'npm run success', mood: 'professional' },
+      { filter: () => !incognito && workMode && techOk && language === 'en', text: 'Building the future...', mood: 'professional' },
+
+      // === MOTIVATIONAL GREETINGS (ENGLISH) ===
+      { filter: () => !incognito && !workMode && isMorning && language === 'en', text: 'Today is your day', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isMorning && language === 'en', text: 'You got this!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isMorning && language === 'en', text: 'Make it legendary', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isMorning && language === 'en', text: 'Greatness awaits', mood: 'casual' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Unstoppable energy', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Main character energy', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Level up time', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'You are the moment', mood: 'casual' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Nothing can stop you', mood: 'casual' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Built different', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && language === 'en', text: `${name}, you're unstoppable`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && language === 'en', text: `${name}, absolute legend`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && language === 'en', text: `The world needs ${name} today`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && language === 'en', text: `${name}, go make magic happen`, mood: 'casual' },
+
+      // === PERSONALITY GREETINGS (ENGLISH) ===
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Vibing at maximum capacity', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Elite status confirmed', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Simply built different', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Too cool for school', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Certified mood', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Absolutely unhinged (in a good way)', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Chaos coordinator reporting', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Professional over-achiever', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Living the dream (or debugging it)', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Perfectly imperfect', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && language === 'en', text: `${name}, the one and only`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && language === 'en', text: `Certified ${name} moment`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && language === 'en', text: `${name} supremacy`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && language === 'en', text: `Peak ${name} performance`, mood: 'playful' },
+
+      // === HOLIDAY GREETINGS (ENGLISH) ===
+      { filter: () => !incognito && !workMode && isDecember && language === 'en', text: 'Tis the season!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isDecember && language === 'en', text: 'Festive vibes only', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isDecember && hasName && language === 'en', text: `Happy holidays, ${name}!`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && isOctober && language === 'en', text: '🎃 Spooky greetings', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isOctober && language === 'en', text: 'Trick or treat energy', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isNovember && language === 'en', text: 'Thankful for today', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isFebruary && language === 'en', text: 'Love is in the air', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isJanuary && isMorning && language === 'en', text: 'New year, same awesome you', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isJanuary && language === 'en', text: 'Fresh year energy', mood: 'casual' },
+
+      // === PRODUCTIVITY/WORK GREETINGS (ENGLISH) ===
+      { filter: () => !incognito && workMode && isMorning && language === 'en', text: 'Rise and grind', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'en', text: 'Productivity unlocked', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'en', text: 'Flow state activated', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'en', text: 'Maximum efficiency mode', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'en', text: 'Ship mode: engaged', mood: 'professional' },
+      { filter: () => !incognito && workMode && techOk && language === 'en', text: '10x developer energy', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'en', text: 'Making it happen', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'en', text: 'Deadline crusher mode', mood: 'professional' },
+      { filter: () => !incognito && workMode && hasName && language === 'en', text: `${name} in beast mode`, mood: 'professional' },
+      { filter: () => !incognito && workMode && hasName && language === 'en', text: `${name}, time to dominate`, mood: 'professional' },
+      { filter: () => !incognito && workMode && hasName && language === 'en', text: `Productivity pro: ${name}`, mood: 'professional' },
+
+      // === CREATIVE/FUN GREETINGS (ENGLISH) ===
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Living rent-free in excellence', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'No thoughts, just vibes', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Immaculate vibes detected', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Energy unmatched', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && language === 'en', text: 'Touch grass? Nah, touch code', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Powered by caffeine and dreams', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Sending good vibes your way', mood: 'casual' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Maximum chill achieved', mood: 'casual' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Absolutely iconic', mood: 'playful' },
+      { filter: () => !incognito && !workMode && language === 'en', text: 'Chef kiss energy', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isWeekend && language === 'en', text: 'Weekend warrior activated', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isLateNight && language === 'en', text: 'Sleep is temporary, glory is forever', mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && hasName && language === 'en', text: `${name} entered the server`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && language === 'en', text: `${name} has the vibe check`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && techOk && hasName && language === 'en', text: `Achievement unlocked: ${name} appeared`, mood: 'playful' },
 
       // === MORNING GREETINGS WITH NAME ===
       { filter: () => !incognito && !workMode && hasName && isMorning, text: `${t.morning}, ${name}`, mood: 'casual' },

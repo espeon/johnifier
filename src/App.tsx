@@ -19,6 +19,7 @@ function App() {
   const [name, setName] = useState('');
   const [incognito, setIncognito] = useState(false);
   const [workMode, setWorkMode] = useState(false);
+  const [techOk, setTechOk] = useState(false);
   const [language, setLanguage] = useState<Language>('en');
   const [showRoulette, setShowRoulette] = useState(false);
   const [showShare, setShowShare] = useState(false);
@@ -35,6 +36,7 @@ function App() {
     name: name || undefined,
     incognito,
     workMode,
+    techOk,
     language,
     battery: context.battery,
     weather: context.weather,
@@ -444,6 +446,22 @@ function App() {
                 <span className="text-xl">{soundEnabled ? '🔊' : '🔇'}</span>
                 <span className="font-semibold">Sound</span>
               </motion.button>
+
+              <motion.button
+                className="flex-1 min-w-[140px] border-2 rounded-2xl px-6 py-4 text-base cursor-pointer flex items-center justify-center gap-2 transition-all duration-300"
+                style={{
+                  fontFamily: theme.fonts.body,
+                  backgroundColor: techOk ? theme.colors.primary : theme.colors.surfaceElevated,
+                  borderColor: techOk ? theme.colors.primary : `${theme.colors.primary}33`,
+                  color: techOk ? theme.colors.background : theme.colors.textSecondary,
+                }}
+                onClick={() => handleToggle(setTechOk)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="text-xl">{techOk ? '💻' : '🚫'}</span>
+                <span className="font-semibold">Tech OK</span>
+              </motion.button>
             </div>
 
             {/* Language Selector */}
@@ -570,7 +588,7 @@ function App() {
               borderColor: `${theme.colors.primary}26`,
             }}
           >
-            useEnhancedGreeting({'{'} name, incognito, workMode, language {'}'})
+            useEnhancedGreeting({'{'} name, incognito, workMode, techOk, language {'}'})
           </code>
         </motion.footer>
       </div>
