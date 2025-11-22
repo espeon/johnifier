@@ -71,7 +71,7 @@ export function useEnhancedGreeting({
     if (mounted) {
       setRandomSeed(Math.random());
     }
-  }, [name, incognito, workMode, mounted]);
+  }, [name, incognito, workMode, language, mounted]);
 
   const result = useMemo(() => {
     if (!mounted) {
