@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { selectGreeting, Language, TempUnit, GreetingResult, Variant } from '../../lib';
+import { selectGreeting, allGreetings, Language, TempUnit, GreetingResult, Variant } from '../../lib';
 
 export interface EnhancedGreetingProps {
   name?: string;
@@ -77,7 +77,7 @@ export function useEnhancedGreeting({
       };
     }
 
-    return selectGreeting({
+    return selectGreeting(allGreetings, {
       name,
       incognito,
       workMode,
