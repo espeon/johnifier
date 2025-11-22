@@ -96,8 +96,8 @@ export function useEnhancedGreeting({
         ? selectedGreeting.text(name)
         : selectedGreeting.text;
 
-    // Get all possible greeting texts for the roulette feature
-    const allGreetings = validGreetings.map((g) =>
+    // Get all possible greeting texts (from all candidates, not just time-filtered ones)
+    const allGreetings = candidates.map((g) =>
       typeof g.text === 'function' ? g.text(name) : g.text
     );
 
