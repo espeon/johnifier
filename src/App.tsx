@@ -143,76 +143,63 @@ function App() {
               </motion.div>
             </motion.div>
 
-            {/* Controls grid */}
+            {/* Controls */}
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl"
+              className="flex flex-wrap gap-2 items-center max-w-4xl justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
             >
               {/* Name input */}
-              <div className="space-y-2">
-                <label className="font-orbiter text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter name..."
-                  className="w-full bg-[#e8e8e8]/5 border border-[#e8e8e8]/10 rounded-md
-                           px-3 py-2 font-orbiter text-sm tracking-wide
-                           focus:outline-none focus:border-[#e8e8e8]/30 focus:bg-[#e8e8e8]/8
-                           placeholder:text-[#e8e8e8]/20 transition-all duration-300"
-                />
-              </div>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="name"
+                className="bg-[#e8e8e8]/5 border border-[#e8e8e8]/10 rounded-md
+                         px-3 py-1.5 font-orbiter text-xs tracking-wide w-32
+                         focus:outline-none focus:border-[#e8e8e8]/30 focus:bg-[#e8e8e8]/8
+                         placeholder:text-[#e8e8e8]/30 transition-all duration-300"
+              />
+
+              {/* Divider */}
+              <div className="w-px h-4 bg-[#e8e8e8]/10" />
 
               {/* Language selector */}
-              <div className="space-y-2">
-                <label className="font-orbiter text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
-                  Language
-                </label>
-                <div className="flex gap-2">
-                  {(['en', 'es', 'fr', 'de', 'ja'] as Language[]).map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => setLanguage(lang)}
-                      className={`flex-1 px-2 py-2 font-orbiter text-xs uppercase tracking-widest rounded-md
-                                transition-all duration-300 border
-                                ${language === lang
-                                  ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
-                                  : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10 hover:border-[#e8e8e8]/20'
-                                }`}
-                    >
-                      {lang}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              {(['en', 'es', 'fr', 'de', 'ja'] as Language[]).map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => setLanguage(lang)}
+                  className={`px-2 py-1.5 font-orbiter text-xs uppercase tracking-wider rounded-md
+                            transition-all duration-300 border
+                            ${language === lang
+                              ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                              : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
+                            }`}
+                >
+                  {lang}
+                </button>
+              ))}
+
+              {/* Divider */}
+              <div className="w-px h-4 bg-[#e8e8e8]/10" />
 
               {/* Toggles */}
-              <div className="md:col-span-2 space-y-2">
-                <label className="font-orbiter text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
-                  Settings
-                </label>
-                <div className="grid grid-cols-3 gap-2">
-                  <ToggleCard
-                    label="Incognito"
-                    active={incognito}
-                    onClick={() => setIncognito(!incognito)}
-                  />
-                  <ToggleCard
-                    label="Work Mode"
-                    active={workMode}
-                    onClick={() => setWorkMode(!workMode)}
-                  />
-                  <ToggleCard
-                    label="Tech OK"
-                    active={techOk}
-                    onClick={() => setTechOk(!techOk)}
-                  />
-                </div>
-              </div>
+              <ToggleButton
+                label="incognito"
+                active={incognito}
+                onClick={() => setIncognito(!incognito)}
+              />
+              <ToggleButton
+                label="work"
+                active={workMode}
+                onClick={() => setWorkMode(!workMode)}
+              />
+              <ToggleButton
+                label="tech"
+                active={techOk}
+                onClick={() => setTechOk(!techOk)}
+              />
             </motion.div>
           </div>
         </main>
@@ -296,20 +283,19 @@ function Pill({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Toggle card component
-function ToggleCard({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+// Compact toggle button component for inline layout
+function ToggleButton({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className={`px-3 py-3 border rounded-md transition-all duration-300 font-orbiter text-sm
+      className={`px-2 py-1.5 font-orbiter text-xs tracking-wider rounded-md
+                transition-all duration-300 border
                 ${active
                   ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
-                  : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10 hover:border-[#e8e8e8]/20'
+                  : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
                 }`}
     >
-      <div className="text-center tracking-wider uppercase text-xs">
-        {label}
-      </div>
+      {label}
     </button>
   );
 }
