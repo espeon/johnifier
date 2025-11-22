@@ -5,6 +5,13 @@ export function useTypingAnimation(text: string, speed: number = 50) {
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
+    // Instant display when speed is 0
+    if (speed === 0) {
+      setDisplayedText(text);
+      setIsComplete(true);
+      return;
+    }
+
     setDisplayedText('');
     setIsComplete(false);
     let currentIndex = 0;

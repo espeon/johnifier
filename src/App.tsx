@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { useEnhancedGreeting, Language } from './hooks/useEnhancedGreeting';
@@ -43,14 +43,15 @@ function App() {
     useTyping ? 50 : 0
   );
 
-  const stats = getUserStats();
+  const [stats, setStats] = useState(getUserStats());
 
   // Update stats when greeting changes
-  useState(() => {
+  useEffect(() => {
     if (greeting.text) {
-      updateUserStats(greeting.text, greeting.mood, greeting.timeOfDay);
+      const updatedStats = updateUserStats(greeting.text, greeting.mood, greeting.timeOfDay);
+      setStats(updatedStats);
     }
-  });
+  }, [greeting.text, greeting.mood, greeting.timeOfDay]);
 
   // Konami code easter egg
   useKonamiCode(useCallback(() => {
@@ -65,15 +66,22 @@ function App() {
     setTimeout(() => setEasterEggActivated(false), 3000);
   }, [randomTheme]));
 
-  const playSound = (type: 'click' | 'toggle' | 'special') => {
-    if (!soundEnabled) return;
+  // Reuse audio context for better performance
+  const audioContextRef = useState<AudioContext | null>(() => {
+    if (typeof window !== 'undefined' && (window.AudioContext || (window as any).webkitAudioContext)) {
+      return new (window.AudioContext || (window as any).webkitAudioContext)();
+    }
+    return null;
+  })[0];
 
-    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
+  const playSound = useCallback((type: 'click' | 'toggle' | 'special') => {
+    if (!soundEnabled || !audioContextRef) return;
+
+    const oscillator = audioContextRef.createOscillator();
+    const gainNode = audioContextRef.createGain();
 
     oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
+    gainNode.connect(audioContextRef.destination);
 
     const frequencies = {
       click: 800,
@@ -84,12 +92,12 @@ function App() {
     oscillator.frequency.value = frequencies[type];
     oscillator.type = 'sine';
 
-    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    gainNode.gain.setValueAtTime(0.1, audioContextRef.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContextRef.currentTime + 0.1);
 
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 0.1);
-  };
+    oscillator.start(audioContextRef.currentTime);
+    oscillator.stop(audioContextRef.currentTime + 0.1);
+  }, [soundEnabled, audioContextRef]);
 
   const handleToggle = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
     playSound('toggle');

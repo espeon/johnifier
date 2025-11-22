@@ -60,16 +60,18 @@ export function useEnhancedGreeting({
   weather = null,
 }: EnhancedGreetingProps = {}): GreetingResult & { allGreetings: string[] } {
   const [mounted, setMounted] = useState(false);
-  const [randomSeed, setRandomSeed] = useState(0);
+  const [randomSeed, setRandomSeed] = useState(() => Math.random());
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Re-randomize on mount and when key dependencies change
+  // Re-randomize when key dependencies change
   useEffect(() => {
-    setRandomSeed(Math.random());
-  }, [mounted, name, incognito, workMode]);
+    if (mounted) {
+      setRandomSeed(Math.random());
+    }
+  }, [name, incognito, workMode, mounted]);
 
   const result = useMemo(() => {
     if (!mounted) {

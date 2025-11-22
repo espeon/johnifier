@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
@@ -10,6 +10,16 @@ interface GreetingRouletteProps {
 export function GreetingRoulette({ greetings, onSelect }: GreetingRouletteProps) {
   const [isSpinning, setIsSpinning] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<number | null>(null);
+
+  // Clean up interval on unmount
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
 
   const spin = () => {
     if (isSpinning) return;
@@ -18,14 +28,22 @@ export function GreetingRoulette({ greetings, onSelect }: GreetingRouletteProps)
     let iterations = 0;
     const maxIterations = 20 + Math.floor(Math.random() * 10);
 
-    const interval = setInterval(() => {
+    intervalRef.current = window.setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % greetings.length);
       iterations++;
 
       if (iterations >= maxIterations) {
-        clearInterval(interval);
+        if (intervalRef.current !== null) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+        }
         setIsSpinning(false);
-        onSelect(greetings[currentIndex]);
+
+        // Use functional update to get latest index
+        setCurrentIndex((finalIndex) => {
+          onSelect(greetings[finalIndex]);
+          return finalIndex;
+        });
 
         // Confetti!
         confetti({
