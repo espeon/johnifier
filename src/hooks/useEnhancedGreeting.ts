@@ -86,6 +86,7 @@ export function useEnhancedGreeting({
     const now = new Date();
     const hour = now.getHours();
     const day = now.getDay();
+    const month = now.getMonth(); // 0-11
     const hasName = !!name;
 
     const t = translations[language];
@@ -96,6 +97,14 @@ export function useEnhancedGreeting({
     const isEvening = hour >= 18 && hour < 24;
     const isLateNight = hour >= 0 && hour < 5;
 
+    // More specific time periods
+    const isEarlyMorning = hour >= 5 && hour < 8;
+    const isMidMorning = hour >= 8 && hour < 12;
+    const isNoon = hour >= 11 && hour < 14;
+    const isLateAfternoon = hour >= 15 && hour < 18;
+    const isEarlyEvening = hour >= 18 && hour < 21;
+    const isMidnight = hour >= 23 || hour < 2;
+
     // Days
     const isMonday = day === 1;
     const isTuesday = day === 2;
@@ -104,6 +113,28 @@ export function useEnhancedGreeting({
     const isFriday = day === 5;
     const isSaturday = day === 6;
     const isSunday = day === 0;
+    const isWeekend = isSaturday || isSunday;
+    const isWeekday = !isWeekend;
+
+    // Months and seasons
+    const isJanuary = month === 0;
+    const isFebruary = month === 1;
+    const isMarch = month === 2;
+    const isApril = month === 3;
+    const isMay = month === 4;
+    const isJune = month === 5;
+    const isJuly = month === 6;
+    const isAugust = month === 7;
+    const isSeptember = month === 8;
+    const isOctober = month === 9;
+    const isNovember = month === 10;
+    const isDecember = month === 11;
+
+    // Seasons (Northern Hemisphere)
+    const isWinter = isDecember || isJanuary || isFebruary;
+    const isSpring = isMarch || isApril || isMay;
+    const isSummer = isJune || isJuly || isAugust;
+    const isFall = isSeptember || isOctober || isNovember;
 
     // Time of day for return
     const timeOfDay: 'morning' | 'afternoon' | 'evening' | 'lateNight' =
