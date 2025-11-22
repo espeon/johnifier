@@ -147,7 +147,7 @@ export const personalityGreetings: GreetingDefinition[] = [
 
   // === CREATIVE/FUN GREETINGS ===
   {
-    text: 'Vivre dans l\'excellence sans payer de loyer',
+    text: 'Juste ici',
     mood: 'playful',
     static: { language: 'fr', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
@@ -213,7 +213,7 @@ export const personalityGreetings: GreetingDefinition[] = [
     static: { language: 'fr', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
   {
-    text: 'Mode champion activé',
+    text: 'Mode activé',
     mood: 'playful',
     static: { language: 'fr', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },

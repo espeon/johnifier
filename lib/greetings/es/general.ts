@@ -712,7 +712,7 @@ export const generalGreetings: GreetingDefinition[] = [
 
   // Without name - evening
   {
-    text: 'Buena noche',
+    text: 'Buenas noches',
     mood: 'casual',
     static: { language: 'es', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,

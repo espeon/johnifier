@@ -419,7 +419,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: 'Salutations!',
+    text: 'Bonjour!',
     mood: 'casual',
     static: { language: 'fr', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -593,7 +593,7 @@ export const generalGreetings: GreetingDefinition[] = [
     static: { language: 'fr', incognito: false, workMode: false, hasName: true, variant: 'creative' },
   },
   {
-    text: ({ name }) => `Salut champion ${name}`,
+    text: ({ name }) => `Salut ${name}`,
     mood: 'playful',
     static: { language: 'fr', incognito: false, workMode: false, hasName: true, variant: 'creative' },
   },

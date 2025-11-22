@@ -1455,7 +1455,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `Morning king/queen ${name}`,
+    text: ({ name }) => `Morning friend ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
