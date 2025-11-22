@@ -74,10 +74,20 @@ export function buildGreetingIndex(greetings: GreetingDefinition[]): GreetingInd
   return index;
 }
 
+// Cache for greeting indexes to avoid rebuilding
+const indexCache = new WeakMap<GreetingDefinition[], GreetingIndex>();
+
 export function getMatchingGreetings(
-  index: GreetingIndex,
+  greetings: GreetingDefinition[],
   filters: StaticFilters
 ): GreetingDefinition[] {
+  // Get or build index for this greetings array
+  let index = indexCache.get(greetings);
+  if (!index) {
+    index = buildGreetingIndex(greetings);
+    indexCache.set(greetings, index);
+  }
+
   // When hasName or variant is undefined, we want ALL greetings
   // So we need to merge results from all possible values
   const needsHasNameMerge = filters.hasName === undefined;
@@ -91,8 +101,8 @@ export function getMatchingGreetings(
     for (const hasName of hasNameVals) {
       for (const variant of variantVals) {
         const key = buildIndexKey({ ...filters, hasName, variant });
-        const greetings = index.get(key) || [];
-        results.push(...greetings);
+        const matchedGreetings = index.get(key) || [];
+        results.push(...matchedGreetings);
       }
     }
 

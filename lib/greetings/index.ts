@@ -1,5 +1,5 @@
 import { GreetingDefinition, StaticFilters, Language, Mood, DynamicFilters, GreetingResult, TempUnit, GreetingContext, Variant } from './types';
-import { buildGreetingIndex, getMatchingGreetings as getMatching } from './shared';
+import { getMatchingGreetings as getMatching } from './shared';
 
 // English greetings
 import { techGreetings } from './en/tech';
@@ -246,9 +246,8 @@ export const allGreetings: GreetingDefinition[] = [
   ...ruContextualGreetings,
 ];
 
-// Build index once at module load time
-const greetingIndex = buildGreetingIndex(allGreetings);
-
-export const getMatchingGreetings = getMatching.bind(null, greetingIndex);
+export function getMatchingGreetings(greetings: GreetingDefinition[], filters: StaticFilters): GreetingDefinition[] {
+  return getMatching(greetings, filters);
+}
 
 export type { Language, Mood, GreetingDefinition, StaticFilters, DynamicFilters, GreetingResult, TempUnit, GreetingContext, Variant };

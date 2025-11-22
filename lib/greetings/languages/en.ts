@@ -1,5 +1,4 @@
 import { GreetingDefinition } from '../types';
-import { buildGreetingIndex, getMatchingGreetings as getMatching } from '../shared';
 
 // English greetings
 import { techGreetings } from '../en/tech';
@@ -24,10 +23,5 @@ export const greetings: GreetingDefinition[] = [
   ...batteryGreetings,
   ...timeSpecificGreetings,
 ];
-
-// Build index once at module load time
-const greetingIndex = buildGreetingIndex(greetings);
-
-export const getMatchingGreetings = getMatching.bind(null, greetingIndex);
 
 export type { Language, Mood, GreetingDefinition, StaticFilters, DynamicFilters, GreetingResult, TempUnit, GreetingContext, Variant } from '../types';

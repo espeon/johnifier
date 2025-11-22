@@ -25,3 +25,6 @@ export type {
 
 // Export utility function for selecting a greeting
 export { selectGreeting } from './utils';
+
+// Alias for convenience
+export { getMatchingGreetings as getGreetings } from './greetings';
