@@ -1036,13 +1036,13 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: ({ name }) => `Insomnia club president: ${name}`,
+    text: ({ name }) => `Insomnia club member: ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: ({ name }) => `${name}, sleep is for the weak?`,
+    text: ({ name }) => `${name}, is sleep for the weak?`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
