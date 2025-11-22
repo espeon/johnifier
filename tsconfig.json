@@ -16,6 +16,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["demo", "lib", "lib-react"],
+  "exclude": ["node_modules", "dist", "src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
