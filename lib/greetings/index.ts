@@ -170,6 +170,18 @@ function buildGreetingIndex(): GreetingIndex {
 const greetingIndex = buildGreetingIndex();
 
 export function getMatchingGreetings(filters: StaticFilters): GreetingDefinition[] {
+  // When hasName is undefined, we want ALL greetings (both with and without names)
+  // So we need to merge results from both hasName: true and hasName: false
+  if (filters.hasName === undefined) {
+    const withNames = greetingIndex.get(buildIndexKey({ ...filters, hasName: true })) || [];
+    const withoutNames = greetingIndex.get(buildIndexKey({ ...filters, hasName: false })) || [];
+    const anyNames = greetingIndex.get(buildIndexKey(filters)) || [];
+
+    // Merge and deduplicate (using a Set to avoid duplicates)
+    const merged = new Set([...withNames, ...withoutNames, ...anyNames]);
+    return Array.from(merged);
+  }
+
   const key = buildIndexKey(filters);
   return greetingIndex.get(key) || [];
 }
