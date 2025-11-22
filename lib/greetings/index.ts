@@ -1,4 +1,4 @@
-import { GreetingDefinition, StaticFilters, Language, Mood, DynamicFilters, GreetingResult, TempUnit, GreetingContext } from './types';
+import { GreetingDefinition, StaticFilters, Language, Mood, DynamicFilters, GreetingResult, TempUnit, GreetingContext, Variant } from './types';
 
 // English greetings
 import { techGreetings } from './en/tech';
@@ -115,9 +115,10 @@ function buildIndexKey(filters: Partial<StaticFilters>): string {
     workMode = '*',
     techOk = '*',
     hasName = '*',
+    variant = '*',
   } = filters;
 
-  return `${language}:${incognito}:${workMode}:${techOk}:${hasName}`;
+  return `${language}:${incognito}:${workMode}:${techOk}:${hasName}:${variant}`;
 }
 
 function buildGreetingIndex(): GreetingIndex {
@@ -135,6 +136,8 @@ function buildGreetingIndex(): GreetingIndex {
       greeting.static.workMode === undefined ? [true, false, '*'] : [greeting.static.workMode];
     const techOkVals: (boolean | '*')[] =
       greeting.static.techOk === undefined ? [true, false, '*'] : [greeting.static.techOk];
+    const variantVals: (Variant | '*')[] =
+      greeting.static.variant === undefined ? ['standard' as Variant, 'creative' as Variant, '*'] : [greeting.static.variant];
 
     // Auto-detect hasName if not explicitly set: if text is a function, it likely uses name
     let hasNameVals: (boolean | '*')[];
@@ -151,18 +154,21 @@ function buildGreetingIndex(): GreetingIndex {
         for (const work of workModeVals) {
           for (const tech of techOkVals) {
             for (const name of hasNameVals) {
-              const key = buildIndexKey({
-                language: lang as Language,
-                incognito: incog === '*' ? undefined : incog,
-                workMode: work === '*' ? undefined : work,
-                techOk: tech === '*' ? undefined : tech,
-                hasName: name === '*' ? undefined : name,
-              });
+              for (const variant of variantVals) {
+                const key = buildIndexKey({
+                  language: lang as Language,
+                  incognito: incog === '*' ? undefined : incog,
+                  workMode: work === '*' ? undefined : work,
+                  techOk: tech === '*' ? undefined : tech,
+                  hasName: name === '*' ? undefined : name,
+                  variant: variant === '*' ? undefined : variant,
+                });
 
-              if (!index.has(key)) {
-                index.set(key, []);
+                if (!index.has(key)) {
+                  index.set(key, []);
+                }
+                index.get(key)!.push(greeting);
               }
-              index.get(key)!.push(greeting);
             }
           }
         }
@@ -177,15 +183,26 @@ function buildGreetingIndex(): GreetingIndex {
 const greetingIndex = buildGreetingIndex();
 
 export function getMatchingGreetings(filters: StaticFilters): GreetingDefinition[] {
-  // When hasName is undefined, we want ALL greetings (both with and without names)
-  // So we need to merge results from both hasName: true and hasName: false
-  if (filters.hasName === undefined) {
-    const withNames = greetingIndex.get(buildIndexKey({ ...filters, hasName: true })) || [];
-    const withoutNames = greetingIndex.get(buildIndexKey({ ...filters, hasName: false })) || [];
-    const anyNames = greetingIndex.get(buildIndexKey(filters)) || [];
+  // When hasName or variant is undefined, we want ALL greetings
+  // So we need to merge results from all possible values
+  const needsHasNameMerge = filters.hasName === undefined;
+  const needsVariantMerge = filters.variant === undefined;
 
-    // Merge and deduplicate (using a Set to avoid duplicates)
-    const merged = new Set([...withNames, ...withoutNames, ...anyNames]);
+  if (needsHasNameMerge || needsVariantMerge) {
+    const results: GreetingDefinition[] = [];
+    const hasNameVals = needsHasNameMerge ? [true, false, undefined] : [filters.hasName];
+    const variantVals = needsVariantMerge ? ['standard' as Variant, 'creative' as Variant, undefined] : [filters.variant];
+
+    for (const hasName of hasNameVals) {
+      for (const variant of variantVals) {
+        const key = buildIndexKey({ ...filters, hasName, variant });
+        const greetings = greetingIndex.get(key) || [];
+        results.push(...greetings);
+      }
+    }
+
+    // Deduplicate using Set
+    const merged = new Set(results);
     return Array.from(merged);
   }
 
@@ -194,4 +211,4 @@ export function getMatchingGreetings(filters: StaticFilters): GreetingDefinition
 }
 
 export { allGreetings };
-export type { Language, Mood, GreetingDefinition, StaticFilters, DynamicFilters, GreetingResult, TempUnit, GreetingContext };
+export type { Language, Mood, GreetingDefinition, StaticFilters, DynamicFilters, GreetingResult, TempUnit, GreetingContext, Variant };

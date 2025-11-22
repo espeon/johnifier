@@ -1,5 +1,6 @@
 export type Language = 'en' | 'es' | 'fr' | 'de' | 'ja' | 'zh-Hans' | 'zh-Hant' | 'ko' | 'pt' | 'it' | 'ru';
 export type Mood = 'casual' | 'professional' | 'playful' | 'mysterious';
+export type Variant = 'standard' | 'creative';
 
 // Static filter criteria (can be pre-indexed)
 export interface StaticFilters {
@@ -8,6 +9,7 @@ export interface StaticFilters {
   workMode?: boolean;    // undefined means "any"
   techOk?: boolean;      // undefined means "any"
   hasName?: boolean;     // undefined means "any"
+  variant?: Variant;     // undefined means "any", standard = traditional greetings, creative = unique/playful
 }
 
 // Dynamic filter criteria (must be evaluated at runtime)

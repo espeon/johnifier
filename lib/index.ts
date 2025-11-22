@@ -19,7 +19,8 @@ export type {
   DynamicFilters,
   GreetingResult,
   GreetingContext,
-  TempUnit
+  TempUnit,
+  Variant
 } from './greetings/types';
 
 // Export utility function for selecting a greeting

@@ -1,4 +1,4 @@
-import { getMatchingGreetings, Language, Mood, GreetingResult, GreetingContext, TempUnit } from './greetings';
+import { getMatchingGreetings, Language, Mood, GreetingResult, GreetingContext, TempUnit, Variant } from './greetings';
 
 export interface SelectGreetingOptions {
   name?: string;
@@ -11,6 +11,7 @@ export interface SelectGreetingOptions {
   tempUnit?: TempUnit;
   randomSeed?: number;
   hasNameFilter?: boolean; // undefined = any, true = only with names, false = only without names
+  variant?: Variant; // undefined = any, standard = traditional, creative = unique/playful
 }
 
 /**
@@ -48,6 +49,7 @@ export function selectGreeting({
   tempUnit = 'C',
   randomSeed = Math.random(),
   hasNameFilter,
+  variant,
 }: SelectGreetingOptions = {}): GreetingResult & { allGreetings: string[] } {
   const now = new Date();
   const hour = now.getHours();
@@ -82,6 +84,7 @@ export function selectGreeting({
     workMode,
     techOk,
     hasName,
+    variant,
   });
 
   // Filter candidates by dynamic criteria (time, battery, weather)

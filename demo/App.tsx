@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEnhancedGreeting, useEnhancedContext, Language, TempUnit } from '../lib-react';
+import { useEnhancedGreeting, useEnhancedContext, Language, TempUnit, Variant } from '../lib-react';
 
 type NameFilter = 'any' | 'with-names' | 'without-names';
+type VariantFilter = 'any' | 'standard' | 'creative';
 
 function App() {
   const [name, setName] = useState(() => localStorage.getItem('johnifier_name') || '');
@@ -12,6 +13,7 @@ function App() {
   const [language, setLanguage] = useState<Language>(() => (localStorage.getItem('johnifier_language') as Language) || 'en');
   const [tempUnit, setTempUnit] = useState<TempUnit>(() => (localStorage.getItem('johnifier_tempUnit') as TempUnit) || 'C');
   const [nameFilter, setNameFilter] = useState<NameFilter>(() => (localStorage.getItem('johnifier_nameFilter') as NameFilter) || 'any');
+  const [variantFilter, setVariantFilter] = useState<VariantFilter>(() => (localStorage.getItem('johnifier_variantFilter') as VariantFilter) || 'any');
   const [mounted, setMounted] = useState(false);
   const [greetingKey, setGreetingKey] = useState(0);
   const [showAllGreetings, setShowAllGreetings] = useState(false);
@@ -47,8 +49,15 @@ function App() {
     localStorage.setItem('johnifier_nameFilter', nameFilter);
   }, [nameFilter]);
 
+  useEffect(() => {
+    localStorage.setItem('johnifier_variantFilter', variantFilter);
+  }, [variantFilter]);
+
   // Convert nameFilter to hasNameFilter for the hook
   const hasNameFilter = nameFilter === 'any' ? undefined : nameFilter === 'with-names';
+
+  // Convert variantFilter to variant for the hook
+  const variant: Variant | undefined = variantFilter === 'any' ? undefined : (variantFilter as Variant);
 
   const greeting = useEnhancedGreeting({
     name: name || undefined,
@@ -61,6 +70,7 @@ function App() {
     tempUnit,
     refreshKey: greetingKey,
     hasNameFilter,
+    variant,
   });
 
   useEffect(() => {
@@ -237,6 +247,25 @@ function App() {
                               }`}
                   >
                     {filter === 'with-names' ? 'names' : filter === 'without-names' ? 'no names' : 'any'}
+                  </button>
+                ))}
+
+                {/* Divider */}
+                <div className="w-px h-4 bg-[#e8e8e8]/10" />
+
+                {/* Variant filter */}
+                {(['any', 'standard', 'creative'] as VariantFilter[]).map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setVariantFilter(filter)}
+                    className={`px-2 py-1.5 font-orbiter text-xs tracking-wider rounded-md
+                              transition-all duration-300 border whitespace-nowrap
+                              ${variantFilter === filter
+                                ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                                : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
+                              }`}
+                  >
+                    {filter}
                   </button>
                 ))}
 
