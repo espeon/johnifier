@@ -156,6 +156,112 @@ export function useEnhancedGreeting({
       { filter: () => !!(weather?.temp && weather.temp > 30) && language === 'en', text: () => `Stay cool out there (${weather?.temp}°C)`, mood: 'casual' },
       { filter: () => !!(weather?.temp !== undefined && weather.temp < 0) && language === 'en', text: () => `Bundle up! (${weather?.temp}°C)`, mood: 'casual' },
 
+      // === SEASONAL GREETINGS (ENGLISH) ===
+      // Winter
+      { filter: () => !incognito && !workMode && isWinter && isMorning && language === 'en', text: 'Winter morning chill', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isWinter && language === 'en', text: 'Cozy winter vibes', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isWinter && language === 'en', text: 'Hot cocoa weather', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isWinter && language === 'en', text: `Stay warm, ${name}`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isWinter && language === 'en', text: `${name} in winter mode`, mood: 'casual' },
+
+      // Spring
+      { filter: () => !incognito && !workMode && isSpring && isMorning && language === 'en', text: 'Spring has sprung!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSpring && language === 'en', text: 'Fresh spring energy', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isSpring && language === 'en', text: 'Blooming beautiful day', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isSpring && language === 'en', text: `Spring vibes with ${name}`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isSpring && language === 'en', text: `${name}, feeling renewed?`, mood: 'casual' },
+
+      // Summer
+      { filter: () => !incognito && !workMode && isSummer && isMorning && language === 'en', text: 'Summer mornings hit different', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSummer && language === 'en', text: 'Hot summer energy', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isSummer && language === 'en', text: 'Sunshine and good vibes', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isSummer && language === 'en', text: `Summer mode ${name}`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isSummer && language === 'en', text: `${name}, enjoying the heat?`, mood: 'casual' },
+
+      // Fall
+      { filter: () => !incognito && !workMode && isFall && isMorning && language === 'en', text: 'Crisp fall morning', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isFall && language === 'en', text: 'Autumn vibes', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isFall && language === 'en', text: 'Sweater weather', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isFall && language === 'en', text: `Fall colors and ${name}`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isFall && language === 'en', text: `${name}, pumpkin spice season`, mood: 'playful' },
+
+      // === MONTHLY SPECIAL GREETINGS (ENGLISH) ===
+      { filter: () => !incognito && !workMode && isJanuary && isMorning && language === 'en', text: 'New year, new you', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isJanuary && language === 'en', text: 'January hustle', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isJanuary && language === 'en', text: `${name}, fresh start energy`, mood: 'casual' },
+
+      { filter: () => !incognito && !workMode && isFebruary && language === 'en', text: 'February focus', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isFebruary && language === 'en', text: `${name}, love is in the air`, mood: 'playful' },
+
+      { filter: () => !incognito && !workMode && isMarch && language === 'en', text: 'March forward!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isMarch && language === 'en', text: `${name}, spring is coming`, mood: 'casual' },
+
+      { filter: () => !incognito && !workMode && isApril && language === 'en', text: 'April showers energy', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isApril && language === 'en', text: `${name}, spring bloom time`, mood: 'playful' },
+
+      { filter: () => !incognito && !workMode && isMay && language === 'en', text: 'May flowers blooming', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isMay && language === 'en', text: `${name}, almost summer!`, mood: 'playful' },
+
+      { filter: () => !incognito && !workMode && isJune && language === 'en', text: 'June sunshine', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isJune && language === 'en', text: `${name}, summer starts now`, mood: 'playful' },
+
+      { filter: () => !incognito && !workMode && isJuly && language === 'en', text: 'Peak summer vibes', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isJuly && language === 'en', text: `${name}, hottest month energy`, mood: 'casual' },
+
+      { filter: () => !incognito && !workMode && isAugust && language === 'en', text: 'Late summer days', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isAugust && language === 'en', text: `${name}, savoring summer`, mood: 'playful' },
+
+      { filter: () => !incognito && !workMode && isSeptember && language === 'en', text: 'September reset', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isSeptember && language === 'en', text: `${name}, fall is calling`, mood: 'casual' },
+
+      { filter: () => !incognito && !workMode && isOctober && language === 'en', text: 'Spooky season vibes', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isOctober && language === 'en', text: `${name}, autumn magic`, mood: 'playful' },
+
+      { filter: () => !incognito && !workMode && isNovember && language === 'en', text: 'November gratitude', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isNovember && language === 'en', text: `${name}, thankful vibes`, mood: 'casual' },
+
+      { filter: () => !incognito && !workMode && isDecember && language === 'en', text: 'December magic', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isDecember && language === 'en', text: `${name}, holiday season!`, mood: 'playful' },
+
+      // === TIME-SPECIFIC GREETINGS (ENGLISH) ===
+      { filter: () => !incognito && !workMode && isEarlyMorning && language === 'en', text: 'Early bird special', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isEarlyMorning && language === 'en', text: 'Crack of dawn energy', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isEarlyMorning && language === 'en', text: `${name}, up with the sun`, mood: 'playful' },
+
+      { filter: () => !incognito && !workMode && isMidMorning && language === 'en', text: 'Mid-morning flow', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isMidMorning && language === 'en', text: 'Getting into the groove', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isMidMorning && language === 'en', text: `${name}, morning momentum`, mood: 'casual' },
+
+      { filter: () => !incognito && !workMode && isNoon && language === 'en', text: 'High noon', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isNoon && language === 'en', text: 'Midday power hour', mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isNoon && language === 'en', text: `${name}, lunch vibes?`, mood: 'casual' },
+
+      { filter: () => !incognito && !workMode && isLateAfternoon && language === 'en', text: 'Golden hour approaching', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isLateAfternoon && language === 'en', text: 'Late afternoon energy', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isLateAfternoon && language === 'en', text: `${name}, almost evening`, mood: 'casual' },
+
+      { filter: () => !incognito && !workMode && isEarlyEvening && language === 'en', text: 'Early evening calm', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isEarlyEvening && language === 'en', text: 'Dinner time vibes', mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isEarlyEvening && language === 'en', text: `${name}, early night`, mood: 'casual' },
+
+      { filter: () => !incognito && !workMode && isMidnight && language === 'en', text: 'Midnight special', mood: 'mysterious' },
+      { filter: () => !incognito && !workMode && isMidnight && language === 'en', text: 'Witching hour active', mood: 'mysterious' },
+      { filter: () => !incognito && !workMode && hasName && isMidnight && language === 'en', text: `${name} at the stroke of midnight`, mood: 'mysterious' },
+
+      // === WEEKDAY GREETINGS (ENGLISH) ===
+      { filter: () => !incognito && !workMode && isWeekday && isMorning && language === 'en', text: 'Weekday grind', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isWeekday && workMode && language === 'en', text: 'Weekday hustle mode', mood: 'professional' },
+      { filter: () => !incognito && !workMode && hasName && isWeekday && language === 'en', text: `${name}, weekday warrior`, mood: 'playful' },
+
+      // === BATTERY-LEVEL GREETINGS (MORE) ===
+      { filter: () => battery !== null && battery > 0 && battery < 10 && language === 'en', text: () => `Critical battery! (${battery}%)`, mood: 'playful' },
+      { filter: () => battery !== null && battery >= 10 && battery < 20 && language === 'en', text: () => `Low battery mode (${battery}%)`, mood: 'casual' },
+      { filter: () => battery !== null && battery >= 20 && battery < 50 && language === 'en', text: () => `Battery getting low (${battery}%)`, mood: 'casual' },
+      { filter: () => battery !== null && battery >= 50 && battery < 80 && language === 'en', text: () => `Decent charge (${battery}%)`, mood: 'casual' },
+      { filter: () => battery !== null && battery >= 80 && battery < 100 && language === 'en', text: () => `Nearly full power (${battery}%)`, mood: 'casual' },
+      { filter: () => battery !== null && battery === 69 && language === 'en', text: 'Nice battery level', mood: 'playful' },
+      { filter: () => battery !== null && battery === 42 && language === 'en', text: 'The answer to life, the universe, and your battery', mood: 'playful' },
+
       // === MORNING GREETINGS WITH NAME ===
       { filter: () => !incognito && !workMode && hasName && isMorning, text: `${t.morning}, ${name}`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'en', text: `Morning, ${name}`, mood: 'casual' },
@@ -466,42 +572,73 @@ export function useEnhancedGreeting({
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'es', text: `${name}, ¡a darle!`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'es', text: `¡Órale ${name}!`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'es', text: `${name}, ¡qué buena onda verte!`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isMorning && language === 'es', text: `${name}, listo para hoy?`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isMorning && language === 'es', text: `¡Ey ${name}!`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isMorning && language === 'es', text: `${name}, ¡buenos días!`, mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: '¡Qué onda!', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: '¡Buenos días!', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: '¡Buen día!', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: '¿Cómo amaneciste?', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: '¡A darle con todo!', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: '¡Arriba!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: '¡Órale!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: '¡A por ello!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: '¡Vamos!', mood: 'casual' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'es', text: 'Buen inicio', mood: 'casual' },
 
       // Afternoon
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'es', text: `Buenas tardes, ${name}`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'es', text: `¿Qué pasa, ${name}?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'es', text: `${name}, ¿cómo vas?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'es', text: `¡Hola de nuevo, ${name}!`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'es', text: `${name}, ¿todo bien?`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'es', text: `${name} de vuelta`, mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'es', text: 'Buenas tardes', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'es', text: '¿Qué tal la tarde?', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'es', text: '¡Buenas!', mood: 'casual' },
+      { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'es', text: '¿Qué tal?', mood: 'casual' },
+      { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'es', text: 'Buena tarde', mood: 'casual' },
 
       // Evening
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'es', text: `Buenas noches, ${name}`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'es', text: `${name}, ¿qué tal la noche?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'es', text: `Noche perfecta con ${name}`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isEvening && language === 'es', text: `${name}, buena noche`, mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'es', text: 'Buenas noches', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'es', text: '¿Qué tal la noche?', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'es', text: 'Noche tranquila', mood: 'casual' },
+      { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'es', text: 'Buena noche', mood: 'casual' },
 
       // Late night
-      { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'es', text: `${name}, trasnochando?`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'es', text: `${name}, ¿trasnochando?`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'es', text: `Búho nocturno ${name}`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'es', text: `${name}, ¿no duermes?`, mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'es', text: '¿Trasnochando?', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'es', text: 'Hora de búhos', mood: 'mysterious' },
+      { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'es', text: 'Madrugada', mood: 'mysterious' },
+
+      // Spanish weekends/days
+      { filter: () => !incognito && !workMode && hasName && isFriday && language === 'es', text: `${name}, ¡viernes!`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && isWeekend && language === 'es', text: '¡Fin de semana!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSaturday && language === 'es', text: '¡Sábado!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSunday && language === 'es', text: 'Domingo relax', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isMonday && language === 'es', text: 'Lunes con energía', mood: 'casual' },
+
+      // Spanish seasons
+      { filter: () => !incognito && !workMode && isWinter && language === 'es', text: 'Vibes de invierno', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isSummer && language === 'es', text: 'Verano caliente', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSpring && language === 'es', text: 'Primavera fresca', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isFall && language === 'es', text: 'Otoño perfecto', mood: 'casual' },
 
       // Work mode
       { filter: () => !incognito && workMode && hasName && language === 'es', text: `${name}, ¡a trabajar!`, mood: 'professional' },
       { filter: () => !incognito && workMode && hasName && language === 'es', text: `Vamos ${name}, ¡a producir!`, mood: 'professional' },
+      { filter: () => !incognito && workMode && hasName && language === 'es', text: `${name}, ¡a darle duro!`, mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'es', text: '¡A trabajar!', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'es', text: 'Modo productivo', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'es', text: '¡Vamos a darle!', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'es', text: 'Hora de producir', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'es', text: 'Modo enfoque', mood: 'professional' },
 
       // === FRENCH LOCALIZED GREETINGS ===
       // Morning
@@ -511,43 +648,66 @@ export function useEnhancedGreeting({
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'fr', text: `${name}, ça va?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'fr', text: `Bien le bonjour, ${name}!`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'fr', text: `${name}, prêt pour la journée?`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isMorning && language === 'fr', text: `${name}, en forme?`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isMorning && language === 'fr', text: `Hey ${name}!`, mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'fr', text: 'Bonjour!', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'fr', text: 'Salut!', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'fr', text: 'Coucou!', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'fr', text: 'Ça va?', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'fr', text: 'Bien le bonjour!', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'fr', text: 'Belle journée!', mood: 'casual' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'fr', text: 'Salutations!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'fr', text: 'Bon matin!', mood: 'casual' },
 
       // Afternoon
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'fr', text: `Bon après-midi, ${name}`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'fr', text: `Re ${name}!`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'fr', text: `${name}, ça roule?`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'fr', text: `${name} de retour`, mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'fr', text: 'Bon après-midi', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'fr', text: 'Ça roule?', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'fr', text: 'Re!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'fr', text: 'Rebonjour!', mood: 'playful' },
 
       // Evening
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'fr', text: `Bonsoir ${name}`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'fr', text: `${name}, bonne soirée!`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'fr', text: `Soirée parfaite avec ${name}`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isEvening && language === 'fr', text: `${name}, ça va ce soir?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'fr', text: 'Bonsoir', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'fr', text: 'Bonne soirée', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'fr', text: 'Belle soirée!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'fr', text: 'Bonne nuit!', mood: 'casual' },
 
       // Late night
       { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'fr', text: `${name}, encore debout?`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'fr', text: `Couche-tard ${name}`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'fr', text: `${name}, insomnie?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'fr', text: 'Encore debout?', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'fr', text: 'Nuit blanche?', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'fr', text: 'Heure des hiboux', mood: 'mysterious' },
+      { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'fr', text: 'Minuit passé', mood: 'mysterious' },
+
+      // French weekends/days
+      { filter: () => !incognito && !workMode && isFriday && language === 'fr', text: 'Vendredi!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isWeekend && language === 'fr', text: 'Weekend mode!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSunday && language === 'fr', text: 'Dimanche tranquille', mood: 'casual' },
+
+      // French seasons
+      { filter: () => !incognito && !workMode && isWinter && language === 'fr', text: 'Ambiance hivernale', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isSummer && language === 'fr', text: 'Été chaud!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSpring && language === 'fr', text: 'Printemps frais', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isFall && language === 'fr', text: 'Automne magnifique', mood: 'casual' },
 
       // Work mode
       { filter: () => !incognito && workMode && hasName && language === 'fr', text: `Au boulot, ${name}!`, mood: 'professional' },
       { filter: () => !incognito && workMode && hasName && language === 'fr', text: `${name}, on y va!`, mood: 'professional' },
+      { filter: () => !incognito && workMode && hasName && language === 'fr', text: `${name}, prêt à travailler?`, mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'fr', text: 'Au travail!', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'fr', text: 'Mode focus', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'fr', text: 'Au boulot!', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'fr', text: 'On y va!', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'fr', text: 'Concentration!', mood: 'professional' },
 
       // === GERMAN LOCALIZED GREETINGS ===
       // Morning
@@ -557,43 +717,67 @@ export function useEnhancedGreeting({
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'de', text: `Servus ${name}!`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'de', text: `${name}, gut geschlafen?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'de', text: `Schön dich zu sehen, ${name}`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isMorning && language === 'de', text: `${name}, bereit für heute?`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isMorning && language === 'de', text: `Hey ${name}!`, mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'de', text: 'Guten Morgen!', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'de', text: 'Moin!', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'de', text: 'Hallo!', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'de', text: 'Servus!', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'de', text: 'Gut geschlafen?', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'de', text: 'Frischer Start!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'de', text: 'Guten Start!', mood: 'casual' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'de', text: 'Mahlzeit!', mood: 'playful' },
 
       // Afternoon
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'de', text: `Guten Tag, ${name}`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'de', text: `${name}, wie geht's?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'de', text: `Tag ${name}!`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'de', text: `${name} wieder da`, mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'de', text: 'Guten Tag', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'de', text: 'Tag!', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'de', text: "Wie geht's?", mood: 'casual' },
+      { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'de', text: 'Alles klar?', mood: 'casual' },
 
       // Evening
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'de', text: `Guten Abend, ${name}`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'de', text: `${name}, schöner Abend!`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'de', text: `N'Abend ${name}!`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isEvening && language === 'de', text: `${name}, wie war dein Tag?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'de', text: 'Guten Abend', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'de', text: "N'Abend!", mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'de', text: 'Schöner Abend', mood: 'casual' },
+      { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'de', text: 'Gute Nacht!', mood: 'casual' },
 
       // Late night
       { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'de', text: `${name}, noch wach?`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'de', text: `Nachteule ${name}`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'de', text: `${name}, Schlaflos?`, mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'de', text: 'Noch wach?', mood: 'casual' },
       { filter: () => !incognito && workMode && !hasName && isLateNight && language === 'de', text: 'Nachtschicht?', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'de', text: 'Mitternachtsstunde', mood: 'mysterious' },
+      { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'de', text: 'Späte Stunde', mood: 'mysterious' },
+
+      // German weekends/days
+      { filter: () => !incognito && !workMode && isFriday && language === 'de', text: 'Freitag!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isWeekend && language === 'de', text: 'Wochenende!', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSaturday && language === 'de', text: 'Samstag chillen', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isSunday && language === 'de', text: 'Sonntag entspannen', mood: 'casual' },
+
+      // German seasons
+      { filter: () => !incognito && !workMode && isWinter && language === 'de', text: 'Winter Stimmung', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isSummer && language === 'de', text: 'Sommer Vibes', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSpring && language === 'de', text: 'Frühling!', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isFall && language === 'de', text: 'Herbst Zeit', mood: 'casual' },
 
       // Work mode
       { filter: () => !incognito && workMode && hasName && language === 'de', text: `${name}, an die Arbeit!`, mood: 'professional' },
       { filter: () => !incognito && workMode && hasName && language === 'de', text: `Los geht's, ${name}!`, mood: 'professional' },
+      { filter: () => !incognito && workMode && hasName && language === 'de', text: `${name}, Zeit zu arbeiten!`, mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'de', text: 'Arbeitsmodus', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'de', text: 'An die Arbeit!', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'de', text: 'Fokus-Zeit', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'de', text: "Los geht's!", mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'de', text: 'Produktiv sein!', mood: 'professional' },
 
       // === JAPANESE LOCALIZED GREETINGS ===
       // Morning
@@ -603,47 +787,71 @@ export function useEnhancedGreeting({
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'ja', text: `やあ、${name}さん！`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'ja', text: `${name}さん、調子どう？`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isMorning && language === 'ja', text: `おっす、${name}！`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isMorning && language === 'ja', text: `${name}さん、元気？`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isMorning && language === 'ja', text: `よう、${name}さん`, mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'ja', text: 'おはよう！', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'ja', text: 'おはようございます', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'ja', text: 'やあ！', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'ja', text: '調子どう？', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'ja', text: 'おっす！', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'ja', text: '朝だよ！', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'ja', text: 'よう！', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isMorning && language === 'ja', text: '元気？', mood: 'casual' },
 
       // Afternoon
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'ja', text: `こんにちは、${name}さん`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'ja', text: `${name}さん、お疲れ様`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'ja', text: `よう、${name}！`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isAfternoon && language === 'ja', text: `${name}さん、また会ったね`, mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'ja', text: 'こんにちは', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'ja', text: 'お疲れ様', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'ja', text: 'よう！', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isAfternoon && language === 'ja', text: 'また会ったね', mood: 'playful' },
 
       // Evening
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'ja', text: `こんばんは、${name}さん`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'ja', text: `${name}さん、良い夜を`, mood: 'casual' },
       { filter: () => !incognito && !workMode && hasName && isEvening && language === 'ja', text: `夜の${name}さん`, mood: 'playful' },
+      { filter: () => !incognito && !workMode && hasName && isEvening && language === 'ja', text: `${name}さん、お疲れ`, mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'ja', text: 'こんばんは', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'ja', text: '良い夜を', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'ja', text: '夜だね', mood: 'playful' },
+      { filter: () => !incognito && !workMode && !hasName && isEvening && language === 'ja', text: 'おやすみ', mood: 'casual' },
 
       // Late night
       { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'ja', text: `${name}さん、夜更かし？`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'ja', text: `夜型${name}さん`, mood: 'playful' },
       { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'ja', text: `${name}さん、まだ起きてる？`, mood: 'casual' },
+      { filter: () => !incognito && !workMode && hasName && isLateNight && language === 'ja', text: `${name}さん、眠れない？`, mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'ja', text: '夜更かし？', mood: 'playful' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'ja', text: 'まだ起きてる？', mood: 'casual' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'ja', text: '深夜だよ', mood: 'mysterious' },
       { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'ja', text: '真夜中', mood: 'mysterious' },
+      { filter: () => !incognito && !workMode && !hasName && isLateNight && language === 'ja', text: '眠れない？', mood: 'casual' },
+
+      // Japanese weekends/days
+      { filter: () => !incognito && !workMode && isFriday && language === 'ja', text: '金曜日！', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isWeekend && language === 'ja', text: '週末だ！', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSaturday && language === 'ja', text: '土曜日', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isSunday && language === 'ja', text: 'ゆっくり日曜日', mood: 'casual' },
+
+      // Japanese seasons
+      { filter: () => !incognito && !workMode && isWinter && language === 'ja', text: '冬の雰囲気', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isSummer && language === 'ja', text: '夏の暑さ！', mood: 'playful' },
+      { filter: () => !incognito && !workMode && isSpring && language === 'ja', text: '春だね', mood: 'casual' },
+      { filter: () => !incognito && !workMode && isFall && language === 'ja', text: '秋の季節', mood: 'casual' },
 
       // Work mode
       { filter: () => !incognito && workMode && hasName && language === 'ja', text: `${name}さん、頑張ろう！`, mood: 'professional' },
       { filter: () => !incognito && workMode && hasName && language === 'ja', text: `${name}さん、作業開始！`, mood: 'professional' },
       { filter: () => !incognito && workMode && hasName && language === 'ja', text: `仕事モード、${name}さん`, mood: 'professional' },
+      { filter: () => !incognito && workMode && hasName && language === 'ja', text: `${name}さん、やろう！`, mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'ja', text: '頑張ろう！', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'ja', text: '作業開始', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'ja', text: '仕事モード', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'ja', text: '集中タイム', mood: 'professional' },
       { filter: () => !incognito && workMode && language === 'ja', text: 'やるぞ！', mood: 'professional' },
+      { filter: () => !incognito && workMode && language === 'ja', text: '仕事しよう', mood: 'professional' },
     ];
 
     // Filter to valid greetings
