@@ -732,6 +732,12 @@ export const seasonalGreetings: GreetingDefinition[] = [
     dynamic: ({ day }) => day === 5,
   },
   {
+    text: ({ name }) => `${name}, Friday night (Yakuza karaoke style)`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ day }) => day === 5,
+  },
+  {
     text: ({ name }) => `${name}, it's the freakin' weekend!`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
