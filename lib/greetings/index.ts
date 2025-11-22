@@ -135,8 +135,15 @@ function buildGreetingIndex(): GreetingIndex {
       greeting.static.workMode === undefined ? [true, false, '*'] : [greeting.static.workMode];
     const techOkVals: (boolean | '*')[] =
       greeting.static.techOk === undefined ? [true, false, '*'] : [greeting.static.techOk];
-    const hasNameVals: (boolean | '*')[] =
-      greeting.static.hasName === undefined ? [true, false, '*'] : [greeting.static.hasName];
+
+    // Auto-detect hasName if not explicitly set: if text is a function, it likely uses name
+    let hasNameVals: (boolean | '*')[];
+    if (greeting.static.hasName === undefined) {
+      const hasName = typeof greeting.text === 'function';
+      hasNameVals = [hasName];
+    } else {
+      hasNameVals = [greeting.static.hasName];
+    }
 
     // Generate all combinations
     for (const lang of languages) {
