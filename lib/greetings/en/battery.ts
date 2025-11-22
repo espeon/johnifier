@@ -6,25 +6,25 @@ export const batteryGreetings: GreetingDefinition[] = [
   {
     text: ({ battery }) => `Low power mode (${battery}%) but high vibes`,
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery <= 20,
   },
   {
     text: ({ battery }) => `Running on fumes at ${battery}%`,
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery <= 20,
   },
   {
     text: 'Charge soon, legend',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery <= 15,
   },
   {
     text: ({ battery }) => `Battery at ${battery}%, vibes at 100%`,
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery <= 20,
   },
   {
@@ -38,13 +38,13 @@ export const batteryGreetings: GreetingDefinition[] = [
   {
     text: ({ battery }) => `Halfway there at ${battery}%`,
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery > 20 && battery <= 50,
   },
   {
     text: 'Mid battery, full potential',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery > 30 && battery <= 50,
   },
 
@@ -52,19 +52,19 @@ export const batteryGreetings: GreetingDefinition[] = [
   {
     text: ({ battery }) => `Fully charged (${battery}%), fully ready`,
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery >= 80,
   },
   {
     text: ({ battery }) => `Power levels: ${battery}% 🔋`,
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery >= 80,
   },
   {
     text: 'Fully charged and ready to roll',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery >= 95,
   },
   {
@@ -76,7 +76,7 @@ export const batteryGreetings: GreetingDefinition[] = [
   {
     text: 'Battery: maxed. Energy: infinite.',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery !== null && battery !== undefined && battery === 100,
   },
 
@@ -84,7 +84,7 @@ export const batteryGreetings: GreetingDefinition[] = [
   {
     text: 'Nice battery level 😏',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery === 69,
   },
   {
@@ -98,7 +98,7 @@ export const batteryGreetings: GreetingDefinition[] = [
   {
     text: 'Battery at 42%: the answer to everything',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ battery }) => battery === 42,
   },
 ];

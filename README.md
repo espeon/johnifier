@@ -1,6 +1,6 @@
 # Johnifier
 
-> A delightfully contextual greeting system with 1100+ greetings in 5 languages
+> A delightfully contextual greeting system with 1500+ greetings in 11 languages
 
 Johnifier is a lightweight, framework-agnostic TypeScript library that provides contextual, personalized greetings based on time of day, language, weather, battery level, holidays, and more.
 
@@ -9,11 +9,13 @@ Johnifier is a lightweight, framework-agnostic TypeScript library that provides 
 
 ## Features
 
-- 🌍 **1100+ Greetings** across 5 languages (English, Spanish, French, German, Japanese)
+- 🌍 **1500+ Greetings** across 11 languages (English, Spanish, French, German, Japanese, Chinese Simplified, Chinese Traditional, Korean, Portuguese, Italian, Russian)
 - 🎭 **Context-Aware** - Adapts to time, weather, battery, holidays, and user preferences
+- 🎨 **Variant Filter** - Choose between standard and creative greetings
+- 🏷️ **Name Filter** - Filter greetings with/without personalization
 - 🔒 **Privacy Mode** - Special incognito greetings for anonymous browsing
 - ⚡ **Performance** - O(1) greeting lookups via indexed data structure
-- 🎨 **Customizable** - Filter by mood, work mode, tech preferences
+- 🎛️ **Customizable** - Filter by mood, work mode, tech preferences, variant, and more
 - 📦 **Framework Agnostic** - Pure TypeScript core with React bindings
 - 🌳 **Tree-Shakeable** - ESM and CJS builds for optimal bundle size
 - 📖 **TypeScript** - Full type safety with declaration files
@@ -78,10 +80,12 @@ Selects an appropriate greeting based on filters and context.
 - `incognito?: boolean` - Privacy mode (default: `false`)
 - `workMode?: boolean` - Professional mode (default: `false`)
 - `techOk?: boolean` - Allow tech-themed greetings (default: `false`)
-- `language?: Language` - Language code: `'en' | 'es' | 'fr' | 'de' | 'ja'` (default: `'en'`)
+- `language?: Language` - Language code: `'en' | 'es' | 'fr' | 'de' | 'ja' | 'zh-Hans' | 'zh-Hant' | 'ko' | 'pt' | 'it' | 'ru'` (default: `'en'`)
 - `battery?: number | null` - Device battery percentage (0-100)
 - `weather?: { condition: string; temp: number } | null` - Weather data
 - `tempUnit?: TempUnit` - Temperature unit: `'C' | 'F'` (default: `'C'`)
+- `hasNameFilter?: boolean` - Filter: `true` = only personalized, `false` = only generic, `undefined` = both
+- `variant?: Variant` - Filter: `'standard'` = traditional, `'creative'` = unique/playful, `undefined` = both
 - `randomSeed?: number` - Seed for deterministic selection
 
 **Returns:**
@@ -157,11 +161,17 @@ const isSlow = isSlowConnection();           // Returns boolean
 - **Tech Mode**: "Hello, World!", "console.log('Hey there')", "Git ready for today"
 
 ### Languages
-- **English**: 800+ greetings
-- **Spanish**: 100+ greetings
-- **French**: 100+ greetings
-- **German**: 100+ greetings
-- **Japanese**: 100+ greetings
+- **English (en)**: 1400+ greetings (comprehensive coverage with personality, tech, contextual variants)
+- **German (de)**: 400+ greetings
+- **French (fr)**: 400+ greetings
+- **Chinese Simplified (zh-Hans)**: 400+ greetings
+- **Chinese Traditional (zh-Hant)**: 400+ greetings
+- **Spanish (es)**: 100+ greetings
+- **Japanese (ja)**: 100+ greetings
+- **Korean (ko)**: 50+ greetings
+- **Portuguese (pt)**: 50+ greetings
+- **Italian (it)**: 50+ greetings
+- **Russian (ru)**: 50+ greetings
 
 ## Examples
 
@@ -212,6 +222,36 @@ const greeting = selectGreeting({ workMode: true });
 // "Let's get to work"
 // "Time to crush it"
 // "Professional mode: activated"
+```
+
+### Variant Filter
+```typescript
+// Only creative/playful greetings
+const creative = selectGreeting({ variant: 'creative' });
+// "Main character energy"
+// "Living rent-free in excellence"
+// "The legend returns"
+
+// Only standard/traditional greetings
+const standard = selectGreeting({ variant: 'standard' });
+// "Good morning"
+// "Hello there"
+// "Welcome back"
+```
+
+### Name Filter
+```typescript
+// Only personalized greetings
+const withName = selectGreeting({ name: 'Alice', hasNameFilter: true });
+// "Good morning, Alice!"
+// "Alice, you're glowing"
+// "The legend Alice returns"
+
+// Only generic greetings (no names)
+const withoutName = selectGreeting({ hasNameFilter: false });
+// "Good morning!"
+// "Main character energy"
+// "Living rent-free in excellence"
 ```
 
 ## Development
@@ -275,6 +315,7 @@ We welcome contributions! Here's how to add greetings:
     workMode: false,   // true = work mode only
     techOk: false,     // true = requires tech permission
     hasName: false,    // true = personalized greeting with name
+    variant: 'standard', // 'standard' = traditional, 'creative' = unique/playful, undefined = both
   },
   dynamic: ({ hour, day, month, battery, weather }) => {
     // Optional: Return true if greeting should show based on context

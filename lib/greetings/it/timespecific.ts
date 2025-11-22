@@ -1,0 +1,167 @@
+import { GreetingDefinition } from '../types';
+
+// Italian very specific time-based greetings
+export const timeSpecificGreetings: GreetingDefinition[] = [
+  {
+    text: 'Vibes da ora di pranzo',
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 11 && hour < 14,
+  },
+  {
+    text: 'Ora di uno spuntino?',
+    mood: 'playful',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 14,
+  },
+  {
+    text: ({ name }) => `${name}, cosa pranziamo?`,
+    mood: 'playful',
+    static: { language: 'it', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 14,
+  },
+  {
+    text: 'Carburante di mezzogiorno in arrivo',
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 14,
+  },
+  {
+    text: 'Ora del caffè',
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 9 && hour < 11,
+  },
+  {
+    text: 'Funzionando a caffeina',
+    mood: 'playful',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 9 && hour < 11,
+  },
+  {
+    text: ({ name }) => `${name} + caffè = inarrestabile`,
+    mood: 'playful',
+    static: { language: 'it', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 9 && hour < 11,
+  },
+  {
+    text: 'Energia da golden hour',
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 19,
+  },
+  {
+    text: 'Tramonto in arrivo',
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 19,
+  },
+  {
+    text: ({ name }) => `${name}, catturando la golden hour`,
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 19,
+  },
+  {
+    text: 'È mezzanotte da qualche parte... ah aspetta, qui',
+    mood: 'playful',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour === 0,
+  },
+  {
+    text: 'L\'orologio batte mezzanotte',
+    mood: 'mysterious',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour === 0,
+  },
+  {
+    text: ({ name }) => `${name}, è un nuovo giorno (tecnicamente)`,
+    mood: 'playful',
+    static: { language: 'it', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour === 0,
+  },
+  {
+    text: 'I pensieri delle 3 del mattino colpiscono diversamente',
+    mood: 'mysterious',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour === 3,
+  },
+  {
+    text: 'L\'ora della verità delle 3',
+    mood: 'mysterious',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour === 3,
+  },
+  {
+    text: ({ name }) => `${name}, perché sei sveglio?`,
+    mood: 'playful',
+    static: { language: 'it', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour === 3,
+  },
+  {
+    text: 'Mezzogiorno in punto',
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour === 12,
+  },
+  {
+    text: 'Dodici in punto',
+    mood: 'professional',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour === 12,
+  },
+  {
+    text: 'Dedizione: svegliarsi così presto',
+    mood: 'playful',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 7,
+  },
+  {
+    text: 'Il club dell\'alba',
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 7,
+  },
+  {
+    text: ({ name }) => `${name}, alzati e lavora`,
+    mood: 'playful',
+    static: { language: 'it', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 7,
+  },
+  {
+    text: 'Ora di lavorare sodo nel pomeriggio',
+    mood: 'professional',
+    static: { language: 'it', incognito: false, workMode: true, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 14 && hour < 16,
+  },
+  {
+    text: 'Ore di punta di produttività',
+    mood: 'professional',
+    static: { language: 'it', incognito: false, workMode: true, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 14 && hour < 16,
+  },
+  {
+    text: ({ name }) => `${name}, spacca il pomeriggio`,
+    mood: 'professional',
+    static: { language: 'it', incognito: false, workMode: true, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 14 && hour < 16,
+  },
+  {
+    text: 'Quasi ora di uscire',
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: true, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 18,
+  },
+  {
+    text: 'Ultimo sforzo',
+    mood: 'casual',
+    static: { language: 'it', incognito: false, workMode: true, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 18,
+  },
+  {
+    text: ({ name }) => `${name}, finisci forte`,
+    mood: 'professional',
+    static: { language: 'it', incognito: false, workMode: true, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 18,
+  },
+];

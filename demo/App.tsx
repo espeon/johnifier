@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEnhancedGreeting, useEnhancedContext, Language, TempUnit } from '../lib-react';
+import { useEnhancedGreeting, useEnhancedContext, Language, TempUnit, Variant } from '../lib-react';
+
+type NameFilter = 'any' | 'with-names' | 'without-names';
+type VariantFilter = 'any' | 'standard' | 'creative';
 
 function App() {
   const [name, setName] = useState(() => localStorage.getItem('johnifier_name') || '');
@@ -9,6 +12,8 @@ function App() {
   const [techOk, setTechOk] = useState(() => localStorage.getItem('johnifier_techOk') === 'true');
   const [language, setLanguage] = useState<Language>(() => (localStorage.getItem('johnifier_language') as Language) || 'en');
   const [tempUnit, setTempUnit] = useState<TempUnit>(() => (localStorage.getItem('johnifier_tempUnit') as TempUnit) || 'C');
+  const [nameFilter, setNameFilter] = useState<NameFilter>(() => (localStorage.getItem('johnifier_nameFilter') as NameFilter) || 'any');
+  const [variantFilter, setVariantFilter] = useState<VariantFilter>(() => (localStorage.getItem('johnifier_variantFilter') as VariantFilter) || 'any');
   const [mounted, setMounted] = useState(false);
   const [greetingKey, setGreetingKey] = useState(0);
   const [showAllGreetings, setShowAllGreetings] = useState(false);
@@ -40,6 +45,19 @@ function App() {
     localStorage.setItem('johnifier_tempUnit', tempUnit);
   }, [tempUnit]);
 
+  useEffect(() => {
+    localStorage.setItem('johnifier_nameFilter', nameFilter);
+  }, [nameFilter]);
+
+  useEffect(() => {
+    localStorage.setItem('johnifier_variantFilter', variantFilter);
+  }, [variantFilter]);
+
+  // Convert nameFilter to hasNameFilter for the hook
+  const hasNameFilter = nameFilter === 'any' ? undefined : nameFilter === 'with-names';
+
+  // Convert variantFilter to variant for the hook
+  const variant: Variant | undefined = variantFilter === 'any' ? undefined : (variantFilter as Variant);
 
   const greeting = useEnhancedGreeting({
     name: name || undefined,
@@ -51,6 +69,8 @@ function App() {
     weather: context.weather,
     tempUnit,
     refreshKey: greetingKey,
+    hasNameFilter,
+    variant,
   });
 
   useEffect(() => {
@@ -153,80 +173,122 @@ function App() {
 
             {/* Controls */}
             <motion.div
-              className="flex flex-wrap gap-2 items-center max-w-4xl"
+              className="flex flex-col gap-3 max-w-4xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
             >
-              {/* Name input */}
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="name"
-                className="bg-[#e8e8e8]/5 border border-[#e8e8e8]/10 rounded-md
-                         px-3 py-1.5 font-orbiter text-xs tracking-wide w-32
-                         focus:outline-none focus:border-[#e8e8e8]/30 focus:bg-[#e8e8e8]/8
-                         placeholder:text-[#e8e8e8]/30 transition-all duration-300"
-              />
+              {/* First row: Name input and language selector */}
+              <div className="flex flex-wrap gap-2 items-center">
+                {/* Name input */}
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="name"
+                  className="bg-[#e8e8e8]/5 border border-[#e8e8e8]/10 rounded-md
+                           px-3 py-1.5 font-orbiter text-xs tracking-wide w-32
+                           focus:outline-none focus:border-[#e8e8e8]/30 focus:bg-[#e8e8e8]/8
+                           placeholder:text-[#e8e8e8]/30 transition-all duration-300"
+                />
 
-              {/* Divider */}
-              <div className="w-px h-4 bg-[#e8e8e8]/10" />
+                {/* Divider */}
+                <div className="w-px h-4 bg-[#e8e8e8]/10" />
 
-              {/* Language selector */}
-              {(['en', 'es', 'fr', 'de', 'ja'] as Language[]).map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => setLanguage(lang)}
-                  className={`px-2 py-1.5 font-orbiter text-xs uppercase tracking-wider rounded-md
-                            transition-all duration-300 border
-                            ${language === lang
-                              ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
-                              : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
-                            }`}
-                >
-                  {lang}
-                </button>
-              ))}
+                {/* Language selector */}
+                {(['en', 'es', 'fr', 'de', 'ja', 'zh-Hans', 'zh-Hant', 'ko', 'pt', 'it', 'ru'] as Language[]).map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => setLanguage(lang)}
+                    className={`px-2 py-1.5 font-orbiter text-xs uppercase tracking-wider rounded-md
+                              transition-all duration-300 border
+                              ${language === lang
+                                ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                                : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
+                              }`}
+                    title={lang === 'zh-Hans' ? 'Chinese Simplified' : lang === 'zh-Hant' ? 'Chinese Traditional' : lang === 'ko' ? 'Korean' : lang === 'pt' ? 'Portuguese' : lang === 'it' ? 'Italian' : lang === 'ru' ? 'Russian' : ''}
+                  >
+                    {lang}
+                  </button>
+                ))}
+              </div>
 
-              {/* Divider */}
-              <div className="w-px h-4 bg-[#e8e8e8]/10" />
+              {/* Second row: Temperature, name filter, and toggles */}
+              <div className="flex flex-wrap gap-2 items-center">
+                {/* Temperature unit selector */}
+                {(['C', 'F'] as TempUnit[]).map((unit) => (
+                  <button
+                    key={unit}
+                    onClick={() => setTempUnit(unit)}
+                    className={`px-2 py-1.5 font-orbiter text-xs uppercase tracking-wider rounded-md
+                              transition-all duration-300 border
+                              ${tempUnit === unit
+                                ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                                : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
+                              }`}
+                  >
+                    °{unit}
+                  </button>
+                ))}
 
-              {/* Temperature unit selector */}
-              {(['C', 'F'] as TempUnit[]).map((unit) => (
-                <button
-                  key={unit}
-                  onClick={() => setTempUnit(unit)}
-                  className={`px-2 py-1.5 font-orbiter text-xs uppercase tracking-wider rounded-md
-                            transition-all duration-300 border
-                            ${tempUnit === unit
-                              ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
-                              : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
-                            }`}
-                >
-                  °{unit}
-                </button>
-              ))}
+                {/* Divider */}
+                <div className="w-px h-4 bg-[#e8e8e8]/10" />
 
-              {/* Divider */}
-              <div className="w-px h-4 bg-[#e8e8e8]/10" />
+                {/* Name filter */}
+                {(['any', 'with-names', 'without-names'] as NameFilter[]).map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setNameFilter(filter)}
+                    className={`px-2 py-1.5 font-orbiter text-xs tracking-wider rounded-md
+                              transition-all duration-300 border whitespace-nowrap
+                              ${nameFilter === filter
+                                ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                                : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
+                              }`}
+                  >
+                    {filter === 'with-names' ? 'names' : filter === 'without-names' ? 'no names' : 'any'}
+                  </button>
+                ))}
 
-              {/* Toggles */}
-              <ToggleButton
-                label="incognito"
-                active={incognito}
-                onClick={() => setIncognito(!incognito)}
-              />
-              <ToggleButton
-                label="work"
-                active={workMode}
-                onClick={() => setWorkMode(!workMode)}
-              />
-              <ToggleButton
-                label="tech"
-                active={techOk}
-                onClick={() => setTechOk(!techOk)}
-              />
+                {/* Divider */}
+                <div className="w-px h-4 bg-[#e8e8e8]/10" />
+
+                {/* Variant filter */}
+                {(['any', 'standard', 'creative'] as VariantFilter[]).map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setVariantFilter(filter)}
+                    className={`px-2 py-1.5 font-orbiter text-xs tracking-wider rounded-md
+                              transition-all duration-300 border whitespace-nowrap
+                              ${variantFilter === filter
+                                ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                                : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
+                              }`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+
+                {/* Divider */}
+                <div className="w-px h-4 bg-[#e8e8e8]/10" />
+
+                {/* Toggles */}
+                <ToggleButton
+                  label="incognito"
+                  active={incognito}
+                  onClick={() => setIncognito(!incognito)}
+                />
+                <ToggleButton
+                  label="work"
+                  active={workMode}
+                  onClick={() => setWorkMode(!workMode)}
+                />
+                <ToggleButton
+                  label="tech"
+                  active={techOk}
+                  onClick={() => setTechOk(!techOk)}
+                />
+              </div>
             </motion.div>
           </div>
         </main>

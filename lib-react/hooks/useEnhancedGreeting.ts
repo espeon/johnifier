@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { selectGreeting, Language, TempUnit, GreetingResult } from '../../lib';
+import { selectGreeting, Language, TempUnit, GreetingResult, Variant } from '../../lib';
 
 export interface EnhancedGreetingProps {
   name?: string;
@@ -11,6 +11,8 @@ export interface EnhancedGreetingProps {
   weather?: { condition: string; temp: number } | null;
   tempUnit?: TempUnit;
   refreshKey?: number;
+  hasNameFilter?: boolean;
+  variant?: Variant;
 }
 
 /**
@@ -48,6 +50,8 @@ export function useEnhancedGreeting({
   weather = null,
   tempUnit = 'C',
   refreshKey = 0,
+  hasNameFilter,
+  variant,
 }: EnhancedGreetingProps = {}): GreetingResult & { allGreetings: string[] } {
   const [mounted, setMounted] = useState(false);
   const [randomSeed, setRandomSeed] = useState(() => Math.random());
@@ -61,7 +65,7 @@ export function useEnhancedGreeting({
     if (mounted) {
       setRandomSeed(Math.random());
     }
-  }, [name, incognito, workMode, techOk, language, tempUnit, refreshKey, mounted]);
+  }, [name, incognito, workMode, techOk, language, tempUnit, hasNameFilter, variant, refreshKey, mounted]);
 
   const result = useMemo(() => {
     if (!mounted) {
@@ -83,11 +87,13 @@ export function useEnhancedGreeting({
       weather,
       tempUnit,
       randomSeed,
+      hasNameFilter,
+      variant,
     });
-  }, [mounted, randomSeed, name, incognito, workMode, techOk, language, battery, weather, tempUnit]);
+  }, [mounted, randomSeed, name, incognito, workMode, techOk, language, battery, weather, tempUnit, hasNameFilter, variant]);
 
   return result;
 }
 
 // Re-export types for convenience
-export type { Language, TempUnit };
+export type { Language, TempUnit, Variant };

@@ -6,13 +6,13 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: 'Lunch break vibes',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 11 && hour < 14,
   },
   {
     text: 'Time for a snack?',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 14,
   },
   {
@@ -24,7 +24,7 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: 'Midday fuel incoming',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 14,
   },
 
@@ -32,13 +32,13 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: 'Coffee time ☕',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 9 && hour < 11,
   },
   {
     text: 'Running on caffeine',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 9 && hour < 11,
   },
   {
@@ -52,13 +52,13 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: 'Golden hour energy',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 19,
   },
   {
     text: 'Sunset soon',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 19,
   },
   {
@@ -72,13 +72,13 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: 'It\'s midnight somewhere... oh wait, here',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour === 0,
   },
   {
     text: 'The clock strikes twelve',
     mood: 'mysterious',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour === 0,
   },
   {
@@ -92,13 +92,13 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: '3AM thoughts hitting different',
     mood: 'mysterious',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour === 3,
   },
   {
     text: 'The 3AM hour of truth',
     mood: 'mysterious',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour === 3,
   },
   {
@@ -112,13 +112,13 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: 'High noon',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour === 12,
   },
   {
     text: 'Twelve o\'clock sharp',
     mood: 'professional',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour === 12,
   },
 
@@ -126,13 +126,13 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: 'Dedication: waking up this early',
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 7,
   },
   {
     text: 'The sunrise club',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: false },
+    static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 7,
   },
   {
@@ -146,13 +146,13 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: 'Afternoon grind time',
     mood: 'professional',
-    static: { language: 'en', incognito: false, workMode: true },
+    static: { language: 'en', incognito: false, workMode: true, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 14 && hour < 16,
   },
   {
     text: 'Peak productivity hours',
     mood: 'professional',
-    static: { language: 'en', incognito: false, workMode: true },
+    static: { language: 'en', incognito: false, workMode: true, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 14 && hour < 16,
   },
   {
@@ -166,13 +166,13 @@ export const timeSpecificGreetings: GreetingDefinition[] = [
   {
     text: 'Almost quitting time',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: true },
+    static: { language: 'en', incognito: false, workMode: true, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 18,
   },
   {
     text: 'Homestretch',
     mood: 'casual',
-    static: { language: 'en', incognito: false, workMode: true },
+    static: { language: 'en', incognito: false, workMode: true, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 17 && hour < 18,
   },
   {

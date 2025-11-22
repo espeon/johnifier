@@ -1,4 +1,4 @@
-import { getMatchingGreetings, Language, Mood, GreetingResult, GreetingContext, TempUnit } from './greetings';
+import { getMatchingGreetings, Language, Mood, GreetingResult, GreetingContext, TempUnit, Variant } from './greetings';
 
 export interface SelectGreetingOptions {
   name?: string;
@@ -10,6 +10,8 @@ export interface SelectGreetingOptions {
   weather?: { condition: string; temp: number } | null;
   tempUnit?: TempUnit;
   randomSeed?: number;
+  hasNameFilter?: boolean; // undefined = any, true = only with names, false = only without names
+  variant?: Variant; // undefined = any, standard = traditional, creative = unique/playful
 }
 
 /**
@@ -46,12 +48,27 @@ export function selectGreeting({
   weather = null,
   tempUnit = 'C',
   randomSeed = Math.random(),
+  hasNameFilter,
+  variant,
 }: SelectGreetingOptions = {}): GreetingResult & { allGreetings: string[] } {
   const now = new Date();
   const hour = now.getHours();
   const day = now.getDay();
   const month = now.getMonth();
-  const hasName = !!name;
+
+  // Determine hasName based on filter and name availability
+  let hasName: boolean | undefined;
+  if (hasNameFilter === true) {
+    // "with-names" mode: only show name greetings if a name is provided
+    // Otherwise show all greetings to avoid showing "undefined" in the text
+    hasName = !!name ? true : undefined;
+  } else if (hasNameFilter === false) {
+    // "without-names" mode: never show name greetings
+    hasName = false;
+  } else {
+    // "any" mode: show all greeting types
+    hasName = undefined;
+  }
 
   // Determine time of day for metadata
   let timeOfDay: 'morning' | 'afternoon' | 'evening' | 'lateNight';
@@ -67,6 +84,7 @@ export function selectGreeting({
     workMode,
     techOk,
     hasName,
+    variant,
   });
 
   // Filter candidates by dynamic criteria (time, battery, weather)

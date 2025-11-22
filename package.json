@@ -16,6 +16,61 @@
       "types": "./dist/lib-react/index.d.ts",
       "import": "./dist/lib-react/index.js",
       "require": "./dist/lib-react/index.cjs"
+    },
+    "./lang/en": {
+      "types": "./dist/lib/greetings/languages/en.d.ts",
+      "import": "./dist/lib/greetings/languages/en.js",
+      "require": "./dist/lib/greetings/languages/en.cjs"
+    },
+    "./lang/es": {
+      "types": "./dist/lib/greetings/languages/es.d.ts",
+      "import": "./dist/lib/greetings/languages/es.js",
+      "require": "./dist/lib/greetings/languages/es.cjs"
+    },
+    "./lang/fr": {
+      "types": "./dist/lib/greetings/languages/fr.d.ts",
+      "import": "./dist/lib/greetings/languages/fr.js",
+      "require": "./dist/lib/greetings/languages/fr.cjs"
+    },
+    "./lang/de": {
+      "types": "./dist/lib/greetings/languages/de.d.ts",
+      "import": "./dist/lib/greetings/languages/de.js",
+      "require": "./dist/lib/greetings/languages/de.cjs"
+    },
+    "./lang/ja": {
+      "types": "./dist/lib/greetings/languages/ja.d.ts",
+      "import": "./dist/lib/greetings/languages/ja.js",
+      "require": "./dist/lib/greetings/languages/ja.cjs"
+    },
+    "./lang/zh-Hans": {
+      "types": "./dist/lib/greetings/languages/zh-Hans.d.ts",
+      "import": "./dist/lib/greetings/languages/zh-Hans.js",
+      "require": "./dist/lib/greetings/languages/zh-Hans.cjs"
+    },
+    "./lang/zh-Hant": {
+      "types": "./dist/lib/greetings/languages/zh-Hant.d.ts",
+      "import": "./dist/lib/greetings/languages/zh-Hant.js",
+      "require": "./dist/lib/greetings/languages/zh-Hant.cjs"
+    },
+    "./lang/ko": {
+      "types": "./dist/lib/greetings/languages/ko.d.ts",
+      "import": "./dist/lib/greetings/languages/ko.js",
+      "require": "./dist/lib/greetings/languages/ko.cjs"
+    },
+    "./lang/pt": {
+      "types": "./dist/lib/greetings/languages/pt.d.ts",
+      "import": "./dist/lib/greetings/languages/pt.js",
+      "require": "./dist/lib/greetings/languages/pt.cjs"
+    },
+    "./lang/it": {
+      "types": "./dist/lib/greetings/languages/it.d.ts",
+      "import": "./dist/lib/greetings/languages/it.js",
+      "require": "./dist/lib/greetings/languages/it.cjs"
+    },
+    "./lang/ru": {
+      "types": "./dist/lib/greetings/languages/ru.d.ts",
+      "import": "./dist/lib/greetings/languages/ru.js",
+      "require": "./dist/lib/greetings/languages/ru.cjs"
     }
   },
   "files": [
