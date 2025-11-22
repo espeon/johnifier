@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Theme, ThemeName, themes } from '../themes';
+import { ThemeName, themes } from '../themes';
 
 const THEME_STORAGE_KEY = 'johnifier_theme';
 

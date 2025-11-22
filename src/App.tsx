@@ -102,13 +102,6 @@ function App() {
     setter(prev => !prev);
   };
 
-  const moodStyles = {
-    casual: `text-[${theme.colors.secondary}]`,
-    playful: `text-[${theme.colors.accent}]`,
-    professional: `text-[${theme.colors.accentAlt}]`,
-    mysterious: `text-[${theme.colors.primaryLight}]`,
-  };
-
   const moodColors = {
     casual: theme.colors.secondary,
     playful: theme.colors.accent,

@@ -98,7 +98,7 @@ export function useEnhancedGreeting({
     const isSunday = day === 0;
 
     // Time of day for return
-    const timeOfDay =
+    const timeOfDay: 'morning' | 'afternoon' | 'evening' | 'lateNight' =
       isMorning ? 'morning' :
       isAfternoon ? 'afternoon' :
       isEvening ? 'evening' :
@@ -114,8 +114,8 @@ export function useEnhancedGreeting({
       { filter: () => weather?.condition === 'rainy', text: `Rainy vibes today 🌧️`, mood: 'casual' },
       { filter: () => weather?.condition === 'snowy', text: `Winter wonderland out there ❄️`, mood: 'playful' },
       { filter: () => weather?.condition === 'clear' && isMorning, text: `Gorgeous morning for it ☀️`, mood: 'casual' },
-      { filter: () => weather?.temp && weather.temp > 30, text: `Stay cool out there (${weather.temp}°C)`, mood: 'casual' },
-      { filter: () => weather?.temp && weather.temp < 0, text: `Bundle up! (${weather.temp}°C)`, mood: 'casual' },
+      { filter: () => !!(weather?.temp && weather.temp > 30), text: () => `Stay cool out there (${weather?.temp}°C)`, mood: 'casual' },
+      { filter: () => !!(weather?.temp !== undefined && weather.temp < 0), text: () => `Bundle up! (${weather?.temp}°C)`, mood: 'casual' },
 
       // === MORNING GREETINGS WITH NAME ===
       { filter: () => !incognito && !workMode && hasName && isMorning, text: `${t.morning}, ${name}`, mood: 'casual' },
