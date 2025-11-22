@@ -11,6 +11,7 @@ export interface EnhancedGreetingProps {
   weather?: { condition: string; temp: number } | null;
   tempUnit?: TempUnit;
   refreshKey?: number;
+  hasNameFilter?: boolean;
 }
 
 /**
@@ -48,6 +49,7 @@ export function useEnhancedGreeting({
   weather = null,
   tempUnit = 'C',
   refreshKey = 0,
+  hasNameFilter,
 }: EnhancedGreetingProps = {}): GreetingResult & { allGreetings: string[] } {
   const [mounted, setMounted] = useState(false);
   const [randomSeed, setRandomSeed] = useState(() => Math.random());
@@ -61,7 +63,7 @@ export function useEnhancedGreeting({
     if (mounted) {
       setRandomSeed(Math.random());
     }
-  }, [name, incognito, workMode, techOk, language, tempUnit, refreshKey, mounted]);
+  }, [name, incognito, workMode, techOk, language, tempUnit, hasNameFilter, refreshKey, mounted]);
 
   const result = useMemo(() => {
     if (!mounted) {
@@ -83,8 +85,9 @@ export function useEnhancedGreeting({
       weather,
       tempUnit,
       randomSeed,
+      hasNameFilter,
     });
-  }, [mounted, randomSeed, name, incognito, workMode, techOk, language, battery, weather, tempUnit]);
+  }, [mounted, randomSeed, name, incognito, workMode, techOk, language, battery, weather, tempUnit, hasNameFilter]);
 
   return result;
 }

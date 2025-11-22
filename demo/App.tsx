@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEnhancedGreeting, useEnhancedContext, Language, TempUnit } from '../lib-react';
 
+type NameFilter = 'any' | 'with-names' | 'without-names';
+
 function App() {
   const [name, setName] = useState(() => localStorage.getItem('johnifier_name') || '');
   const [incognito, setIncognito] = useState(() => localStorage.getItem('johnifier_incognito') === 'true');
@@ -9,6 +11,7 @@ function App() {
   const [techOk, setTechOk] = useState(() => localStorage.getItem('johnifier_techOk') === 'true');
   const [language, setLanguage] = useState<Language>(() => (localStorage.getItem('johnifier_language') as Language) || 'en');
   const [tempUnit, setTempUnit] = useState<TempUnit>(() => (localStorage.getItem('johnifier_tempUnit') as TempUnit) || 'C');
+  const [nameFilter, setNameFilter] = useState<NameFilter>(() => (localStorage.getItem('johnifier_nameFilter') as NameFilter) || 'any');
   const [mounted, setMounted] = useState(false);
   const [greetingKey, setGreetingKey] = useState(0);
   const [showAllGreetings, setShowAllGreetings] = useState(false);
@@ -40,6 +43,12 @@ function App() {
     localStorage.setItem('johnifier_tempUnit', tempUnit);
   }, [tempUnit]);
 
+  useEffect(() => {
+    localStorage.setItem('johnifier_nameFilter', nameFilter);
+  }, [nameFilter]);
+
+  // Convert nameFilter to hasNameFilter for the hook
+  const hasNameFilter = nameFilter === 'any' ? undefined : nameFilter === 'with-names';
 
   const greeting = useEnhancedGreeting({
     name: name || undefined,
@@ -51,6 +60,7 @@ function App() {
     weather: context.weather,
     tempUnit,
     refreshKey: greetingKey,
+    hasNameFilter,
   });
 
   useEffect(() => {
@@ -206,6 +216,25 @@ function App() {
                             }`}
                 >
                   °{unit}
+                </button>
+              ))}
+
+              {/* Divider */}
+              <div className="w-px h-4 bg-[#e8e8e8]/10" />
+
+              {/* Name filter */}
+              {(['any', 'with-names', 'without-names'] as NameFilter[]).map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setNameFilter(filter)}
+                  className={`px-2 py-1.5 font-orbiter text-xs tracking-wider rounded-md
+                            transition-all duration-300 border whitespace-nowrap
+                            ${nameFilter === filter
+                              ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                              : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
+                            }`}
+                >
+                  {filter === 'with-names' ? 'names' : filter === 'without-names' ? 'no names' : 'any'}
                 </button>
               ))}
 

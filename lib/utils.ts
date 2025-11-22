@@ -10,6 +10,7 @@ export interface SelectGreetingOptions {
   weather?: { condition: string; temp: number } | null;
   tempUnit?: TempUnit;
   randomSeed?: number;
+  hasNameFilter?: boolean; // undefined = any, true = only with names, false = only without names
 }
 
 /**
@@ -46,12 +47,15 @@ export function selectGreeting({
   weather = null,
   tempUnit = 'C',
   randomSeed = Math.random(),
+  hasNameFilter,
 }: SelectGreetingOptions = {}): GreetingResult & { allGreetings: string[] } {
   const now = new Date();
   const hour = now.getHours();
   const day = now.getDay();
   const month = now.getMonth();
-  const hasName = !!name;
+
+  // Determine hasName: use filter if provided, otherwise auto-detect from name
+  const hasName = hasNameFilter !== undefined ? hasNameFilter : (!!name ? true : undefined);
 
   // Determine time of day for metadata
   let timeOfDay: 'morning' | 'afternoon' | 'evening' | 'lateNight';

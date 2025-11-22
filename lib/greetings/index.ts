@@ -1,4 +1,4 @@
-import { GreetingDefinition, StaticFilters, Language, Mood, DynamicFilters, GreetingResult, TempUnit } from './types';
+import { GreetingDefinition, StaticFilters, Language, Mood, DynamicFilters, GreetingResult, TempUnit, GreetingContext } from './types';
 
 // English greetings
 import { techGreetings } from './en/tech';
@@ -175,4 +175,4 @@ export function getMatchingGreetings(filters: StaticFilters): GreetingDefinition
 }
 
 export { allGreetings };
-export type { Language, Mood, GreetingDefinition, StaticFilters, DynamicFilters, GreetingResult, TempUnit };
+export type { Language, Mood, GreetingDefinition, StaticFilters, DynamicFilters, GreetingResult, TempUnit, GreetingContext };
