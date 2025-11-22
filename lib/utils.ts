@@ -54,8 +54,19 @@ export function selectGreeting({
   const day = now.getDay();
   const month = now.getMonth();
 
-  // Determine hasName: use filter if provided, otherwise auto-detect from name
-  const hasName = hasNameFilter !== undefined ? hasNameFilter : (!!name ? true : undefined);
+  // Determine hasName based on filter and name availability
+  let hasName: boolean | undefined;
+  if (hasNameFilter === true) {
+    // "with-names" mode: only show name greetings if a name is provided
+    // Otherwise show all greetings to avoid showing "undefined" in the text
+    hasName = !!name ? true : undefined;
+  } else if (hasNameFilter === false) {
+    // "without-names" mode: never show name greetings
+    hasName = false;
+  } else {
+    // "any" mode: show all greeting types
+    hasName = undefined;
+  }
 
   // Determine time of day for metadata
   let timeOfDay: 'morning' | 'afternoon' | 'evening' | 'lateNight';
