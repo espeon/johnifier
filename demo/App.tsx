@@ -174,7 +174,7 @@ function App() {
               <div className="w-px h-4 bg-[#e8e8e8]/10" />
 
               {/* Language selector */}
-              {(['en', 'es', 'fr', 'de', 'ja'] as Language[]).map((lang) => (
+              {(['en', 'es', 'fr', 'de', 'ja', 'zh-Hans', 'zh-Hant', 'ko', 'pt', 'it', 'ru'] as Language[]).map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
@@ -184,6 +184,7 @@ function App() {
                               ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
                               : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10'
                             }`}
+                  title={lang === 'zh-Hans' ? 'Chinese Simplified' : lang === 'zh-Hant' ? 'Chinese Traditional' : lang === 'ko' ? 'Korean' : lang === 'pt' ? 'Portuguese' : lang === 'it' ? 'Italian' : lang === 'ru' ? 'Russian' : ''}
                 >
                   {lang}
                 </button>

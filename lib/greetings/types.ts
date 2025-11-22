@@ -1,4 +1,4 @@
-export type Language = 'en' | 'es' | 'fr' | 'de' | 'ja';
+export type Language = 'en' | 'es' | 'fr' | 'de' | 'ja' | 'zh-Hans' | 'zh-Hant' | 'ko' | 'pt' | 'it' | 'ru';
 export type Mood = 'casual' | 'professional' | 'playful' | 'mysterious';
 
 // Static filter criteria (can be pre-indexed)

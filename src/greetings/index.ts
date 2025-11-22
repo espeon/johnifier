@@ -27,6 +27,30 @@ import { seasonalGreetings as deSeasonalGreetings } from './de/seasonal';
 import { generalGreetings as jaGeneralGreetings } from './ja/general';
 import { seasonalGreetings as jaSeasonalGreetings } from './ja/seasonal';
 
+// Chinese Simplified greetings
+import { generalGreetings as zhHansGeneralGreetings } from './zh-Hans/general';
+import { seasonalGreetings as zhHansSeasonalGreetings } from './zh-Hans/seasonal';
+
+// Chinese Traditional greetings
+import { generalGreetings as zhHantGeneralGreetings } from './zh-Hant/general';
+import { seasonalGreetings as zhHantSeasonalGreetings } from './zh-Hant/seasonal';
+
+// Korean greetings
+import { generalGreetings as koGeneralGreetings } from './ko/general';
+import { seasonalGreetings as koSeasonalGreetings } from './ko/seasonal';
+
+// Portuguese greetings
+import { generalGreetings as ptGeneralGreetings } from './pt/general';
+import { seasonalGreetings as ptSeasonalGreetings } from './pt/seasonal';
+
+// Italian greetings
+import { generalGreetings as itGeneralGreetings } from './it/general';
+import { seasonalGreetings as itSeasonalGreetings } from './it/seasonal';
+
+// Russian greetings
+import { generalGreetings as ruGeneralGreetings } from './ru/general';
+import { seasonalGreetings as ruSeasonalGreetings } from './ru/seasonal';
+
 // Combine all greetings
 const allGreetings: GreetingDefinition[] = [
   // English
@@ -55,6 +79,30 @@ const allGreetings: GreetingDefinition[] = [
   // Japanese
   ...jaGeneralGreetings,
   ...jaSeasonalGreetings,
+
+  // Chinese Simplified
+  ...zhHansGeneralGreetings,
+  ...zhHansSeasonalGreetings,
+
+  // Chinese Traditional
+  ...zhHantGeneralGreetings,
+  ...zhHantSeasonalGreetings,
+
+  // Korean
+  ...koGeneralGreetings,
+  ...koSeasonalGreetings,
+
+  // Portuguese
+  ...ptGeneralGreetings,
+  ...ptSeasonalGreetings,
+
+  // Italian
+  ...itGeneralGreetings,
+  ...itSeasonalGreetings,
+
+  // Russian
+  ...ruGeneralGreetings,
+  ...ruSeasonalGreetings,
 ];
 
 // Build indexed structure for O(1) lookup instead of O(n) filtering
