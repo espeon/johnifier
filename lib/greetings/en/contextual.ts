@@ -90,10 +90,52 @@ export const contextualGreetings: GreetingDefinition[] = [
     dynamic: ({ weather }) => weather?.condition === 'rainy',
   },
   {
+    text: 'Perfect weather for staying indoors 🌧️',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'rainy',
+  },
+  {
+    text: 'Grab an umbrella! ☔',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'rainy',
+  },
+  {
     text: 'Winter wonderland out there ❄️',
     mood: 'playful',
     static: { language: 'en', hasName: false },
     dynamic: ({ weather }) => weather?.condition === 'snowy',
+  },
+  {
+    text: 'Snow day energy ⛄',
+    mood: 'playful',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'snowy',
+  },
+  {
+    text: 'Cloudy with a chance of productivity ☁️',
+    mood: 'playful',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'cloudy',
+  },
+  {
+    text: 'Overcast but optimistic ☁️',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'cloudy',
+  },
+  {
+    text: 'Foggy morning mysteries 🌫️',
+    mood: 'playful',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'foggy',
+  },
+  {
+    text: 'Misty vibes out there 🌫️',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'foggy',
   },
   {
     text: 'Gorgeous morning for it ☀️',
@@ -101,6 +143,43 @@ export const contextualGreetings: GreetingDefinition[] = [
     static: { language: 'en', hasName: false },
     dynamic: ({ hour, weather }) =>
       hour !== undefined && weather?.condition === 'clear' && hour >= 5 && hour < 12,
+  },
+  {
+    text: 'Beautiful day ahead ☀️',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'clear',
+  },
+  {
+    text: 'Clear skies, clear mind ✨',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'clear',
+  },
+  {
+    text: 'Sunshine state of mind ☀️',
+    mood: 'playful',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'clear',
+  },
+  {
+    text: 'Perfect evening sky 🌅',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ hour, weather }) =>
+      hour !== undefined && weather?.condition === 'clear' && hour >= 17 && hour < 20,
+  },
+  {
+    text: 'Windy out there! 💨',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'windy',
+  },
+  {
+    text: 'Breezy day vibes 🍃',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.condition === 'windy',
   },
   {
     text: ({ weather, tempUnit }) => {
@@ -114,6 +193,22 @@ export const contextualGreetings: GreetingDefinition[] = [
   },
   {
     text: ({ weather, tempUnit }) => {
+      if (!weather?.temp) return 'Hot one today!';
+      const temp = tempUnit === 'F' ? Math.round(weather.temp * 9/5 + 32) : weather.temp;
+      return `Hot one today! (${temp}°${tempUnit || 'C'})`;
+    },
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp > 35,
+  },
+  {
+    text: 'Scorching out there 🔥',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp > 38,
+  },
+  {
+    text: ({ weather, tempUnit }) => {
       if (!weather?.temp) return 'Bundle up!';
       const temp = tempUnit === 'F' ? Math.round(weather.temp * 9/5 + 32) : weather.temp;
       return `Bundle up! (${temp}°${tempUnit || 'C'})`;
@@ -121,5 +216,71 @@ export const contextualGreetings: GreetingDefinition[] = [
     mood: 'casual',
     static: { language: 'en', hasName: false },
     dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp < 0,
+  },
+  {
+    text: ({ weather, tempUnit }) => {
+      if (!weather?.temp) return 'Freezing out there!';
+      const temp = tempUnit === 'F' ? Math.round(weather.temp * 9/5 + 32) : weather.temp;
+      return `Freezing out there! (${temp}°${tempUnit || 'C'})`;
+    },
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp < -10,
+  },
+  {
+    text: 'Perfect sweater weather 🧥',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp >= 10 && weather.temp <= 18,
+  },
+  {
+    text: ({ weather, tempUnit }) => {
+      if (!weather?.temp) return 'Nice temperature out';
+      const temp = tempUnit === 'F' ? Math.round(weather.temp * 9/5 + 32) : weather.temp;
+      return `Perfect weather (${temp}°${tempUnit || 'C'})`;
+    },
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp >= 18 && weather.temp <= 24,
+  },
+  {
+    text: 'Goldilocks weather—just right 👌',
+    mood: 'playful',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp >= 20 && weather.temp <= 22,
+  },
+  {
+    text: ({ weather, tempUnit }) => {
+      if (!weather?.temp) return 'Bit chilly out';
+      const temp = tempUnit === 'F' ? Math.round(weather.temp * 9/5 + 32) : weather.temp;
+      return `Bit chilly (${temp}°${tempUnit || 'C'})`;
+    },
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp >= 0 && weather.temp < 10,
+  },
+  {
+    text: ({ weather, tempUnit }) => {
+      if (!weather?.temp) return 'Warm one today';
+      const temp = tempUnit === 'F' ? Math.round(weather.temp * 9/5 + 32) : weather.temp;
+      return `Warm one today (${temp}°${tempUnit || 'C'})`;
+    },
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ weather }) => weather?.temp !== undefined && weather.temp >= 24 && weather.temp <= 30,
+  },
+  {
+    text: 'Crisp morning air 🍂',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ hour, weather }) =>
+      hour !== undefined && hour >= 5 && hour < 12 && weather?.temp !== undefined && weather.temp >= 5 && weather.temp < 15,
+  },
+  {
+    text: 'Cozy evening weather 🌙',
+    mood: 'casual',
+    static: { language: 'en', hasName: false },
+    dynamic: ({ hour, weather }) =>
+      hour !== undefined && hour >= 18 && weather?.temp !== undefined && weather.temp >= 10 && weather.temp < 20,
   },
 ];
