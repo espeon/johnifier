@@ -44,6 +44,8 @@ function App() {
   const [tempUnit, setTempUnit] = useState<TempUnit>(() => (localStorage.getItem('johnifier_tempUnit') as TempUnit) || 'C');
   const [nameFilter, setNameFilter] = useState<NameFilter>(() => (localStorage.getItem('johnifier_nameFilter') as NameFilter) || 'any');
   const [variantFilter, setVariantFilter] = useState<VariantFilter>(() => (localStorage.getItem('johnifier_variantFilter') as VariantFilter) || 'any');
+  const [onlyDynamic, setOnlyDynamic] = useState(() => localStorage.getItem('johnifier_onlyDynamic') === 'true');
+  const [onlyTimeBased, setOnlyTimeBased] = useState(() => localStorage.getItem('johnifier_onlyTimeBased') === 'true');
   const [mounted, setMounted] = useState(false);
   const [greetingKey, setGreetingKey] = useState(0);
   const [showAllGreetings, setShowAllGreetings] = useState(false);
@@ -89,6 +91,14 @@ function App() {
     localStorage.setItem('johnifier_variantFilter', variantFilter);
   }, [variantFilter]);
 
+  useEffect(() => {
+    localStorage.setItem('johnifier_onlyDynamic', String(onlyDynamic));
+  }, [onlyDynamic]);
+
+  useEffect(() => {
+    localStorage.setItem('johnifier_onlyTimeBased', String(onlyTimeBased));
+  }, [onlyTimeBased]);
+
   // Convert nameFilter to hasNameFilter for the hook
   const hasNameFilter = nameFilter === 'any' ? undefined : nameFilter === 'with-names';
 
@@ -108,6 +118,8 @@ function App() {
     refreshKey: greetingKey,
     hasNameFilter,
     variant,
+    onlyDynamic,
+    onlyTimeBased,
   });
 
   useEffect(() => {
@@ -324,6 +336,21 @@ function App() {
                   label="tech"
                   active={techOk}
                   onClick={() => setTechOk(!techOk)}
+                />
+
+                {/* Divider */}
+                <div className="w-px h-4 bg-[#e8e8e8]/10" />
+
+                {/* Filter toggles */}
+                <ToggleButton
+                  label="dynamic"
+                  active={onlyDynamic}
+                  onClick={() => setOnlyDynamic(!onlyDynamic)}
+                />
+                <ToggleButton
+                  label="time-based"
+                  active={onlyTimeBased}
+                  onClick={() => setOnlyTimeBased(!onlyTimeBased)}
                 />
               </div>
             </motion.div>

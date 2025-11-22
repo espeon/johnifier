@@ -13,6 +13,33 @@ export interface SelectGreetingOptions {
   randomSeed?: number;
   hasNameFilter?: boolean; // undefined = any, true = only with names, false = only without names
   variant?: Variant; // undefined = any, standard = traditional, creative = unique/playful
+  onlyDynamic?: boolean; // true = only greetings with dynamic filters
+  onlyTimeBased?: boolean; // true = only greetings with time-based dynamic filters (hour/day/month)
+}
+
+/**
+ * Checks if a greeting has a dynamic filter function
+ */
+function hasDynamicFilter(greeting: GreetingDefinition): boolean {
+  return greeting.dynamic !== undefined;
+}
+
+/**
+ * Checks if a greeting's dynamic filter is time-based (uses hour, day, or month)
+ * Note: This is a heuristic based on the function signature/code
+ */
+function isTimeBased(greeting: GreetingDefinition): boolean {
+  if (!greeting.dynamic) {
+    return false;
+  }
+
+  // Convert function to string to check if it references time-related properties
+  const fnString = greeting.dynamic.toString();
+
+  // Check if the function uses hour, day, or month from the filters parameter
+  return /\bhour\b/.test(fnString) ||
+         /\bday\b/.test(fnString) ||
+         /\bmonth\b/.test(fnString);
 }
 
 /**
@@ -57,6 +84,8 @@ export function selectGreeting(
     randomSeed = Math.random(),
     hasNameFilter,
     variant,
+    onlyDynamic = false,
+    onlyTimeBased = false,
   }: SelectGreetingOptions = {}
 ): GreetingResult & { allGreetings: string[] } {
   const now = new Date();
@@ -86,7 +115,7 @@ export function selectGreeting(
   else timeOfDay = 'lateNight';
 
   // Get candidate greetings using O(1) indexed lookup
-  const candidates = getMatchingGreetings(greetings, {
+  let candidates = getMatchingGreetings(greetings, {
     language,
     incognito,
     workMode,
@@ -94,6 +123,16 @@ export function selectGreeting(
     hasName,
     variant,
   });
+
+  // Apply onlyDynamic filter if requested
+  if (onlyDynamic) {
+    candidates = candidates.filter(hasDynamicFilter);
+  }
+
+  // Apply onlyTimeBased filter if requested
+  if (onlyTimeBased) {
+    candidates = candidates.filter(isTimeBased);
+  }
 
   // Filter candidates by dynamic criteria (time, battery, weather)
   const dynamicFilters = { hour, day, month, battery, weather };
