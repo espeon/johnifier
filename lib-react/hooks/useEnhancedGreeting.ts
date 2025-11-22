@@ -55,7 +55,7 @@ export function useEnhancedGreeting({
   refreshKey = 0,
   hasNameFilter,
   variant,
-}: EnhancedGreetingProps = {}): GreetingResult & { allGreetings: string[] } {
+}: EnhancedGreetingProps): GreetingResult & { allGreetings: string[] } {
   const [mounted, setMounted] = useState(false);
   const [randomSeed, setRandomSeed] = useState(() => Math.random());
 

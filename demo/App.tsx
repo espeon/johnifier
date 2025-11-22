@@ -1,10 +1,39 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEnhancedGreeting, useEnhancedContext, Language, TempUnit, Variant } from '../lib-react';
+import type { GreetingDefinition } from '../lib/greetings/types';
 import { greetings as enGreetings } from '../lib/greetings/languages/en';
 
 type NameFilter = 'any' | 'with-names' | 'without-names';
 type VariantFilter = 'any' | 'standard' | 'creative';
+
+// Language loader with caching
+const languageCache = new Map<Language, GreetingDefinition[]>();
+languageCache.set('en', enGreetings);
+
+async function loadLanguage(lang: Language): Promise<GreetingDefinition[]> {
+  if (languageCache.has(lang)) {
+    return languageCache.get(lang)!;
+  }
+
+  const modules: Record<Language, () => Promise<{ greetings: GreetingDefinition[] }>> = {
+    'en': () => import('../lib/greetings/languages/en'),
+    'es': () => import('../lib/greetings/languages/es'),
+    'fr': () => import('../lib/greetings/languages/fr'),
+    'de': () => import('../lib/greetings/languages/de'),
+    'ja': () => import('../lib/greetings/languages/ja'),
+    'zh-Hans': () => import('../lib/greetings/languages/zh-Hans'),
+    'zh-Hant': () => import('../lib/greetings/languages/zh-Hant'),
+    'ko': () => import('../lib/greetings/languages/ko'),
+    'pt': () => import('../lib/greetings/languages/pt'),
+    'it': () => import('../lib/greetings/languages/it'),
+    'ru': () => import('../lib/greetings/languages/ru'),
+  };
+
+  const module = await modules[lang]();
+  languageCache.set(lang, module.greetings);
+  return module.greetings;
+}
 
 function App() {
   const [name, setName] = useState(() => localStorage.getItem('johnifier_name') || '');
@@ -18,8 +47,14 @@ function App() {
   const [mounted, setMounted] = useState(false);
   const [greetingKey, setGreetingKey] = useState(0);
   const [showAllGreetings, setShowAllGreetings] = useState(false);
+  const [greetings, setGreetings] = useState<GreetingDefinition[]>(enGreetings);
 
   const context = useEnhancedContext();
+
+  // Load greetings when language changes
+  useEffect(() => {
+    loadLanguage(language).then(setGreetings);
+  }, [language]);
 
   // Persist settings to localStorage
   useEffect(() => {
@@ -61,7 +96,7 @@ function App() {
   const variant: Variant | undefined = variantFilter === 'any' ? undefined : (variantFilter as Variant);
 
   const greeting = useEnhancedGreeting({
-    greetings: enGreetings,
+    greetings,
     name: name || undefined,
     incognito,
     workMode,
