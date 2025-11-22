@@ -202,7 +202,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `Morning champion ${name}`,
+    text: ({ name }) => `Morning ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -620,7 +620,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: ({ name }) => `Afternoon champion ${name}`,
+    text: ({ name }) => `Afternoon ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -694,7 +694,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: 'Welcome back',
+    text: 'Hello again',
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -1365,7 +1365,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `${name}, absolute morning champion`,
+    text: ({ name }) => `${name}, up early`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1377,13 +1377,13 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `${name}, morning boss mode activated`,
+    text: ({ name }) => `${name}, morning mode activated`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `The magnificent ${name} greets the morning`,
+    text: ({ name }) => `${name} greets the morning`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1401,7 +1401,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `${name}, breaking dawn like a boss`,
+    text: ({ name }) => `${name}, breaking dawn`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1413,13 +1413,13 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `${name}, you magnificent early riser`,
+    text: ({ name }) => `${name}, early riser`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `Morning excellence: ${name}`,
+    text: ({ name }) => `Morning: ${name}`,
     mood: 'professional',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1431,7 +1431,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `A.M. superstar ${name}`,
+    text: ({ name }) => `A.M. ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1449,13 +1449,13 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `${name}, sunrise boss`,
+    text: ({ name }) => `${name}, sunrise`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `Morning king/queen ${name}`,
+    text: ({ name }) => `Morning friend ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1479,13 +1479,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: ({ name }) => `Early bird champion ${name}`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true },
-    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
-  },
-  {
-    text: ({ name }) => `${name}, morning MVP`,
+    text: ({ name }) => `${name}, morning`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1547,7 +1541,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: 'Absolute morning champion',
+    text: 'Up early',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1577,7 +1571,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: 'Breaking dawn like a boss',
+    text: 'Breaking dawn',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1589,19 +1583,13 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: 'Morning excellence',
-    mood: 'professional',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false },
-    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
-  },
-  {
     text: 'Certified morning legend',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: 'A.M. superstar',
+    text: 'A.M.',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1619,7 +1607,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
   },
   {
-    text: 'Sunrise boss',
+    text: 'Sunrise',
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1632,12 +1620,6 @@ export const generalGreetings: GreetingDefinition[] = [
   },
   {
     text: 'Dawn destroyer',
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
-    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
-  },
-  {
-    text: 'Morning MVP',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
@@ -1681,7 +1663,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: ({ name }) => `Afternoon excellence: ${name}`,
+    text: ({ name }) => `Afternoon: ${name}`,
     mood: 'professional',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -1695,12 +1677,6 @@ export const generalGreetings: GreetingDefinition[] = [
   {
     text: ({ name }) => `${name}, P.M. powerhouse`,
     mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
-    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
-  },
-  {
-    text: ({ name }) => `Afternoon boss ${name}`,
-    mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
@@ -1729,7 +1705,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: ({ name }) => `${name}, post-lunch champion`,
+    text: ({ name }) => `${name}, post-lunch`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -1783,7 +1759,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: ({ name }) => `Daylight superstar ${name}`,
+    text: ({ name }) => `Daylight ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -1795,19 +1771,13 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: ({ name }) => `Prime time ${name}`,
+    text: ({ name }) => `P.M. ${name}`,
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
     text: ({ name }) => `${name}, afternoon ace`,
-    mood: 'playful',
-    static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
-    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
-  },
-  {
-    text: ({ name }) => `Midday MVP ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -1863,7 +1833,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: 'Afternoon excellence',
+    text: 'Good afternoon',
     mood: 'professional',
     static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -1881,7 +1851,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: 'Afternoon boss mode',
+    text: 'Afternoon mode',
     mood: 'casual',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -1911,7 +1881,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
   },
   {
-    text: 'Post-lunch champion',
+    text: 'Post-lunch',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
@@ -1997,7 +1967,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: ({ name }) => `${name}, sunset champion`,
+    text: ({ name }) => `${name}, sunset`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
@@ -2009,7 +1979,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: ({ name }) => `${name}, evening excellence`,
+    text: ({ name }) => `${name}, evening`,
     mood: 'professional',
     static: { language: 'en', incognito: false, workMode: false, hasName: true },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
@@ -2111,13 +2081,13 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: ({ name }) => `Evening MVP ${name}`,
+    text: ({ name }) => `Evening ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: ({ name }) => `${name}, twilight champion`,
+    text: ({ name }) => `${name}, twilight`,
     mood: 'mysterious',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
@@ -2179,7 +2149,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: 'Sunset champion',
+    text: 'Sunset',
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
@@ -2191,7 +2161,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
   },
   {
-    text: 'Evening excellence',
+    text: 'Good evening',
     mood: 'professional',
     static: { language: 'en', incognito: false, workMode: false, hasName: false },
     dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
@@ -2295,7 +2265,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: ({ name }) => `Nocturnal excellence: ${name}`,
+    text: ({ name }) => `Nocturnal: ${name}`,
     mood: 'mysterious',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -2343,7 +2313,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: ({ name }) => `Graveyard champion ${name}`,
+    text: ({ name }) => `Graveyard shift ${name}`,
     mood: 'mysterious',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -2355,7 +2325,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: ({ name }) => `Witching hour MVP ${name}`,
+    text: ({ name }) => `Witching hour ${name}`,
     mood: 'mysterious',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -2391,7 +2361,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: ({ name }) => `Sleepless superstar ${name}`,
+    text: ({ name }) => `Sleepless ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -2403,7 +2373,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: ({ name }) => `2AM champion ${name}`,
+    text: ({ name }) => `2AM ${name}`,
     mood: 'playful',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -2477,7 +2447,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: 'Nocturnal excellence',
+    text: 'Nocturnal',
     mood: 'mysterious',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -2525,7 +2495,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: 'Graveyard champion',
+    text: 'Night shift',
     mood: 'mysterious',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -2537,7 +2507,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
   },
   {
-    text: 'Witching hour MVP',
+    text: 'Witching hour',
     mood: 'mysterious',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
@@ -2587,7 +2557,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: () => true,
   },
   {
-    text: ({ name }) => `Pure excellence: ${name}`,
+    text: ({ name }) => `${name}`,
     mood: 'professional',
     static: { language: 'en', incognito: false, workMode: false, hasName: true, variant: 'creative' },
     dynamic: () => true,
@@ -2679,7 +2649,7 @@ export const generalGreetings: GreetingDefinition[] = [
     dynamic: () => true,
   },
   {
-    text: 'Pure excellence',
+    text: 'Hello',
     mood: 'professional',
     static: { language: 'en', incognito: false, workMode: false, hasName: false, variant: 'creative' },
     dynamic: () => true,
