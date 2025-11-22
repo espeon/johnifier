@@ -326,26 +326,600 @@ export const generalGreetings: GreetingDefinition[] = [
   {
     text: '¡A trabajar!',
     mood: 'professional',
-    static: { language: 'es', incognito: false, workMode: true },
+    static: { language: 'es', incognito: false, workMode: true, hasName: false },
   },
   {
     text: 'Modo productivo',
     mood: 'professional',
-    static: { language: 'es', incognito: false, workMode: true },
+    static: { language: 'es', incognito: false, workMode: true, hasName: false },
   },
   {
     text: '¡Vamos a darle!',
     mood: 'professional',
-    static: { language: 'es', incognito: false, workMode: true },
+    static: { language: 'es', incognito: false, workMode: true, hasName: false },
   },
   {
     text: 'Hora de producir',
     mood: 'professional',
-    static: { language: 'es', incognito: false, workMode: true },
+    static: { language: 'es', incognito: false, workMode: true, hasName: false },
   },
   {
     text: 'Modo enfoque',
     mood: 'professional',
-    static: { language: 'es', incognito: false, workMode: true },
+    static: { language: 'es', incognito: false, workMode: true, hasName: false },
+  },
+
+  // === EXPANDED MORNING GREETINGS ===
+  // With name
+  {
+    text: ({ name }) => `¡Qué onda, ${name}!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `${name}, ¡arranca el día!`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `¡A tope, ${name}!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `${name}, ¡con toda!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `¡Dale, ${name}!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `${name}, ¡a romperla!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `¡Épa, ${name}!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `${name}, lista para brillar`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `¡Wepa, ${name}!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `${name}, ¿cómo vas hoy?`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `¡Ánimo, ${name}!`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `${name}, ¡vamos con todo!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `¡Presente, ${name}!`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `${name}, ¡otro día para ganar!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: ({ name }) => `¡Gusto verte, ${name}!`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+
+  // Without name - morning
+  {
+    text: '¡Qué tal!',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡A darle!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡Con toda!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡Dale!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡A romperla!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡Épa!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡Wepa!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: 'A brillar',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡Ánimo!',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: 'Con todo',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡A despuntar!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡Saludos matutinos!',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: 'Mañana fresca',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: '¡Buenos días, mundo!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+  {
+    text: 'A conquistar el día',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 5 && hour < 12,
+  },
+
+  // === EXPANDED AFTERNOON GREETINGS ===
+  // With name
+  {
+    text: ({ name }) => `${name}, ¿qué cuentas?`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: ({ name }) => `¿Todo bien, ${name}?`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: ({ name }) => `${name}, aquí estamos`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: ({ name }) => `¡Hola otra vez, ${name}!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: ({ name }) => `${name}, ¿cómo te va?`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: ({ name }) => `¿Qué hay, ${name}?`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: ({ name }) => `${name}, ¡qué alegría!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: ({ name }) => `¡Ey, ${name}!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: ({ name }) => `${name}, ¿todo chido?`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: ({ name }) => `¡Buenas, ${name}!`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+
+  // Without name - afternoon
+  {
+    text: '¿Qué cuentas?',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: '¿Todo bien?',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: 'Aquí estamos',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: '¿Qué hay?',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: '¿Cómo va?',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: '¡Ey!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: '¿Todo chido?',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: 'Tarde perfecta',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: 'Buena vibra',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+  {
+    text: 'Medio día bien',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 12 && hour < 18,
+  },
+
+  // === EXPANDED EVENING GREETINGS ===
+  // With name
+  {
+    text: ({ name }) => `${name}, buena noche`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: ({ name }) => `Buenas noches, ${name}`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: ({ name }) => `${name}, ¿cómo va la noche?`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: ({ name }) => `Noche tranquila, ${name}`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: ({ name }) => `${name}, ¿relajándote?`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: ({ name }) => `Buena noche con ${name}`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: ({ name }) => `${name} de noche`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: ({ name }) => `¿Cómo la noche, ${name}?`,
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+
+  // Without name - evening
+  {
+    text: 'Buena noche',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: '¿Cómo va la noche?',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: 'Noche perfecta',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: 'Hora nocturna',
+    mood: 'mysterious',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: 'Noche relajada',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+  {
+    text: 'Atardecer completo',
+    mood: 'casual',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 18 && hour < 24,
+  },
+
+  // === EXPANDED LATE NIGHT GREETINGS ===
+  // With name
+  {
+    text: ({ name }) => `${name}, ¿desvelado?`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+  {
+    text: ({ name }) => `Noctámbulo ${name}`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+  {
+    text: ({ name }) => `${name}, ¿sin sueño?`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+  {
+    text: ({ name }) => `${name} en la madrugada`,
+    mood: 'mysterious',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+  {
+    text: ({ name }) => `Búho nocturno, ${name}`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+
+  // Without name - late night
+  {
+    text: '¿Desvelado?',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+  {
+    text: 'Noctámbulo detectado',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+  {
+    text: '¿Sin sueño?',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+  {
+    text: 'En la madrugada',
+    mood: 'mysterious',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+  {
+    text: 'Hora de insomnes',
+    mood: 'mysterious',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+  {
+    text: 'Muy tarde o muy temprano',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false },
+    dynamic: ({ hour }) => hour !== undefined && hour >= 0 && hour < 5,
+  },
+
+  // === CREATIVE GENERAL GREETINGS ===
+  {
+    text: ({ name }) => `¡${name}, crack!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `${name}, leyenda`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `¡${name}, máquina!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `${name}, la rompe`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `Genio ${name}`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `${name}, fenómeno`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `¡${name} al poder!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `${name}, pura energía`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `${name}, total crack`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+  {
+    text: ({ name }) => `¡Presente el gran ${name}!`,
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: true, variant: 'creative' },
+  },
+
+  // Creative without name
+  {
+    text: '¡Crack!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: '¡Máquina!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Genio total',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: '¡Fenomenal!',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Pura potencia',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Eres la clave',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Total maestría',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Nivel superior',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Imbatible',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
+  },
+  {
+    text: 'Legendario',
+    mood: 'playful',
+    static: { language: 'es', incognito: false, workMode: false, hasName: false, variant: 'creative' },
   },
 ];
