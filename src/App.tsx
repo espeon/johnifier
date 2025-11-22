@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEnhancedGreeting, Language } from './hooks/useEnhancedGreeting';
 import { useEnhancedContext } from './hooks/useEnhancedContext';
 
@@ -9,7 +9,6 @@ function App() {
   const [workMode, setWorkMode] = useState(false);
   const [techOk, setTechOk] = useState(false);
   const [language, setLanguage] = useState<Language>('en');
-  const [showControls, setShowControls] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const context = useEnhancedContext();
@@ -28,198 +27,255 @@ function App() {
     setMounted(true);
   }, []);
 
-  // Split greeting into words for staggered animation
   const words = greeting.text.split(' ');
+  const now = new Date();
+  const timeString = now.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  });
+  const dateString = now.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric'
+  });
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1a1a1a] relative overflow-hidden font-serif">
-      {/* Subtle grain texture overlay */}
-      <div className="fixed inset-0 opacity-[0.03] pointer-events-none bg-noise" />
+    <div className="min-h-screen bg-[#0a0a0a] text-[#e8e8e8] relative overflow-hidden">
+      {/* Subtle gradient overlay */}
+      <div className="fixed inset-0 bg-gradient-to-br from-[#1a1a2e]/20 via-transparent to-[#0f3460]/10 pointer-events-none" />
 
-      {/* Main greeting display */}
-      <main className="min-h-screen flex flex-col items-center justify-center px-8 py-20">
-        <motion.div
-          className="max-w-5xl w-full text-center"
+      {/* Grain texture */}
+      <div className="fixed inset-0 opacity-[0.015] pointer-events-none bg-noise" />
+
+      <div className="relative min-h-screen flex flex-col">
+        {/* Header bar */}
+        <motion.header
+          className="px-8 py-6 flex items-center justify-between border-b border-[#e8e8e8]/5"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="font-signature text-2xl text-[#e8e8e8]/60">
+            johnifier
+          </div>
+          <div className="font-garamond text-sm text-[#e8e8e8]/40 tracking-wider">
+            {dateString} · {timeString}
+          </div>
+        </motion.header>
+
+        {/* Main content */}
+        <main className="flex-1 flex items-center justify-center px-8 py-16">
+          <div className="max-w-6xl w-full">
+            {/* Greeting */}
+            <motion.div
+              className="mb-16"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h1 className="font-orbiter font-bold text-greeting leading-[0.9] mb-8 tracking-tight">
+                {mounted && words.map((word, i) => (
+                  <motion.span
+                    key={i}
+                    className="inline-block mr-[0.3em]"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.4 + i * 0.06,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </h1>
+
+              {/* Metadata pills */}
+              <motion.div
+                className="flex gap-3 items-center flex-wrap"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.6 }}
+              >
+                <Pill>{greeting.timeOfDay}</Pill>
+                <Pill>{greeting.mood}</Pill>
+                {context.battery !== null && (
+                  <Pill>battery {context.battery}%</Pill>
+                )}
+                {context.weather && (
+                  <Pill>{context.weather.condition} · {context.weather.temp}°</Pill>
+                )}
+              </motion.div>
+            </motion.div>
+
+            {/* Controls grid */}
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+            >
+              {/* Name input */}
+              <div className="space-y-3">
+                <label className="font-garamond text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter name..."
+                  className="w-full bg-[#e8e8e8]/5 border border-[#e8e8e8]/10
+                           px-4 py-3 font-garamond text-base tracking-wide
+                           focus:outline-none focus:border-[#e8e8e8]/30 focus:bg-[#e8e8e8]/8
+                           placeholder:text-[#e8e8e8]/20 transition-all duration-300"
+                />
+              </div>
+
+              {/* Language selector */}
+              <div className="space-y-3">
+                <label className="font-garamond text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
+                  Language
+                </label>
+                <div className="flex gap-2">
+                  {(['en', 'es', 'fr', 'de', 'ja'] as Language[]).map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => setLanguage(lang)}
+                      className={`flex-1 px-3 py-3 font-garamond text-sm uppercase tracking-widest
+                                transition-all duration-300 border
+                                ${language === lang
+                                  ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                                  : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10 hover:border-[#e8e8e8]/20'
+                                }`}
+                    >
+                      {lang}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Toggles */}
+              <div className="md:col-span-2 space-y-3">
+                <label className="font-garamond text-xs uppercase tracking-[0.15em] text-[#e8e8e8]/50">
+                  Settings
+                </label>
+                <div className="grid grid-cols-3 gap-3">
+                  <ToggleCard
+                    label="Incognito"
+                    active={incognito}
+                    onClick={() => setIncognito(!incognito)}
+                  />
+                  <ToggleCard
+                    label="Work Mode"
+                    active={workMode}
+                    onClick={() => setWorkMode(!workMode)}
+                  />
+                  <ToggleCard
+                    label="Tech OK"
+                    active={techOk}
+                    onClick={() => setTechOk(!techOk)}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </main>
+
+        {/* Footer */}
+        <motion.footer
+          className="px-8 py-6 border-t border-[#e8e8e8]/5 flex items-center justify-between"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
         >
-          {/* Greeting text - huge and bold */}
-          <h1 className="text-greeting leading-[0.95] mb-12 tracking-tight">
-            {mounted && words.map((word, i) => (
-              <motion.span
-                key={i}
-                className="inline-block mr-[0.25em]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: i * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </h1>
-
-          {/* Subtle metadata */}
-          <motion.div
-            className="flex gap-6 justify-center items-center text-xs tracking-[0.2em] uppercase opacity-40 font-mono mb-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
-            <span>{greeting.timeOfDay}</span>
-            <span>·</span>
-            <span>{greeting.mood}</span>
-            <span>·</span>
-            <span>{language.toUpperCase()}</span>
-          </motion.div>
-
-          {/* Minimal name input */}
-          <motion.div
-            className="max-w-md mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.6 }}
-          >
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="your name"
-              className="w-full bg-transparent border-b-2 border-[#1a1a1a]/20 focus:border-[#1a1a1a]
-                         px-4 py-3 text-center text-lg tracking-wide transition-all duration-300
-                         focus:outline-none placeholder:text-[#1a1a1a]/30 font-sans"
-            />
-          </motion.div>
-        </motion.div>
-      </main>
-
-      {/* Floating controls toggle */}
-      <motion.button
-        onClick={() => setShowControls(!showControls)}
-        className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-[#1a1a1a] text-[#FAF8F5]
-                   flex items-center justify-center text-xs font-mono tracking-wider hover:scale-110
-                   transition-transform duration-200 shadow-2xl"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1.2 }}
-      >
-        {showControls ? '×' : '⋮'}
-      </motion.button>
-
-      {/* Minimal controls panel */}
-      <AnimatePresence>
-        {showControls && (
-          <motion.div
-            className="fixed bottom-24 right-8 bg-[#1a1a1a] text-[#FAF8F5] p-6 rounded-lg shadow-2xl
-                       min-w-[280px] font-mono text-sm"
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ duration: 0.2 }}
-          >
-            {/* Toggles */}
-            <div className="space-y-4 mb-6">
-              <ToggleButton
-                label="incognito"
-                active={incognito}
-                onClick={() => setIncognito(!incognito)}
-              />
-              <ToggleButton
-                label="work mode"
-                active={workMode}
-                onClick={() => setWorkMode(!workMode)}
-              />
-              <ToggleButton
-                label="tech ok"
-                active={techOk}
-                onClick={() => setTechOk(!techOk)}
-              />
-            </div>
-
-            {/* Language selector */}
-            <div className="pt-4 border-t border-[#FAF8F5]/20">
-              <div className="text-[10px] uppercase tracking-widest opacity-50 mb-3">Language</div>
-              <div className="flex gap-2 flex-wrap">
-                {(['en', 'es', 'fr', 'de', 'ja'] as Language[]).map((lang) => (
-                  <button
-                    key={lang}
-                    onClick={() => setLanguage(lang)}
-                    className={`px-3 py-1.5 text-xs uppercase tracking-wider transition-all duration-200
-                              ${language === lang
-                                ? 'bg-[#FAF8F5] text-[#1a1a1a]'
-                                : 'bg-[#FAF8F5]/10 hover:bg-[#FAF8F5]/20'
-                              }`}
-                  >
-                    {lang}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Tiny signature */}
-            <div className="mt-6 pt-4 border-t border-[#FAF8F5]/20 text-[10px] opacity-30 text-center tracking-widest">
-              JOHNIFIER
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          <div className="font-garamond text-xs text-[#e8e8e8]/30 tracking-wider">
+            {greeting.allGreetings.length} greetings available
+          </div>
+          <code className="font-garamond text-xs text-[#e8e8e8]/30 tracking-wider">
+            useEnhancedGreeting()
+          </code>
+        </motion.footer>
+      </div>
 
       {/* Styles */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Momo+Signature&family=TASA+Orbiter:wght@400..800&display=swap');
 
-        body {
-          font-family: 'Eczar', serif;
+        .font-orbiter {
+          font-family: 'TASA Orbiter', sans-serif;
         }
 
-        .font-mono {
-          font-family: 'JetBrains Mono', monospace;
+        .font-garamond {
+          font-family: 'EB Garamond', serif;
         }
 
-        .font-sans {
-          font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        .font-signature {
+          font-family: 'Momo Signature', cursive;
         }
 
         .text-greeting {
-          font-size: clamp(2rem, 12vw, 7rem);
-          font-weight: 800;
-          font-family: 'Eczar', serif;
-          color: #1a1a1a;
-          line-height: 0.95;
+          font-size: clamp(2.5rem, 11vw, 8rem);
+          color: #e8e8e8;
         }
 
-        /* Subtle grain texture */
         .bg-noise {
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         ::selection {
-          background: #1a1a1a;
-          color: #FAF8F5;
+          background: #e8e8e8;
+          color: #0a0a0a;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: #e8e8e8;
+          opacity: 0.2;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: #e8e8e8;
+          opacity: 0.4;
         }
       `}</style>
     </div>
   );
 }
 
-// Minimal toggle button component
-function ToggleButton({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+// Pill component for metadata
+function Pill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="px-3 py-1.5 bg-[#e8e8e8]/8 border border-[#e8e8e8]/10
+                   font-garamond text-xs tracking-wider text-[#e8e8e8]/60">
+      {children}
+    </span>
+  );
+}
+
+// Toggle card component
+function ToggleCard({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className="w-full flex items-center justify-between group"
+      className={`px-4 py-4 border transition-all duration-300 font-garamond text-sm
+                ${active
+                  ? 'bg-[#e8e8e8] text-[#0a0a0a] border-[#e8e8e8]'
+                  : 'bg-[#e8e8e8]/5 text-[#e8e8e8]/60 border-[#e8e8e8]/10 hover:bg-[#e8e8e8]/10 hover:border-[#e8e8e8]/20'
+                }`}
     >
-      <span className="text-xs uppercase tracking-widest opacity-70 group-hover:opacity-100 transition-opacity">
+      <div className="text-center tracking-wider uppercase text-xs">
         {label}
-      </span>
-      <div className={`w-10 h-5 rounded-full relative transition-all duration-300
-                      ${active ? 'bg-[#FAF8F5]' : 'bg-[#FAF8F5]/20'}`}>
-        <div className={`absolute top-0.5 w-4 h-4 rounded-full bg-[#1a1a1a] transition-all duration-300
-                        ${active ? 'left-5' : 'left-0.5'}`} />
       </div>
     </button>
   );
