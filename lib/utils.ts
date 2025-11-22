@@ -1,4 +1,5 @@
-import { getMatchingGreetings, Language, Mood, GreetingResult, GreetingContext, TempUnit, Variant, GreetingDefinition } from './greetings';
+import { getMatchingGreetings } from './greetings/shared';
+import type { Language, Mood, GreetingResult, GreetingContext, TempUnit, Variant, GreetingDefinition } from './greetings/types';
 
 export interface SelectGreetingOptions {
   name?: string;

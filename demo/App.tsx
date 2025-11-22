@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEnhancedGreeting, useEnhancedContext, Language, TempUnit, Variant } from '../lib-react';
+import { greetings as enGreetings } from '../lib/greetings/languages/en';
 
 type NameFilter = 'any' | 'with-names' | 'without-names';
 type VariantFilter = 'any' | 'standard' | 'creative';
@@ -60,6 +61,7 @@ function App() {
   const variant: Variant | undefined = variantFilter === 'any' ? undefined : (variantFilter as Variant);
 
   const greeting = useEnhancedGreeting({
+    greetings: enGreetings,
     name: name || undefined,
     incognito,
     workMode,
