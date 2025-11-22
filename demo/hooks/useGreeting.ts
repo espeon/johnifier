@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { selectGreeting } from '../../lib/utils';
+import { greetings as enGreetings } from '../../lib/greetings/languages/en';
 import type { Language, TempUnit, Variant } from '../../lib/greetings/types';
 
 interface GreetingProps {
@@ -56,7 +57,7 @@ export function useGreeting({
       };
     }
 
-    return selectGreeting({
+    return selectGreeting(enGreetings, {
       name,
       incognito,
       workMode,

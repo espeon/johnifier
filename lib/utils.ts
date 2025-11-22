@@ -1,4 +1,4 @@
-import { getMatchingGreetings, allGreetings as greetingsData, Language, Mood, GreetingResult, GreetingContext, TempUnit, Variant } from './greetings';
+import { getMatchingGreetings, Language, Mood, GreetingResult, GreetingContext, TempUnit, Variant, GreetingDefinition } from './greetings';
 
 export interface SelectGreetingOptions {
   name?: string;
@@ -19,12 +19,16 @@ export interface SelectGreetingOptions {
  *
  * This is a pure, framework-agnostic function that can be used in any JavaScript environment.
  *
+ * @param greetings - Array of greeting definitions to select from
  * @param options - Filtering and context options
  * @returns A greeting result with text, time of day, mood, and all available greetings
  *
  * @example
  * ```typescript
- * const greeting = selectGreeting({
+ * import { selectGreeting } from 'johnifier';
+ * import { greetings as en } from 'johnifier/lang/en';
+ *
+ * const greeting = selectGreeting(en, {
  *   name: 'John',
  *   language: 'en',
  *   techOk: true,
@@ -38,19 +42,22 @@ export interface SelectGreetingOptions {
  * console.log(greeting.mood); // "casual"
  * ```
  */
-export function selectGreeting({
-  name,
-  incognito = false,
-  workMode = false,
-  techOk = false,
-  language = 'en',
-  battery = null,
-  weather = null,
-  tempUnit = 'C',
-  randomSeed = Math.random(),
-  hasNameFilter,
-  variant,
-}: SelectGreetingOptions = {}): GreetingResult & { allGreetings: string[] } {
+export function selectGreeting(
+  greetings: GreetingDefinition[],
+  {
+    name,
+    incognito = false,
+    workMode = false,
+    techOk = false,
+    language = 'en',
+    battery = null,
+    weather = null,
+    tempUnit = 'C',
+    randomSeed = Math.random(),
+    hasNameFilter,
+    variant,
+  }: SelectGreetingOptions = {}
+): GreetingResult & { allGreetings: string[] } {
   const now = new Date();
   const hour = now.getHours();
   const day = now.getDay();
@@ -78,7 +85,7 @@ export function selectGreeting({
   else timeOfDay = 'lateNight';
 
   // Get candidate greetings using O(1) indexed lookup
-  const candidates = getMatchingGreetings(greetingsData, {
+  const candidates = getMatchingGreetings(greetings, {
     language,
     incognito,
     workMode,
