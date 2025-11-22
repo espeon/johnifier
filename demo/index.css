@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+
+  body {
+    @apply font-body bg-background text-text-primary leading-relaxed overflow-x-hidden;
+  }
+}
+
+@layer components {
+  /* Custom gradient background pattern */
+  .bg-pattern {
+    background:
+      radial-gradient(circle at 20% 50%, rgba(224, 120, 86, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(25, 211, 218, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(255, 216, 155, 0.08) 0%, transparent 40%);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, theme('colors.primary.DEFAULT') 0%, theme('colors.accent.DEFAULT') 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Shimmer effect */
+  .shimmer::before {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full;
+    background: linear-gradient(90deg, transparent, rgba(224, 120, 86, 0.1), transparent);
+    animation: shimmer 3s infinite;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 0.8s;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+}

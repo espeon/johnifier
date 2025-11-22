@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/lib",
+    "declarationDir": "./dist/lib",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"]
+  },
+  "include": ["lib/**/*"],
+  "exclude": ["node_modules", "dist", "demo", "src", "lib-react"]
+}
