@@ -516,4 +516,81 @@ export const personalityGreetings: GreetingDefinition[] = [
     mood: 'professional',
     static: { language: 'en', incognito: false, workMode: true, hasName: true },
   },
+
+  // === MORE FUN NAME GREETINGS ===
+  {
+    text: ({ name }) => `${name}, the legend`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, main character energy`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `It's ${name} o'clock`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, absolute unit`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `Certified ${name} moment`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, no notes`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `Peak ${name} performance`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, vibing immaculately`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `The ${name} experience`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, absolutely goated`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, doing the thing`,
+    mood: 'casual',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `Behold: ${name}`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, simply built different`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, elite status`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
+  {
+    text: ({ name }) => `${name}, unstoppable force`,
+    mood: 'playful',
+    static: { language: 'en', incognito: false, workMode: false, hasName: true },
+  },
 ];
