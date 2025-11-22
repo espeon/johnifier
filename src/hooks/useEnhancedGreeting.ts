@@ -60,10 +60,16 @@ export function useEnhancedGreeting({
   weather = null,
 }: EnhancedGreetingProps = {}): GreetingResult & { allGreetings: string[] } {
   const [mounted, setMounted] = useState(false);
+  const [randomSeed, setRandomSeed] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Re-randomize on mount and when key dependencies change
+  useEffect(() => {
+    setRandomSeed(Math.random());
+  }, [mounted, name, incognito, workMode]);
 
   const result = useMemo(() => {
     if (!mounted) {
@@ -333,7 +339,7 @@ export function useEnhancedGreeting({
       mood: selected.mood,
       allGreetings: allGreetingTexts,
     };
-  }, [mounted, name, incognito, workMode, language, battery, weather]);
+  }, [mounted, name, incognito, workMode, language, battery, weather, randomSeed]);
 
   return result;
 }
